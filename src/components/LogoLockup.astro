@@ -6,6 +6,7 @@ interface Props {
   variant?: 'default' | 'iconOnly'
   priority?: boolean
   href?: string
+  tone?: 'navy' | 'white'
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   variant = 'default',
   priority = false,
   href,
+  tone = 'navy',
 } = Astro.props
 
 const sizeConfig = {
@@ -25,13 +27,16 @@ const sizeConfig = {
 
 const config = sizeConfig[size]
 const shouldShowText = variant === 'iconOnly' ? false : showText
-const iconSrc = '/images/icono_zalantos_sf.png'
+const fill = tone === 'white' ? '#FFFFFF' : '#0B2A3C'
+const textColor = tone === 'white' ? 'text-white' : 'text-[#0B2A3C]'
+// Isotipo vectorial del kit digital Zalantos (Brand Book v2.2) — reemplaza el PNG raster.
+const strokeAttrs = tone === 'white' ? ` stroke="${fill}" stroke-width="24" stroke-linejoin="round"` : ''
 
 const ContentTag = href ? 'a' : 'div'
 ---
 <ContentTag
   href={href}
-  class={`focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2A3C] focus-visible:ring-offset-2 rounded inline-flex items-center ${className}`}
+  class={`focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 rounded inline-flex items-center ${className}`}
   style={`gap:${shouldShowText ? config.gap : 0}px`}
   aria-label={href ? 'zalantos - Inicio' : 'Zalantos'}
 >
@@ -39,20 +44,19 @@ const ContentTag = href ? 'a' : 'div'
     class="flex-shrink-0 relative block"
     style={`height:${config.iconHeight}px;width:${config.iconHeight}px`}
   >
-    <img
-      src={iconSrc}
-      alt="Zalantos"
+    <svg
+      viewBox="129 31 841 794"
+      xmlns="http://www.w3.org/2000/svg"
       width={config.iconHeight}
       height={config.iconHeight}
-      loading={priority ? 'eager' : 'lazy'}
-      decoding="async"
-      class="object-contain"
-      style={`width:${config.iconHeight}px;height:${config.iconHeight}px;max-width:${config.iconHeight}px;max-height:${config.iconHeight}px`}
+      role="img"
+      aria-label="Zalantos"
+      set:html={`<path d="M693 184 702 186 706 192 705 201 697 211 523 404 129 825 662 216 661 211 643 212 248 263Z" fill="${fill}"${strokeAttrs}/><path d="M970 31 572 482 390 680 391 685 400 685 819 626 454 697 358 714 350 712 346 706 346 699 351 691 496 527 786 219Z" fill="${fill}"${strokeAttrs}/>`}
     />
   </span>
   {shouldShowText && (
     <span
-      class={`${config.textClass} font-bold text-[#0B2A3C] flex-shrink-0`}
+      class={`${config.textClass} font-bold ${textColor} flex-shrink-0`}
       style="font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1;"
     >
       zalantos
