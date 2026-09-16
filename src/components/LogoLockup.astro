@@ -6,7 +6,7 @@ interface Props {
   variant?: 'default' | 'iconOnly'
   priority?: boolean
   href?: string
-  tone?: 'navy' | 'white'
+  tone?: 'navy' | 'white' | 'color'
 }
 
 const {
@@ -30,7 +30,12 @@ const shouldShowText = variant === 'iconOnly' ? false : showText
 const fill = tone === 'white' ? '#FFFFFF' : '#0B2A3C'
 const textColor = tone === 'white' ? 'text-white' : 'text-[#0B2A3C]'
 // Isotipo vectorial del kit digital Zalantos (Brand Book v2.2) — reemplaza el PNG raster.
-const strokeAttrs = tone === 'white' ? ` stroke="${fill}" stroke-width="24" stroke-linejoin="round"` : ''
+// Variante "Color" del isotipo (public/logos/isotipo-color.svg): trazo bicolor negro + verde de marca.
+const fill1 = tone === 'color' ? '#0A0A0A' : fill
+const fill2 = tone === 'color' ? '#47A45A' : fill
+// El path es una cinta delgada: se refuerza con stroke del mismo color para que se aprecie a tamaños pequeños.
+const strokeAttrs1 = tone !== 'navy' ? ` stroke="${fill1}" stroke-width="36" stroke-linejoin="round"` : ''
+const strokeAttrs2 = tone !== 'navy' ? ` stroke="${fill2}" stroke-width="36" stroke-linejoin="round"` : ''
 
 const ContentTag = href ? 'a' : 'div'
 ---
@@ -45,13 +50,13 @@ const ContentTag = href ? 'a' : 'div'
     style={`height:${config.iconHeight}px;width:${config.iconHeight}px`}
   >
     <svg
-      viewBox="129 31 841 794"
+      viewBox="99 1 901 854"
       xmlns="http://www.w3.org/2000/svg"
       width={config.iconHeight}
       height={config.iconHeight}
       role="img"
       aria-label="Zalantos"
-      set:html={`<path d="M693 184 702 186 706 192 705 201 697 211 523 404 129 825 662 216 661 211 643 212 248 263Z" fill="${fill}"${strokeAttrs}/><path d="M970 31 572 482 390 680 391 685 400 685 819 626 454 697 358 714 350 712 346 706 346 699 351 691 496 527 786 219Z" fill="${fill}"${strokeAttrs}/>`}
+      set:html={`<path d="M693 184 702 186 706 192 705 201 697 211 523 404 129 825 662 216 661 211 643 212 248 263Z" fill="${fill1}"${strokeAttrs1}/><path d="M970 31 572 482 390 680 391 685 400 685 819 626 454 697 358 714 350 712 346 706 346 699 351 691 496 527 786 219Z" fill="${fill2}"${strokeAttrs2}/>`}
     />
   </span>
   {shouldShowText && (

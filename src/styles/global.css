@@ -168,7 +168,7 @@ body {
 
   .eyebrow {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    @apply text-[11px] uppercase tracking-[0.16em] text-[#6F7A83];
+    @apply text-[12px] font-medium uppercase tracking-[0.1em] text-[#6F7A83];
   }
 
   .gradient-dark {

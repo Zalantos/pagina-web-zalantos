@@ -26,3 +26,6 @@ pnpm-debug.log*
 .idea/*
 .astro/
 
+# assets fuente del brand kit (no usados en runtime; ver public/logos y public/*.png)
+/Logotipo/
+

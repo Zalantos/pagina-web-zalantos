@@ -16,22 +16,19 @@ function formatDate(date: Date): string {
 }
 ---
 <BaseLayout
-  title="Insights & Casos de Automatización IA"
+  title="Casos de uso"
   description="Artículos sobre automatización, inteligencia artificial y casos de éxito reales. Ingeniería aplicada a problemas reales de empresas en Chile."
   canonical={`${SITE_URL}/blog/`}
 >
   <main class="flex-grow w-full pt-20">
-    <section class="section-full bg-white">
+    <section class="w-full relative pt-8 md:pt-12 pb-8 bg-white">
       <div class="section-inner">
         <div class="max-w-2xl">
-          <span class="inline-block text-xs font-semibold tracking-widest uppercase mb-4 text-[#2FBF71]">
-            Zalantos
-          </span>
           <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4 text-[#0B2A3C]">
-            Insights & Casos
+            Casos de uso
           </h1>
           <p class="text-lg text-[#6F7A83]">
-            Ingeniería aplicada a problemas reales.
+            Inteligencia Artificial aplicada a problemas reales.
           </p>
         </div>
       </div>
@@ -39,7 +36,7 @@ function formatDate(date: Date): string {
 
     <div class="w-full h-px bg-[rgba(11,42,60,0.08)]"></div>
 
-    <section class="section-full bg-gray-50">
+    <section class="w-full relative pt-8 pb-14 md:pb-24 bg-gray-50">
       <div class="section-inner">
         {posts.length === 0 ? (
           <p class="text-center py-24 text-[#6F7A83]">
