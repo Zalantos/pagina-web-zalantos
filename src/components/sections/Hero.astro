@@ -2,34 +2,26 @@
 import LinkButton from '../ui/LinkButton.astro'
 import { LINKS } from '../../lib/constants'
 ---
-<section class="relative w-full overflow-hidden bg-white min-h-[calc(100svh-5rem)] flex items-center justify-center py-12 sm:py-16">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-50 via-white to-white"></div>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-    <div class="absolute top-[10%] left-[10%] w-72 h-72 bg-[#2FBF71]/5 rounded-full blur-3xl mix-blend-multiply animate-blob"></div>
-    <div class="absolute top-[20%] right-[10%] w-72 h-72 bg-[#0B2A3C]/5 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-2000"></div>
-    <div class="absolute bottom-[20%] left-[20%] w-72 h-72 bg-blue-100/20 rounded-full blur-3xl mix-blend-multiply animate-blob animation-delay-4000"></div>
-  </div>
-
+<section class="relative w-full overflow-hidden bg-[#0B2A3C] min-h-[calc(100svh-5rem)] flex items-center justify-center py-12 sm:py-16">
   <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#0B2A3C] tracking-tight leading-[1.1] mb-6 sm:mb-8 max-w-4xl animate-fade-in-up animation-delay-100">
-      ¿Estás apagando incendios y <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2A3C] to-[#2FBF71]">postergando lo importante?</span>
-    </h1>
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 mb-6 sm:mb-8 animate-fade-in-up">
+    <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#7FE0AC]/35 !text-[#7FE0AC] mb-6 sm:mb-8 animate-fade-in-up">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2FBF71] opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-[#2FBF71]"></span>
       </span>
-      <span class="text-xs sm:text-sm md:text-base font-semibold text-[#4D555D] tracking-normal sm:tracking-wide uppercase">
-        CUANDO TODO ES URGENTE, EL NEGOCIO DEJA DE AVANZAR
-      </span>
-    </div>
+      Vendes más pero la caja no lo refleja
+    </span>
 
-    <p class="text-base sm:text-xl md:text-2xl text-[#4D555D] leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-      En <strong>zalantos</strong> diseñamos soluciones a la medida con IA para tu negocio: conectamos tus sistemas, automatizamos los flujos manuales y ponemos tus datos donde los necesitas. Para que tu equipo deje de apagar incendios y empiece a enfocarse en lo que hace crecer el negocio.
+    <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6 sm:mb-8 max-w-4xl animate-fade-in-up animation-delay-100">
+      Acelera la conversión de tus ventas en <span class="text-[#7FE0AC]">liquidez  </span>
+    </h1>
+
+    <p class="text-base sm:text-xl md:text-2xl text-[#C7D6DF] leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+      Cada día que tardas en facturar es tu dinero en la calle. En <strong class="text-white">zalantos</strong> conectamos tus sistemas y automatizamos tus procesos —desde la venta hasta el cobro— para que ese dinero vuelva a tu caja, no se quede en cuentas por cobrar.
     </p>
 
     <div class="flex w-full sm:w-auto flex-wrap gap-4 justify-center animate-fade-in-up animation-delay-300">
-      <LinkButton href={LINKS.contact} variant="primary" class="w-full sm:w-auto shadow-lg shadow-[#0B2A3C]/10 hover:shadow-xl hover:shadow-[#0B2A3C]/20 transition-all duration-300">
+      <LinkButton href={LINKS.contact} variant="primary" class="w-full sm:w-auto">
         Contactanos
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

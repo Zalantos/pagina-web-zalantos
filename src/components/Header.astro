@@ -15,7 +15,7 @@ const isBlog = pathname.startsWith('/blog')
 const isHomeActive = isHome && section === 'home'
 ---
 <nav
-  class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[rgba(11,42,60,0.08)]"
+  class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#0B2A3C]/10"
   role="navigation"
   aria-label="Navegación principal"
 >
@@ -23,10 +23,10 @@ const isHomeActive = isHome && section === 'home'
     <div class="max-w-[1400px] mx-auto flex items-center justify-between h-16 md:h-20">
       <div class="flex-shrink-0">
         <div class="sm:hidden">
-          <LogoLockup size="sm" variant="iconOnly" priority href={LINKS.home} />
+          <LogoLockup size="sm" variant="iconOnly" priority tone="color" href={LINKS.home} />
         </div>
         <div class="hidden sm:block">
-          <LogoLockup size="sm" priority href={LINKS.home} class="flex-shrink-0" />
+          <LogoLockup size="sm" priority tone="color" href={LINKS.home} class="flex-shrink-0" />
         </div>
       </div>
 
@@ -34,7 +34,7 @@ const isHomeActive = isHome && section === 'home'
         <div class="flex gap-1 sm:gap-2 lg:gap-8 flex-shrink-0">
           <a
             href={LINKS.home}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2A3C] focus-visible:ring-offset-2 rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 ${isHomeActive ? 'text-[#0B2A3C]' : 'text-[#6F7A83] hover:text-[#0B2A3C]'}`}
+            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isHomeActive ? 'text-[#0B2A3C] border-[#2FBF71]' : 'text-[#0B2A3C]/60 hover:text-[#0B2A3C] border-transparent'}`}
             aria-current={isHomeActive ? 'page' : undefined}
             aria-label="Inicio"
           >
@@ -52,7 +52,7 @@ const isHomeActive = isHome && section === 'home'
 
           <a
             href={LINKS.blog}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2A3C] focus-visible:ring-offset-2 rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 ${isBlog ? 'text-[#0B2A3C]' : 'text-[#6F7A83] hover:text-[#0B2A3C]'}`}
+            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isBlog ? 'text-[#0B2A3C] border-[#2FBF71]' : 'text-[#0B2A3C]/60 hover:text-[#0B2A3C] border-transparent'}`}
             aria-current={isBlog ? 'page' : undefined}
             aria-label="Blog"
           >
@@ -92,7 +92,7 @@ const isHomeActive = isHome && section === 'home'
 
           <a
             href={LINKS.contact}
-            class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[#0B2A3C] shadow-lg items-center justify-center text-white border border-[#0B2A3C]/25"
+            class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[#2FBF71] shadow-lg items-center justify-center text-[#0B2A3C] border border-[#0B2A3C]/10"
             aria-label="Ir a página de contacto"
           >
             <svg
