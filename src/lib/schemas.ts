@@ -2,16 +2,21 @@ export const SITE_URL = 'https://zalantos.com'
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 
+// Promesa canónica del sitio. Toda descripción comercial deriva de esta frase.
+export const PROMESA =
+  'zalantos automatiza las actividades del ciclo de venta a cobro para convertir más rápido las ventas en caja.'
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
   '@id': ORGANIZATION_ID,
   name: 'zalantos',
   url: SITE_URL,
   logo: `${SITE_URL}/icon.png`,
   image: `${SITE_URL}/icon.png`,
+  slogan: 'Convertimos tus ventas en liquidez',
   description:
-    'Empresa chilena de tecnología especializada en inteligencia artificial, automatización de procesos y análisis de datos para empresas.',
+    'Consultora chilena que automatiza el ciclo order to cash de punta a punta —pedido, crédito, facturación, cobranza, disputas y conciliación— integrando los sistemas existentes y aplicando inteligencia artificial empresarial.',
   email: 'contacto@zalantos.com',
   address: {
     '@type': 'PostalAddress',
@@ -21,6 +26,16 @@ export const organizationSchema = {
     postalCode: '7500000',
     addressCountry: 'CL',
   },
+  areaServed: { '@type': 'Country', name: 'Chile' },
+  knowsAbout: [
+    'Order to cash',
+    'Automatización de procesos de negocio',
+    'Inteligencia artificial empresarial',
+    'Integración de sistemas y ERP',
+    'Facturación electrónica SII',
+    'Gestión de cuentas por cobrar',
+    'Control de gestión y business intelligence',
+  ],
   sameAs: ['https://www.linkedin.com/company/zalantos/'],
 }
 
@@ -30,9 +45,10 @@ export const websiteSchema = {
   '@id': WEBSITE_ID,
   name: 'zalantos',
   url: SITE_URL,
+  inLanguage: 'es-CL',
   publisher: { '@id': ORGANIZATION_ID },
   description:
-    'Soluciones de inteligencia artificial, automatización de procesos y análisis de datos para empresas en Chile.',
+    'Automatización del ciclo de venta a cobro con inteligencia artificial empresarial para empresas en Chile.',
   potentialAction: {
     '@type': 'SearchAction',
     target: `${SITE_URL}/blog/?q={search_term_string}`,
@@ -43,41 +59,59 @@ export const websiteSchema = {
 export const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Automatización IA y Análisis de Datos para Empresas',
-  serviceType: 'Consultoría en Tecnología e Inteligencia Artificial',
+  name: 'Automatización del ciclo order to cash con inteligencia artificial',
+  serviceType: 'Automatización de procesos e inteligencia artificial empresarial',
   provider: { '@id': ORGANIZATION_ID },
   description:
-    'Diseñamos e implementamos soluciones de inteligencia artificial, automatización de procesos y análisis de datos para empresas en Chile.',
+    'Automatizamos las actividades del ciclo de venta a cobro —ingreso de pedidos, evaluación de crédito, facturación, cobranza, disputas y conciliación— integrando los sistemas que la empresa ya usa y aplicando IA donde aporta control y velocidad.',
   areaServed: { '@type': 'Country', name: 'Chile' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Servicios zalantos',
+    name: 'Etapas del ciclo order to cash que automatizamos',
     itemListElement: [
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Sistemas de Gestión de Información y BI',
+          name: 'Integración ERP y facturación electrónica SII',
           description:
-            'Tableros de control con datos consistentes y fuente única de información para tomar mejores decisiones.',
+            'Conectamos el ERP con la emisión de documentos tributarios electrónicos para que el pedido se convierta en factura sin digitación manual.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Automatización de Procesos',
+          name: 'Automatización de cobranza y disputas',
           description:
-            'Integración de sistemas y automatización de flujos operativos para eliminar carga manual y errores.',
+            'Seguimiento automático de la cartera, priorización de gestiones y resolución de disputas con la documentación del caso consolidada.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Soluciones de Inteligencia Artificial',
+          name: 'Evaluación de crédito y alta de clientes',
           description:
-            'Asistentes internos, sistemas RAG y automatizaciones inteligentes con IA aplicada al negocio.',
+            'Automatización de la evaluación crediticia y del alta de clientes nuevos para que la venta no espere por el proceso interno.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Visibilidad de caja y control de gestión',
+          description:
+            'Conciliación asistida y tableros con una fuente única de información para conocer la posición de caja sin esperar al cierre.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Inteligencia artificial empresarial aplicada',
+          description:
+            'Asistentes internos, búsqueda sobre documentación (RAG) y agentes que operan dentro del proceso con límites, trazabilidad y control.',
         },
       },
     ],
@@ -102,7 +136,7 @@ export function articleSchema(post: ArticleSchemaInput) {
     '@type': 'Article',
     headline: post.title,
     description: post.description,
-    author: { '@type': 'Person', name: post.author },
+    author: { '@type': 'Person', name: post.author, url: `${SITE_URL}/nosotros/` },
     publisher: {
       '@type': 'Organization',
       '@id': ORGANIZATION_ID,
@@ -129,6 +163,36 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  }
+}
+
+// Schema de una página de solución (etapa del ciclo order to cash)
+export function solutionServiceSchema(input: {
+  name: string
+  description: string
+  url: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: input.name,
+    description: input.description,
+    provider: { '@id': ORGANIZATION_ID },
+    areaServed: { '@type': 'Country', name: 'Chile' },
+    serviceType: 'Automatización de procesos e inteligencia artificial empresarial',
+    url: input.url,
+  }
+}
+
+export function faqSchema(items: { pregunta: string; respuesta: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.pregunta,
+      acceptedAnswer: { '@type': 'Answer', text: item.respuesta },
     })),
   }
 }

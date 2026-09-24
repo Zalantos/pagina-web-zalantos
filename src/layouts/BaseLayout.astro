@@ -90,6 +90,25 @@ const FONTS_URL =
       function gtag() { window.dataLayer.push(arguments) }
       gtag('js', new Date())
       gtag('config', GA_ID)
+
+      // Medición de conversión: cada clic hacia contacto/agenda o al correo se reporta
+      // con la página y el texto del CTA, para saber qué sección convierte.
+      document.addEventListener('click', function (event) {
+        var enlace = event.target instanceof Element ? event.target.closest('a') : null
+        if (!enlace) return
+
+        var href = enlace.getAttribute('href') || ''
+        var esContacto = href.indexOf('/contacto/') === 0
+        var esCorreo = href.indexOf('mailto:') === 0
+        if (!esContacto && !esCorreo) return
+
+        gtag('event', 'cta_contacto', {
+          cta_texto: (enlace.textContent || '').trim().slice(0, 80),
+          cta_destino: href,
+          cta_agendar: href.indexOf('agendar=1') !== -1,
+          pagina_origen: window.location.pathname,
+        })
+      })
     </script>
   </head>
   <body class={`font-sans antialiased ${bodyClass}`}>

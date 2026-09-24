@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Section from '../../components/ui/Section.astro'
+import Card from '../../components/ui/Card.astro'
+import LinkButton from '../../components/ui/LinkButton.astro'
+import { SOLUCIONES } from '../../data/soluciones'
+import { LINKS } from '../../lib/constants'
+import { breadcrumbSchema, solutionServiceSchema, faqSchema, SITE_URL } from '../../lib/schemas'
+
+const title = 'Automatización order to cash, etapa por etapa'
+const description =
+  'Automatizamos el ciclo order to cash completo: pedido, crédito, facturación, cobranza, disputas y conciliación, sobre los sistemas que ya usas.'
+const canonical = `${SITE_URL}/soluciones/`
+
+const faq = [
+  {
+    pregunta: '¿Qué es el ciclo order to cash?',
+    respuesta:
+      'Es el recorrido completo que va desde que un cliente hace un pedido hasta que el dinero de esa venta está disponible en la caja de la empresa. Incluye el ingreso del pedido, la evaluación de crédito, la facturación, la cobranza, la gestión de disputas y la conciliación del pago. Se le llama order to cash o ciclo de venta a cobro.',
+  },
+  {
+    pregunta: '¿Por qué automatizar el ciclo completo y no solo una etapa?',
+    respuesta:
+      'Porque el tiempo total que tu dinero pasa en la calle es la suma de todas las etapas. Automatizar la cobranza sirve de poco si la factura se emitió tres semanas tarde, y facturar rápido sirve de poco si después nadie hace seguimiento. Las mejoras de una etapa se pierden en la siguiente si el proceso sigue cortado.',
+  },
+  {
+    pregunta: '¿Necesito cambiar mi ERP o comprar una plataforma nueva?',
+    respuesta:
+      'No. Trabajamos sobre los sistemas que la empresa ya tiene y conectamos las etapas que hoy están sueltas. Si tu problema puntual se resuelve mejor comprando un producto del mercado, te lo decimos en el diagnóstico en vez de venderte un desarrollo.',
+  },
+  {
+    pregunta: '¿Dónde interviene la inteligencia artificial?',
+    respuesta:
+      'En los puntos donde el proceso depende de interpretar información sin estructura o de anticipar un comportamiento: leer un pedido que llega en PDF, identificar a qué factura corresponde un pago sin referencia, estimar qué facturas se van a atrasar o reconstruir el origen de una disputa. La IA prepara y ordena; las decisiones con consecuencia comercial las sigue tomando una persona.',
+  },
+  {
+    pregunta: '¿Por dónde se parte?',
+    respuesta:
+      'Por el Sprint 0: una actividad sin costo para ti en la que mapeamos el proceso o actividad de tu ciclo actual, identificamos dónde se pierden los días y proponemos qué automatizar primero según impacto en caja. No requiere compromiso posterior.',
+  },
+]
+
+const extraSchemas = [
+  solutionServiceSchema({
+    name: 'Automatización del ciclo order to cash',
+    description,
+    url: canonical,
+  }),
+  faqSchema(faq),
+  breadcrumbSchema([
+    { name: 'Inicio', url: `${SITE_URL}/` },
+    { name: 'Soluciones', url: canonical },
+  ]),
+]
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  type="website"
+  extraSchemas={extraSchemas}
+>
+  <main id="main-content" class="flex-grow w-full pt-20">
+    <Section variant="white" hero>
+      <div class="max-w-[820px]">
+        <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--z-border)] mb-6">
+          Soluciones
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
+          Automatización <span class="text-[var(--accent)]">order to cash</span>, etapa por etapa
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed mb-6">
+          El ciclo de venta a cobro es el recorrido que va desde que el cliente pide hasta que
+          el dinero está en tu caja. Cada día que ese recorrido se alarga es capital de trabajo
+          que financias tú.
+        </p>
+        <p class="text-base sm:text-lg text-[var(--ink-faint)] leading-relaxed">
+          Trabajamos en cada actividad del ciclo order to cash. Integramos los sistemas que ya usas
+          y aplicamos inteligencia artificial en los puntos donde el proceso depende de
+          interpretar información o de anticipar un comportamiento.
+        </p>
+      </div>
+    </Section>
+
+    <Section variant="gray">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--z-primary)] mb-4 px-4">
+          Las cuatro etapas donde se pierden los días
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl text-[var(--ink-faint)] max-w-[700px] mx-auto px-4">
+          Cada una se puede abordar por separado. El mayor efecto en caja aparece cuando dejan
+          de estar desconectadas entre sí.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1100px] mx-auto">
+        {SOLUCIONES.map((sol) => (
+          <Card class="flex flex-col">
+            <div class="flex items-baseline gap-3 mb-4">
+              <span class="font-display text-2xl font-bold text-[var(--accent-flat)] leading-none">
+                {sol.etapa}
+              </span>
+              <span class="eyebrow">{sol.fase}</span>
+            </div>
+            <h3 class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-3">
+              <a
+                href={`/soluciones/${sol.slug}/`}
+                class="hover:text-[var(--accent)] transition-colors focus:outline-none focus-visible:underline"
+              >
+                {sol.titulo}
+              </a>
+            </h3>
+            <p class="text-[var(--ink-faint)] leading-relaxed text-sm sm:text-base flex-1">
+              {sol.entradilla}
+            </p>
+            <div class="mt-5 pt-5 border-t border-[var(--rule)]">
+              <p class="font-display text-base sm:text-lg font-semibold text-[var(--accent)] leading-snug mb-3">
+                {sol.impacto.dato}
+              </p>
+              <a
+                href={`/soluciones/${sol.slug}/`}
+                class="inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+              >
+                Ver cómo lo abordamos <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <p class="mt-8 md:mt-10 text-center text-xs text-[var(--ink-faint)] max-w-[760px] mx-auto px-4 leading-relaxed">
+        Las cifras provienen de casos públicos documentados por UiPath, ScienceSoft y McKinsey
+        en múltiples industrias.
+      </p>
+    </Section>
+
+    <Section variant="white">
+      <div class="max-w-[820px] mx-auto">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--z-primary)] mb-10 text-center">
+          Preguntas frecuentes
+        </h2>
+        <dl class="space-y-8">
+          {faq.map((item) => (
+            <div>
+              <dt class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-2">
+                {item.pregunta}
+              </dt>
+              <dd class="text-[var(--ink-soft)] leading-relaxed">{item.respuesta}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </Section>
+
+    <Section variant="gray">
+      <div class="max-w-[820px] mx-auto text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--z-primary)] mb-4">
+          Empieza por saber dónde se pierden tus días
+        </h2>
+        <p class="text-base sm:text-lg text-[var(--ink-soft)] leading-relaxed mb-8">
+          El Sprint 0 es una actividad sin costo para ti en la que mapeamos el proceso o actividad de tu ciclo de negocio, identificamos las fugas
+          y proponemos qué automatizar primero según impacto en caja.
+        </p>
+        <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto">
+          Agenda tu Sprint 0
+        </LinkButton>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>

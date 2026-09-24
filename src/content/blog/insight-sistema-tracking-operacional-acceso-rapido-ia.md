@@ -6,6 +6,7 @@ pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
 image: "/images/og/insight-sistema-tracking-operacional-acceso-rapido-ia.png"
+solucion: "automatizacion-de-cobranza"
 excerpt: "Cuando el estado de una operación depende de planillas, mensajes, llamadas y memoria del equipo, la visibilidad se vuelve frágil. Este insight muestra cómo diseñar un sistema de tracking operacional que centraliza el seguimiento y agrega una capa de IA para consultar rápido lo que está pasando."
 ---
 <h2>El problema: saber qué está pasando no debería requerir perseguir gente</h2>

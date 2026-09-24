@@ -6,6 +6,7 @@ pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
 image: "/images/og/insight-automatizacion-procesos-trazabilidad-control-auditoria.png"
+solucion: "integracion-erp-facturacion-electronica"
 excerpt: "Muchas empresas quieren automatizar tareas repetitivas, pero frenan porque temen perder visibilidad, control o capacidad de auditoría. Este insight muestra cómo diseñar automatizaciones que aceleren la operación sin sacrificar trazabilidad, validaciones ni gobierno del proceso."
 ---
 <h2>El problema: muchas tareas manuales siguen existiendo por miedo a perder control</h2>

@@ -6,6 +6,7 @@ pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
 image: "/images/og/insight-ia-kpis-hallazgos-lenguaje-natural.png"
+solucion: "visibilidad-de-caja-y-conciliacion"
 excerpt: "Muchas empresas ya tienen dashboards, reportes y bases de datos, pero siguen dependiendo de analistas o reuniones para entender qué está pasando realmente. Este insight muestra cómo usar IA para consultar KPIs en lenguaje natural, detectar hallazgos relevantes y acelerar la toma de decisiones."
 ---
 <h2>El problema: tener dashboards no siempre significa tener claridad</h2>

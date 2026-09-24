@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Section from '../components/ui/Section.astro'
+import LinkButton from '../components/ui/LinkButton.astro'
+import { LINKS, CONTACT_ADDRESS, CONTACT_EMAIL, SOCIAL_LINKS } from '../lib/constants'
+import { breadcrumbSchema, ORGANIZATION_ID, SITE_URL } from '../lib/schemas'
+
+const title = 'Nosotros: quiénes somos y cómo trabajamos'
+const description =
+  'Consultora chilena que automatiza el ciclo de venta a cobro combinando control de gestión, integración de sistemas e IA aplicada.'
+const canonical = `${SITE_URL}/nosotros/`
+
+// TODO (JP): completar con los datos reales del equipo antes de publicar.
+// Cada persona necesita: cargo, bio de 2-3 líneas y su URL de LinkedIn, que alimenta
+// el `sameAs` del schema Person y es lo que sostiene el E-E-A-T de los artículos del blog.
+// Se dejó solo a quien aparece verificablemente en el repo (autor de los posts y titular
+// de la agenda de Calendly). NO agregar personas ni credenciales sin confirmar.
+const EQUIPO = [
+  {
+    nombre: 'Tomás Rodríguez',
+    cargo: 'PENDIENTE: cargo',
+    bio: 'PENDIENTE: dos o tres líneas de trayectoria relevante para el problema que resuelve zalantos.',
+    linkedin: '',
+  },
+]
+
+const principios = [
+  {
+    titulo: 'Primero el problema, después la tecnología',
+    detalle:
+      'Partimos por entender dónde se pierde el tiempo y el dinero en tu operación. La herramienta se elige después, y en varios casos la respuesta correcta es que no necesitas IA.',
+  },
+  {
+    titulo: 'Sobre los sistemas que ya tienes',
+    detalle:
+      'No reemplazamos tu ERP ni te pedimos migrar a una plataforma nueva. Conectamos lo que ya funciona y construimos solo lo que falta.',
+  },
+  {
+    titulo: 'Auditable de entrada',
+    detalle:
+      'Toda automatización deja registro de qué pasó, qué decidió el sistema y quién confirmó. Si no se puede auditar, no lo damos por terminado.',
+  },
+  {
+    titulo: 'Medido en caja, no en features',
+    detalle:
+      'El criterio de éxito es cuántos días se acortó el ciclo o cuántas horas se liberaron, no cuántas funcionalidades se entregaron.',
+  },
+]
+
+const equipoSchema = EQUIPO.filter((p) => p.linkedin).map((persona) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: persona.nombre,
+  jobTitle: persona.cargo,
+  worksFor: { '@id': ORGANIZATION_ID },
+  url: canonical,
+  sameAs: [persona.linkedin],
+}))
+
+const extraSchemas = [
+  ...equipoSchema,
+  breadcrumbSchema([
+    { name: 'Inicio', url: `${SITE_URL}/` },
+    { name: 'Nosotros', url: canonical },
+  ]),
+]
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  type="website"
+  extraSchemas={extraSchemas}
+>
+  <main id="main-content" class="flex-grow w-full pt-20">
+    <Section variant="white" hero>
+      <div class="max-w-[820px]">
+        <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--z-border)] mb-6">
+          Nosotros
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
+          Venimos del control de gestión, no del catálogo de software
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed">
+          zalantos automatiza las actividades del ciclo de venta a cobro para convertir más rápido
+          las ventas en caja. Trabajamos desde Chile, sobre los sistemas que las empresas ya
+          tienen, y medimos el resultado en días de ciclo y horas liberadas.
+        </p>
+      </div>
+    </Section>
+
+    <Section variant="gray">
+      <div class="max-w-[820px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6">
+          Por qué el ciclo de venta a cobro
+        </h2>
+        <div class="space-y-5 text-[var(--ink-soft)] leading-relaxed text-base sm:text-lg">
+          <p>
+            Porque es donde el desorden operativo se convierte en un costo financiero medible.
+            Una empresa puede estar vendiendo bien y aun así tener la caja apretada, simplemente
+            porque entre la venta y el cobro hay veinte días de trabajo administrativo que nadie
+            contabiliza como costo.
+          </p>
+          <p>
+            Ese tramo casi nunca es problema de un solo sistema. Es el espacio entre sistemas:
+            el pedido que llega en un formato, el ERP que espera otro, la facturación que corre
+            por su lado, la cobranza que vive en una planilla y el banco que informa aparte.
+            Nadie es dueño del recorrido completo.
+          </p>
+          <p>
+            Ahí trabajamos. No vendemos un producto que resuelve una etapa: conectamos las que
+            ya existen y aplicamos inteligencia artificial en los puntos donde el proceso depende
+            de interpretar información o de anticipar un comportamiento.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="white">
+      <div class="max-w-[900px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-10">
+          Cómo trabajamos
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {principios.map((p) => (
+            <div>
+              <h3 class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-3">
+                {p.titulo}
+              </h3>
+              <p class="text-[var(--ink-soft)] leading-relaxed text-sm sm:text-base">{p.detalle}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="gray">
+      <div class="max-w-[900px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-10">
+          El equipo
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {EQUIPO.map((persona) => (
+            <div class="rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-6">
+              <h3 class="font-display text-lg font-semibold text-[var(--z-primary)]">
+                {persona.nombre}
+              </h3>
+              <p class="eyebrow mb-3">{persona.cargo}</p>
+              <p class="text-[var(--ink-soft)] text-sm leading-relaxed">{persona.bio}</p>
+              {persona.linkedin && (
+                <a
+                  href={persona.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+                >
+                  LinkedIn <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="white">
+      <div class="max-w-[820px] mx-auto text-center">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6">
+          Dónde encontrarnos
+        </h2>
+        <address class="not-italic text-[var(--ink-soft)] text-base sm:text-lg leading-relaxed space-y-2 mb-8">
+          <p>{CONTACT_ADDRESS.street}</p>
+          <p>{CONTACT_ADDRESS.locality}, {CONTACT_ADDRESS.region}, {CONTACT_ADDRESS.country}</p>
+          <p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+            >
+              {CONTACT_EMAIL}
+            </a>
+            {' · '}
+            <a
+              href={SOCIAL_LINKS.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+            >
+              LinkedIn
+            </a>
+          </p>
+        </address>
+        <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto">
+          Agenda tu Sprint 0
+        </LinkButton>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>

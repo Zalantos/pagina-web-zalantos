@@ -9,9 +9,9 @@ import Clients from '../components/sections/Clients.astro'
 import UseCases from '../components/sections/UseCases.astro'
 import { organizationSchema, websiteSchema, serviceSchema } from '../lib/schemas'
 
-const title = 'Acelera la conversión de tus ventas en liquidez | zalantos'
+const title = 'Automatización order to cash con IA | zalantos'
 const description =
-  'Conectamos tus sistemas y automatizamos tus procesos, de la venta al cobro, para que tus ventas se conviertan en caja. Sprint 0 sin costo.'
+  'Automatizamos el ciclo de venta a cobro —pedido, facturación, cobranza y conciliación— con IA empresarial, para convertir más rápido tus ventas en caja.'
 const canonical = 'https://zalantos.com/'
 ---
 <BaseLayout
@@ -21,7 +21,7 @@ const canonical = 'https://zalantos.com/'
   type="website"
   extraSchemas={[organizationSchema, websiteSchema, serviceSchema]}
 >
-  <main id="main-content" class="flex-grow w-full pt-20">
+  <main id="main-content" class="flex-grow w-full pt-16 md:pt-20">
     <Hero />
     <UseCases />
     <FeaturedCases />

@@ -14,6 +14,9 @@ const blog = defineCollection({
     excerpt: z.string(),
     // Imagen OG 1200x630 (también usada en el JSON-LD del artículo)
     image: z.string().optional(),
+    // Slug de /soluciones/<slug>/ con la que el artículo se relaciona. Alimenta el
+    // bloque de enlace comercial al final del post (cluster temático).
+    solucion: z.string().optional(),
     featured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
   }),

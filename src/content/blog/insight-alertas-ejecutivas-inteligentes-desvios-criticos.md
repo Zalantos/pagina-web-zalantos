@@ -6,6 +6,7 @@ pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
 image: "/images/og/insight-alertas-ejecutivas-inteligentes-desvios-criticos.png"
+solucion: "visibilidad-de-caja-y-conciliacion"
 excerpt: "Muchas empresas revisan sus indicadores cuando el problema ya escaló: en el cierre semanal, en la reunión mensual o cuando un cliente reclama. Este insight muestra cómo diseñar alertas ejecutivas inteligentes para detectar desviaciones a tiempo y gestionar antes de que el impacto sea mayor."
 ---
 <h2>El problema: muchas organizaciones se enteran tarde de lo importante</h2>
