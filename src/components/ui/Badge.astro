@@ -5,9 +5,9 @@ interface Props {
 }
 const { variant = 'success', class: className = '' } = Astro.props
 const variantClass = {
-  success: 'bg-[#2FBF71]/10 text-[#2FBF71]',
-  info: 'bg-[#3FA9F5]/10 text-[#3FA9F5]',
-  warning: 'bg-yellow-500/10 text-yellow-700',
+  success: 'bg-[#2FBF71]/10 text-[#1F7F4A]',
+  info: 'bg-[#38BDF8]/15 text-[#0B2A3C]',
+  warning: 'bg-[#D9A441]/15 text-[#0B2A3C]',
 }[variant]
 ---
 <span class={`inline-block text-xs px-3 py-1 rounded-full font-medium ${variantClass} ${className}`}>

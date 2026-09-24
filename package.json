@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",
-    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
     "astro": "^4.16.18",
     "axios": "^1.9.0",

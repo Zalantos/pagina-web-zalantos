@@ -2,14 +2,14 @@ import type { LinkedInCampaignContent } from '../../types/linkedinCampaignLandin
 
 export const landingContent: LinkedInCampaignContent = {
   meta: {
-    title: 'Sprint 0 — Diagnóstico operativo | Zalantos',
+    title: 'Sprint 0 — Diagnóstico operativo | zalantos',
     description:
       'Sprint 0 de bajo riesgo: entendemos el proceso, clarificamos los datos y proponemos la solución correcta antes de automatizar o aplicar IA.',
   },
   eyebrow: 'No necesitas IA si no resuelve tu dolor',
   headline: 'No todos los problemas operativos necesitan IA',
   subheadline:
-    'Hoy muchas empresas sienten presión por "subirse a la IA" y parten por la herramienta en lugar de entender el problema operativo. En Zalantos arrancamos por el diagnóstico, definimos qué fricción duele y luego proponemos la solución correcta.',
+    'Hoy muchas empresas sienten presión por "subirse a la IA" y parten por la herramienta en lugar de entender el problema operativo. En zalantos arrancamos por el diagnóstico, definimos qué fricción duele y luego proponemos la solución correcta.',
   bullets: [
     'Integrar sistemas que hoy no se hablan',
     'Ordenar datos dispersos para tomar decisiones claras',
@@ -17,7 +17,7 @@ export const landingContent: LinkedInCampaignContent = {
   ],
   primaryCta: {
     label: 'Agendar Sprint 0',
-    href: '/?section=contact',
+    href: '/contacto/?agendar=1',
   },
   secondaryCta: {
     label: 'Hablar con el Consultor IA',
@@ -45,5 +45,5 @@ export const landingContent: LinkedInCampaignContent = {
     siteUrl: '/',
     backToSiteLabel: 'volver al sitio',
   },
-  footerLine: '© Zalantos',
+  footerLine: '© zalantos',
 }

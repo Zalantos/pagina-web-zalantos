@@ -1,9 +1,11 @@
 ---
 title: "Cómo un colegio redujo en 70% el tiempo de respuesta a apoderados con IA"
-description: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo de secretaría respondía las mismas 40 preguntas cada semana. Implementamos un sistema RAG que transformó esa carga en una consulta instantánea."
+seoTitle: "Colegio reduce 70% su tiempo de respuesta con IA"
+description: "Un colegio de 1.200 alumnos respondía las mismas 40 preguntas cada semana. Con un sistema RAG lo convirtió en consulta instantánea."
 pubDate: 2026-02-20
 author: "Tomás Rodríguez"
 category: "Casos de Éxito"
+image: "/images/og/caso-colegio-rag-sistema-consultas-ia.png"
 excerpt: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo de secretaría respondía las mismas 40 preguntas cada semana. Implementamos un sistema RAG que transformó esa carga en una consulta instantánea."
 ---
 <h2>El problema: 40 preguntas, 200 veces por semana</h2>

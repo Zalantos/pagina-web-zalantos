@@ -1,164 +1,109 @@
 ---
 import Section from '../ui/Section.astro'
 
-const featured = {
-  name: 'Colegio San Francisco de Machalí',
-  logo: '/images/icono_colegio.jpeg',
-  alt: 'Logo del Colegio San Francisco de Machalí',
-  accentColor: '#3FA9F5',
-  pain: 'El equipo docente y administrativo perdía horas buscando protocolos y normativas en carpetas dispersas. Riesgo alto de información desactualizada.',
-  solution: 'Agente IA (RAG) entrenado exclusivamente con la documentación oficial del colegio.',
-  result: 'Respuestas precisas en segundos. Se eliminó la incertidumbre operativa y se estandarizó el cumplimiento.',
-}
-
-const secondary = [
+const featuredCases = [
   {
-    name: 'Cruz Verde',
-    logo: '/images/icono_cruz_verde.png',
-    alt: 'Logo de Cruz Verde',
+    name: 'Colegio San Francisco de Machalí',
+    logo: '/images/icono_colegio.jpeg',
+    alt: 'Logo del Colegio San Francisco de Machalí',
     accentColor: '#2FBF71',
-    pain: 'Falta de visibilidad sobre quiebres de stock y rotación.',
-    solution: 'Trazabilidad con alertas operativas automáticas.',
-    result: 'Decisiones comerciales más rápidas y control de sobrestock.',
+    textColor: '#1F7F4A',
+    label: 'Caso',
+    href: '/blog/caso-colegio-rag-sistema-consultas-ia/',
+    pain: '¿Cuál es el protocolo vigente? Una pregunta simple que obliga a docentes y administrativos a revisar carpetas, correos y PDFs dispersos. Se pierden horas y siempre queda la duda de estar usando una versión desactualizada.',
+    solution: 'Un asistente de IA que responde solo con la documentación oficial del colegio. Basta preguntarle, como a un colega que conoce cada reglamento, y entrega la norma correcta sin salirse de lo que el colegio ha establecido.',
+    result: 'Respuestas precisas en segundos y una única fuente de verdad. El equipo dejó de dudar, recuperó tiempo para lo que importa (enseñar y acompañar) y los protocolos se aplican igual para todos.',
   },
   {
     name: 'Stem Inversiones',
     logo: '/images/icono_stem.png',
     alt: 'Logo de Stem Inversiones',
-    accentColor: '#3FA9F5',
-    pain: 'Dificultad para trazar gastos y gestionar clientes.',
-    solution: 'Plataforma de control financiero asistida por IA.',
-    result: 'Trazabilidad total y gestión proactiva de cartera.',
-  },
-  {
-    name: 'Cerro El Plomo',
-    logo: '/images/icono_cerro.png',
-    alt: 'Logo de Cerro El Plomo',
     accentColor: '#2FBF71',
-    pain: 'Inventario opaco y datos difíciles de interpretar.',
-    solution: 'Agentes de IA que explican los insights del inventario.',
-    result: 'El equipo entiende el inventario en lenguaje natural.',
+    textColor: '#1F7F4A',
+    label: 'Caso',
+    pain: 'Los gastos se registran en planillas y correos dispersos, sin categorías comunes ni respaldo asociado. Cada cierre exige cruzar manualmente los movimientos del banco con los comprobantes, con alto riesgo de errores, partidas sin identificar y diferencias que se detectan tarde.',
+    solution: 'Spentx, plataforma de control de gastos y conciliación bancaria asistida por IA. Centraliza cada gasto con su documento de respaldo en el mismo momento que se realiza, lo clasifica automáticamente y cruza los movimientos bancarios contra los registros, marcando coincidencias, pendientes e incidencias para revisión.',
+    result: 'Mayor trazabilidad de cada gasto, menos tiempo administrativo y más para análisis y ejecución. El cierre deja de depender de cruces manuales, las diferencias se detectan a tiempo y el equipo dedica su tiempo a decidir, no a reconstruir información.',
   },
 ]
 ---
 <Section variant="gray">
   <div class="text-center mb-12 md:mb-16">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] mb-4 px-4">
-      Nuestras Soluciones Aplicadas
+      Casos de clientes
     </h2>
   </div>
 
   <div class="max-w-[1200px] mx-auto space-y-6 sm:space-y-8">
-    <div class="relative overflow-hidden rounded-2xl bg-white border border-[rgba(11,42,60,0.08)] p-5 sm:p-8 md:p-12 shadow-[0_2px_8px_rgba(11,42,60,0.04)]">
-      <div
-        class="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
-        style={`background-color:${featured.accentColor}`}
-      ></div>
+    {featuredCases.map((featured) => (
+      <div class="relative overflow-hidden rounded-2xl bg-white border border-[rgba(11,42,60,0.08)] p-5 sm:p-8 md:p-12 shadow-[0_2px_8px_rgba(11,42,60,0.04)]">
+        <div
+          class="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
+          style={`background-color:${featured.accentColor}`}
+        ></div>
 
-      <div class="relative flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-        <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-xl bg-[#0B2A3C]/[0.04] p-3 mx-auto md:mx-0">
-          <img
-            src={featured.logo}
-            alt={featured.alt}
-            width="96"
-            height="96"
-            class="w-full h-full object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+        <div class="relative flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+          <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-xl bg-[#0B2A3C]/[0.04] p-3 mx-auto md:mx-0">
+            <img
+              src={featured.logo}
+              alt={featured.alt}
+              width="96"
+              height="96"
+              class="w-full h-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
 
-        <div class="flex-1 min-w-0">
-          <p
-            class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2"
-            style={`color:${featured.accentColor}`}
-          >
-            Caso destacado
-          </p>
-          <h3 class="text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-8 leading-tight">
-            {featured.name}
-          </h3>
+          <div class="flex-1 min-w-0">
+            <p
+              class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2"
+              style={`color:${featured.textColor}`}
+            >
+              {featured.label}
+            </p>
+            <h3 class="text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-8 leading-tight">
+              {featured.name}
+            </h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="space-y-1.5">
-              <span class="text-[10px] font-semibold uppercase tracking-widest text-[#6F7A83] block">
-                Desafío
-              </span>
-              <p class="text-[#0B2A3C]/90 text-sm leading-relaxed">{featured.pain}</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="space-y-1.5">
+                <span class="text-[10px] font-semibold uppercase tracking-widest text-[#6F7A83] block">
+                  Desafío
+                </span>
+                <p class="text-[#0B2A3C]/90 text-sm leading-relaxed">{featured.pain}</p>
+              </div>
+
+              <div class="space-y-1.5">
+                <span class="text-[10px] font-semibold uppercase tracking-widest text-[#6F7A83] block">
+                  Solución
+                </span>
+                <p class="text-[#0B2A3C]/90 text-sm leading-relaxed">{featured.solution}</p>
+              </div>
+
+              <div class="space-y-1.5">
+                <span
+                  class="text-[10px] font-semibold uppercase tracking-widest block"
+                  style={`color:${featured.textColor}`}
+                >
+                  Impacto
+                </span>
+                <p class="text-[#0B2A3C] font-medium text-sm leading-relaxed">{featured.result}</p>
+              </div>
             </div>
 
-            <div class="space-y-1.5">
-              <span class="text-[10px] font-semibold uppercase tracking-widest text-[#6F7A83] block">
-                Solución
-              </span>
-              <p class="text-[#0B2A3C]/90 text-sm leading-relaxed">{featured.solution}</p>
-            </div>
-
-            <div class="space-y-1.5">
-              <span
-                class="text-[10px] font-semibold uppercase tracking-widest block"
-                style={`color:${featured.accentColor}`}
+            {featured.href && (
+              <a
+                href={featured.href}
+                class="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[#1F7F4A] hover:text-[#0B2A3C] transition-colors"
+                title={`Leer el caso completo: ${featured.name}`}
               >
-                Impacto
-              </span>
-              <p class="text-[#0B2A3C] font-medium text-sm leading-relaxed">{featured.result}</p>
-            </div>
+                Leer el caso completo <span aria-hidden="true">→</span>
+              </a>
+            )}
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {secondary.map((client) => (
-        <div class="bg-white rounded-xl border border-[rgba(11,42,60,0.08)] p-5 flex flex-col gap-4">
-          <div class="flex items-center gap-3">
-            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center p-1.5">
-              <img
-                src={client.logo}
-                alt={client.alt}
-                width="40"
-                height="40"
-                class="w-full h-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <h3 class="text-sm font-semibold text-[#0B2A3C] leading-tight">
-              {client.name}
-            </h3>
-          </div>
-
-          <div class="space-y-2.5 border-t border-[rgba(11,42,60,0.06)] pt-4">
-            <div>
-              <span class="text-[9px] font-bold uppercase tracking-widest text-[#6F7A83] block mb-0.5">Desafío</span>
-              <p class="text-[#0B2A3C]/85 text-xs leading-relaxed">{client.pain}</p>
-            </div>
-            <div>
-              <span class="text-[9px] font-bold uppercase tracking-widest text-[#6F7A83] block mb-0.5">Solución</span>
-              <p class="text-[#0B2A3C]/85 text-xs leading-relaxed">{client.solution}</p>
-            </div>
-            <div>
-              <span
-                class="text-[9px] font-bold uppercase tracking-widest block mb-0.5"
-                style={`color:${client.accentColor}`}
-              >
-                Impacto
-              </span>
-              <p class="text-[#0B2A3C] text-xs leading-relaxed font-medium">{client.result}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <div class="mt-12 md:mt-16 text-center">
-    <a
-      href="#sprint-0"
-      class="btn-primary w-full sm:w-auto"
-      title="Agenda tu Sprint 0 gratuito con Zalantos"
-    >
-      ¿Tienes un dolor operativo similar? Agenda tu Sprint 0
-    </a>
+    ))}
   </div>
 </Section>

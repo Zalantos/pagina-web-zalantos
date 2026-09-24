@@ -4,6 +4,7 @@ import { articleSchema, breadcrumbSchema, SITE_URL } from '../lib/schemas'
 
 interface Props {
   title: string
+  seoTitle?: string
   description: string
   slug: string
   pubDate: Date
@@ -15,6 +16,7 @@ interface Props {
 
 const {
   title,
+  seoTitle,
   description,
   slug,
   pubDate,
@@ -39,14 +41,15 @@ const articleLd = articleSchema({
 
 const breadcrumbLd = breadcrumbSchema([
   { name: 'Inicio', url: `${SITE_URL}/` },
-  { name: 'Insights & Casos', url: `${SITE_URL}/blog/` },
-  { name: title, url: canonical },
+  { name: 'Blog', url: `${SITE_URL}/blog/` },
+  { name: seoTitle ?? title, url: canonical },
 ])
 ---
 <BaseLayout
-  title={title}
+  title={seoTitle ?? title}
   description={description}
   canonical={canonical}
+  ogImage={image}
   type="article"
   pubDate={pubDate}
   updatedDate={updatedDate}

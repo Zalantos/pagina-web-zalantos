@@ -14,6 +14,17 @@ export default function ConsultorIAContent() {
     const context = getLeadContext()
     setIsReady(!!context)
     setPageUrl(window.location.href)
+
+    // Consulta enviada desde el home (AiQuickAsk): se precarga en el input y se consume una sola vez
+    try {
+      const prefill = sessionStorage.getItem('zalantos:consultor-ia:prefill')
+      if (prefill) {
+        sessionStorage.removeItem('zalantos:consultor-ia:prefill')
+        setExampleToFill(prefill)
+      }
+    } catch {
+      // sessionStorage no disponible: el chat inicia vacío
+    }
   }, [])
 
   const handleExampleClick = (example: string) => {
@@ -21,7 +32,7 @@ export default function ConsultorIAContent() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-[#F1F5F9]">
       <div className="h-16 md:h-20" />
 
       <main className="flex-1 w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-10">
@@ -48,7 +59,7 @@ export default function ConsultorIAContent() {
 
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] leading-tight">
-              Consultor IA de Zalantos
+              Consultor IA de zalantos
             </h1>
             <p className="text-base sm:text-lg text-[#6F7A83] max-w-[720px]">
               Resuelve tus dudas sobre análisis de datos, implementación de IA y transformación

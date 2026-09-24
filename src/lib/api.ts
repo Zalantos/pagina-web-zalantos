@@ -158,7 +158,7 @@ export function getErrorMapping(
       shouldRenderAsAssistant: true,
       assistantMessage:
         backendMessage ||
-        'Este consultor está limitado a IA, automatización, datos y eficiencia para negocios (Zalantos). ¿En qué puedo ayudarte dentro de estos temas?',
+        'Este consultor está limitado a IA, automatización, datos y eficiencia para negocios (zalantos). ¿En qué puedo ayudarte dentro de estos temas?',
     }
   }
 
@@ -250,6 +250,7 @@ export async function registerLead(payload: {
   last_name: string
   email: string
   page: string
+  message?: string
 }): Promise<{ ok: boolean; session_id: string; lead_id: string; lead_session_id: string }> {
   const session_id = getOrCreateSessionId()
 
@@ -264,6 +265,8 @@ export async function registerLead(payload: {
     last_name: payload.last_name,
     email: payload.email,
     page: payload.page,
+    // Solo el formulario de Contacto envía mensaje; el registro del Consultor IA no lo incluye
+    ...(payload.message ? { message: payload.message } : {}),
     session_id,
     consent,
   }
@@ -397,7 +400,7 @@ export async function sendChatMessage(payload: ChatMessagePayload): Promise<Chat
     if (errorCode === 'out_of_scope' || (status === 422 && data.message?.toLowerCase().includes('scope'))) {
       const msg =
         data.message ||
-        'Este consultor está limitado a IA, automatización, datos y eficiencia para negocios (Zalantos). ¿En qué puedo ayudarte dentro de estos temas?'
+        'Este consultor está limitado a IA, automatización, datos y eficiencia para negocios (zalantos). ¿En qué puedo ayudarte dentro de estos temas?'
       
       // Retornar como respuesta válida con un flag especial
       return {

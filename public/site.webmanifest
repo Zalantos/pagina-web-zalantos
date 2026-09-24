@@ -1,6 +1,6 @@
 {
-  "name": "Zalantos — IA para Empresas",
-  "short_name": "Zalantos",
+  "name": "zalantos — IA para Empresas",
+  "short_name": "zalantos",
   "description": "Soluciones de inteligencia artificial, automatización de procesos y análisis de datos para empresas.",
   "start_url": "/",
   "display": "browser",
@@ -12,6 +12,12 @@
       "src": "/favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon.png",

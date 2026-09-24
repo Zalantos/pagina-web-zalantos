@@ -1,10 +1,11 @@
 ---
 title: "El motivo oculto por el que tu proyecto de IA está destinado al fracaso"
-description: "La razón por la que el 60% de los proyectos de IA fracasará no es la tecnología: son los datos. Exploramos por qué esta realidad es ineludible y cómo preparar tu organización antes de que sea demasiado tarde."
+seoTitle: "Por qué fallan los proyectos de IA: los datos"
+description: "El 60% de los proyectos de IA fracasará, y la causa no es la tecnología sino los datos. Cómo preparar tu organización a tiempo."
 pubDate: 2026-06-07
 author: "Tomás Rodríguez"
 category: "Insights"
-image: "/images/blog-datos.png"
+image: "/images/og/datos-ai-ready-proyecto-ia-fracaso.png"
 excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la tecnología: son los datos. Exploramos por qué esta realidad es ineludible y cómo preparar tu organización antes de que sea demasiado tarde."
 ---
 <p>
@@ -15,8 +16,10 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
 
 <h2>El Patrón que se Repite</h2>
 <img
-  src="/images/blog-datos.png"
+  src="/images/blog-datos.webp"
   alt="Datos AI-Ready"
+  width="640"
+  height="649"
   class="float-right ml-8 mb-4 w-72 sm:w-80 rounded-2xl"
 />
 <p>
@@ -120,7 +123,7 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
   definir métricas comunes entre equipos. El punto: la solución surge del diagnóstico, no al revés.
 </p>
 <p>
-  Mientras otros venden herramientas, Zalantos diseña soluciones que responden a tus necesidades reales.
+  Mientras otros venden herramientas, zalantos diseña soluciones que responden a tus necesidades reales.
 </p>
 
 <h3>Por Qué Actuar Ahora</h3>

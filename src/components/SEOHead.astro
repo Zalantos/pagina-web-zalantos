@@ -19,11 +19,13 @@ const {
   type = 'website',
   pubDate,
   updatedDate,
-  author = 'Zalantos SPA',
+  author = 'zalantos',
   noTitleSuffix = false,
 } = Astro.props
 
-const fullTitle = noTitleSuffix ? title : `${title} | Zalantos`
+// Nombre de página sin el sufijo del sitio (evita "| zalantos | zalantos")
+const pageTitle = title.replace(/\s*\|\s*zalantos\s*$/i, '')
+const fullTitle = noTitleSuffix ? title : `${pageTitle} | zalantos`
 const absoluteOgImage = ogImage.startsWith('http')
   ? ogImage
   : `https://zalantos.com${ogImage}`
@@ -34,7 +36,7 @@ const absoluteOgImage = ogImage.startsWith('http')
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <link rel="canonical" href={canonical} />
 
-<meta property="og:title" content={fullTitle} />
+<meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:type" content={type} />
@@ -42,12 +44,10 @@ const absoluteOgImage = ogImage.startsWith('http')
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="es_CL" />
-<meta property="og:site_name" content="Zalantos" />
+<meta property="og:site_name" content="zalantos" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@zalantos" />
-<meta name="twitter:creator" content="@zalantos" />
-<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={absoluteOgImage} />
 

@@ -1,0 +1,104 @@
+---
+import Section from '../ui/Section.astro'
+
+// Top 3 según columna B (ranking) del informe "Casos_Automatizacion_Zalantos".
+// Fuente y URL de la fuente = columnas H/I del informe.
+const cases = [
+  {
+    rank: 1,
+    industria: 'Telecomunicaciones',
+    title:
+      'IA eleva 40% las ventas inbound a costo marginal',
+    summary:
+      'Entel Connect Center (Perú) recibía más de 600.000 llamadas al mes y solo podía auditar una fracción mínima. Un agente de IA analiza el 100% de las conversaciones y detecta oportunidades de venta inbound obteniendo un aumento de un 40% de éstas a un costo marginal mínimo.',
+    fuente: 'McKinsey & Company',
+    fuenteUrl:
+      'https://www.mckinsey.com/industries/technology-media-and-telecommunications/how-we-help-clients/transforming-every-call-into-an-opportunity-how-entel-connect-reimagined-customer-conversations-with-mckinsey-and-google-cloud',
+    image: '/images/caso-entel-ai-audio.jpg',
+    imageWidth: 800,
+    imageHeight: 436,
+  },
+  {
+    rank: 2,
+    industria: 'Consultoría',
+    title: '30% menos horas buscando información: la IA interna de McKinsey',
+    summary:
+      'McKinsey construyó Lilli, una plataforma de IA con años de conocimiento de la firma, que actualmente utiliza más del 70% de sus empleados y ahorra el 30% del tiempo en el proceso de recopilación de información y mejora más del 20% la calidad y precisión del contenido.',
+    fuente: 'McKinsey & Company',
+    fuenteUrl:
+      'https://www.mckinsey.com/capabilities/tech-and-ai/how-we-help-clients/rewiring-the-way-mckinsey-works-with-lilli',
+    image: '/images/caso-mckinsey-lilli.jpg',
+    imageWidth: 800,
+    imageHeight: 758,
+  },
+  {
+    rank: 3,
+    industria: 'Industrial / Manufactura',
+    title: 'US$6 millones ahorrados al automatizar cuentas por pagar',
+    summary:
+      'Johnson Controls automatizó su gestión mensual de 200.000 transacciones de cuentas por pagar con inteligencia artificial. Esto disminuyó los errores de procesamiento en más de un 80% y permitió liberar recursos generando 6 millones de dólares en ahorros directos en solo seis meses',
+    fuente: 'UiPath',
+    fuenteUrl:
+      'https://www.uipath.com/resources/automation-case-studies/johnson-controls-is-unlocking-substantial-savings-with-intelligent-automation',
+    image: '/images/caso-johnson-controls-ap.jpg',
+    imageWidth: 800,
+    imageHeight: 800,
+  },
+]
+---
+<Section variant="white">
+  <div class="text-center mb-12 md:mb-16">
+    <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#0B2A3C]/15 mb-4">
+      Casos de éxito
+    </span>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] mb-4 px-4">
+  Cómo las empresas líderes se están transformando
+    </h2>
+    <p class="text-base sm:text-lg md:text-xl text-[#6F7A83] max-w-[700px] mx-auto px-4">
+      Descubre estrategias reales para maximizar la liquidez y escalar la eficiencia en toda tu organización. 
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-[1200px] mx-auto">
+    {cases.map((c) => (
+      <div class="group relative overflow-hidden rounded-[var(--radius-lg)] h-[420px] sm:h-[440px] focus-within:ring-2 focus-within:ring-[#2FBF71] focus-within:ring-offset-2">
+        {/* capa foto: zoom-in por defecto, zoom-out al pasar el mouse */}
+        <img
+          src={c.image}
+          alt={c.title}
+          width={c.imageWidth}
+          height={c.imageHeight}
+          class="absolute inset-0 w-full h-full object-cover scale-125 group-hover:scale-100 group-focus-within:scale-100 transition-transform duration-700 ease-out"
+          loading="lazy"
+          decoding="async"
+        />
+
+        {/* scrim oscuro para legibilidad del texto */}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+
+        {/* estado por defecto: título */}
+        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+          <span class="eyebrow !text-white/70 mb-2">{c.industria}</span>
+          <h3 class="text-white text-lg sm:text-xl font-bold leading-snug">
+            {c.title}
+          </h3>
+        </div>
+
+        {/* estado hover: resumen + fuente */}
+        <div class="absolute inset-0 z-10 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 delay-100">
+          <p class="text-white/90 text-sm leading-relaxed mb-4">
+            {c.summary}
+          </p>
+          <a
+            href={c.fuenteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 text-xs font-medium text-[#2FBF71] hover:text-white transition-colors"
+          >
+            Fuente: {c.fuente} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</Section>

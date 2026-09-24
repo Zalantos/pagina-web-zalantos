@@ -1,9 +1,11 @@
 ---
 title: "Cómo automatizar procesos críticos sin perder control, trazabilidad ni auditoría"
-description: "Muchas empresas quieren automatizar tareas repetitivas, pero frenan porque temen perder visibilidad, control o capacidad de auditoría. Este insight muestra cómo diseñar automatizaciones que aceleren la operación sin sacrificar trazabilidad, validaciones ni gobierno del proceso."
+seoTitle: "Automatizar procesos con trazabilidad y auditoría"
+description: "Cómo automatizar procesos críticos sin perder control: diseño con validaciones, trazabilidad y gobierno para que la operación sea auditable."
 pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
+image: "/images/og/insight-automatizacion-procesos-trazabilidad-control-auditoria.png"
 excerpt: "Muchas empresas quieren automatizar tareas repetitivas, pero frenan porque temen perder visibilidad, control o capacidad de auditoría. Este insight muestra cómo diseñar automatizaciones que aceleren la operación sin sacrificar trazabilidad, validaciones ni gobierno del proceso."
 ---
 <h2>El problema: muchas tareas manuales siguen existiendo por miedo a perder control</h2>

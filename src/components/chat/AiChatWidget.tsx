@@ -327,9 +327,9 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
             className={`rounded-2xl px-4 py-3 ${
               isUser
                 ? hasFailed
-                  ? 'bg-red-100 border border-red-300 text-gray-800'
-                  : 'bg-[#2FBF71] text-white'
-                : 'bg-gray-100 text-gray-800 border border-gray-200'
+                  ? 'bg-[#D6455D]/15 border border-[#D6455D]/40 text-[#0B2A3C]'
+                  : 'bg-[#2FBF71] text-[#0B2A3C]'
+                : 'bg-[#E6ECF1] text-[#0B2A3C] border border-[#D7DFE6]'
             }`}
           >
             {isUser ? (
@@ -342,7 +342,7 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
                 dangerouslySetInnerHTML={{ __html: message.content }}
               />
             )}
-            <p className={`text-xs mt-2 ${isUser ? (hasFailed ? 'text-gray-500' : 'text-white/70') : 'text-gray-500'}`}>
+            <p className={`text-xs mt-2 ${isUser ? (hasFailed ? 'text-[#6F7A83]' : 'text-[#0B2A3C]/70') : 'text-[#6F7A83]'}`}>
               {new Date(message.timestamp).toLocaleTimeString('es-CL', {
                 hour: '2-digit',
                 minute: '2-digit'
@@ -354,7 +354,7 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
           {hasFailed && message.originalPayload && (
             <button
               onClick={() => handleRetryMessage(message.id, message.originalPayload!)}
-              className="mt-2 text-xs text-[#2FBF71] hover:text-[#26a662] underline flex items-center gap-1"
+              className="mt-2 text-xs text-[#1F7F4A] hover:text-[#0B2A3C] underline flex items-center gap-1"
               disabled={isLoading}
             >
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -372,12 +372,12 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
     <div className="flex flex-col h-full">
       {/* Banner de rate limiting */}
       {rateLimitedUntil && rateLimitCountdown > 0 && (
-        <div className="mb-3 p-3 bg-yellow-50 border border-yellow-300 rounded-lg flex items-center gap-2">
-          <svg className="w-4 h-4 text-yellow-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mb-3 p-3 bg-[#D9A441]/10 border border-[#D9A441]/50 rounded-lg flex items-center gap-2">
+          <svg className="w-4 h-4 text-[#D9A441] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <div className="flex-1">
-            <p className="text-xs font-medium text-yellow-800">
+            <p className="text-xs font-medium text-[#0B2A3C]">
               Demasiados mensajes. Podrás enviar nuevamente en {rateLimitCountdown}s
             </p>
           </div>
@@ -386,16 +386,16 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
 
       {/* Banner de errores graves */}
       {bannerError && (
-        <div className="mb-3 p-3 bg-red-50 border border-red-300 rounded-lg flex items-center gap-2">
-          <svg className="w-4 h-4 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mb-3 p-3 bg-[#D6455D]/10 border border-[#D6455D]/40 rounded-lg flex items-center gap-2">
+          <svg className="w-4 h-4 text-[#D6455D] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
           <div className="flex-1">
-            <p className="text-xs text-red-800">{bannerError}</p>
+            <p className="text-xs text-[#0B2A3C]">{bannerError}</p>
           </div>
           <button
             onClick={() => setBannerError(null)}
-            className="text-red-600 hover:text-red-800"
+            className="text-[#D6455D] hover:text-[#0B2A3C]"
           >
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -407,7 +407,7 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
       {/* Panel de chat con scroll */}
       <div
         ref={chatContainerRef}
-        className="flex-1 overflow-y-auto mb-3 bg-gray-50 rounded-xl p-3"
+        className="flex-1 overflow-y-auto mb-3 bg-[#F1F5F9] rounded-xl p-3"
       >
         {messages.length === 0 ? (
           <ChatEmptyState onSuggestionClick={handleSuggestionClick} />
@@ -418,14 +418,14 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
             {/* Loading state */}
             {isLoading && (
               <div className="flex justify-start mb-4">
-                <div className="bg-gray-100 border border-gray-200 rounded-2xl px-4 py-3">
+                <div className="bg-[#E6ECF1] border border-[#D7DFE6] rounded-2xl px-4 py-3">
                   <div className="flex items-center gap-2">
                     <div className="flex gap-1">
                       <span className="w-2 h-2 bg-[#2FBF71] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
                       <span className="w-2 h-2 bg-[#2FBF71] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
                       <span className="w-2 h-2 bg-[#2FBF71] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
                     </div>
-                    <span className="text-sm text-gray-600 animate-pulse">{loadingMessage}...</span>
+                    <span className="text-sm text-[#3D5566] animate-pulse">{loadingMessage}...</span>
                   </div>
                 </div>
               </div>
@@ -436,8 +436,8 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
 
       {/* Error inline */}
       {error && (
-        <div className="mb-3 p-2 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-xs text-red-800">{error}</p>
+        <div className="mb-3 p-2 bg-[#D6455D]/10 border border-[#D6455D]/30 rounded-lg">
+          <p className="text-xs text-[#0B2A3C]">{error}</p>
         </div>
       )}
 
@@ -462,7 +462,7 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
                 ? "Escribe tu mensaje..."
                 : "Completa el registro para comenzar"
             }
-            className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2FBF71] focus:border-transparent resize-none disabled:bg-gray-100 disabled:cursor-not-allowed text-sm"
+            className="flex-1 px-4 py-3 border border-[#D7DFE6] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2FBF71] focus:border-transparent resize-none disabled:bg-[#E6ECF1] disabled:cursor-not-allowed text-sm"
             rows={2}
             maxLength={1200}
           />
@@ -474,7 +474,7 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
               isLoading ||
               (rateLimitedUntil !== null && Date.now() < rateLimitedUntil)
             }
-            className="px-5 py-3 bg-[#2FBF71] text-white rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex-shrink-0 text-sm"
+            className="px-5 py-3 bg-[#2FBF71] text-[#0B2A3C] rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex-shrink-0 text-sm"
           >
             {rateLimitedUntil && Date.now() < rateLimitedUntil ? `${rateLimitCountdown}s` : 'Enviar'}
           </button>
@@ -484,7 +484,7 @@ export default function AiChatWidget({ isReady, onRegistrationRequired, onExampl
         {messages.length > 0 && (
           <button
             onClick={handleResetChat}
-            className="mt-2 text-xs text-gray-500 hover:text-gray-700 underline"
+            className="mt-2 text-xs text-[#6F7A83] hover:text-[#3D5566] underline"
           >
             Resetear chat
           </button>

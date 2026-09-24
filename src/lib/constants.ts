@@ -5,7 +5,6 @@ export const COLORS = {
   value: '#2FBF71',
   neutral: '#6F7A83',
   white: '#FFFFFF',
-  accent: '#3FA9F5',
 } as const
 
 export const CONTACT_EMAIL = 'contacto@zalantos.com'
@@ -14,8 +13,8 @@ export const SITE_URL = 'https://zalantos.com'
 
 export const LINKS = {
   home: '/',
-  about: '/?section=about',
-  contact: '/?section=contact',
+  contact: '/contacto/',
+  schedule: '/contacto/?agendar=1',
   aiConsultant: '/consultor-ia/',
   blog: '/blog/',
   privacy: '/privacy/',

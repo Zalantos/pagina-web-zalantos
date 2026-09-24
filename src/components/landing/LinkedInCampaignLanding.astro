@@ -40,18 +40,18 @@ function isExternalHref(href: string) {
   <main class="relative z-10 flex flex-1 flex-col pt-[5rem]">
     <div class="mx-auto flex min-h-[calc(100dvh-5rem)] w-full max-w-[1400px] flex-col gap-8 px-4 py-8 sm:px-6 sm:py-10 lg:flex-row lg:items-stretch lg:gap-10 lg:px-10 lg:py-8">
       <div class="flex flex-1 flex-col justify-center gap-5 lg:max-w-[52%]">
-        <p class="inline-flex w-fit items-center rounded-full border border-[#EBEEF1] bg-[#F7F8FA] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#6F7A83]">
+        <p class="inline-flex w-fit items-center rounded-full border border-[#E6ECF1] bg-[#F1F5F9] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#6F7A83]">
           {eyebrow}
         </p>
         <h1 class="text-[clamp(1.9rem,2.4vw+1.1rem,3rem)] font-bold leading-[1.15] tracking-tight text-[#0B2A3C]">
           {headline}
         </h1>
-        <p class="max-w-xl text-base leading-relaxed text-[#4D555D] sm:text-[1rem]">
+        <p class="max-w-xl text-base leading-relaxed text-[#3D5566] sm:text-[1rem]">
           {subheadline}
         </p>
 
         {bulletsToShow.length > 0 && (
-          <ul class="space-y-2 text-sm text-[#4D555D]">
+          <ul class="space-y-2 text-sm text-[#3D5566]">
             {bulletsToShow.map((item) => (
               <li class="flex items-start gap-3">
                 <span class="mt-1 h-2 w-2 rounded-full bg-[#2FBF71]"></span>
@@ -71,13 +71,13 @@ function isExternalHref(href: string) {
             {primaryCta.label}
           </a>
           {secondaryCta && (
-            <div class="w-full rounded-2xl border border-[#EBEEF1] bg-[#F7F8FA] p-4 text-center">
-              <p class="mb-3 text-sm leading-relaxed text-[#4D555D]">
+            <div class="w-full rounded-2xl border border-[#E6ECF1] bg-[#F1F5F9] p-4 text-center">
+              <p class="mb-3 text-sm leading-relaxed text-[#3D5566]">
                 ¿Tienes dudas o no sabes si vale la pena agendar el Sprint 0? Habla con nuestro agente de IA y aclara tu caso antes de reservar.
               </p>
               <a
                 href={secondaryCta.href}
-                class="inline-flex items-center justify-center rounded-[var(--radius-lg)] border border-[#2FBF71] px-4 py-2 text-xs font-semibold text-[#0B2A3C] transition-colors duration-200 hover:bg-[#2FBF71] hover:text-white"
+                class="inline-flex items-center justify-center rounded-[var(--radius-lg)] border border-[#2FBF71] px-4 py-2 text-xs font-semibold text-[#0B2A3C] transition-colors duration-200 hover:bg-[#2FBF71] hover:text-[#0B2A3C]"
                 target={isExternalHref(secondaryCta.href) ? '_blank' : undefined}
                 rel={isExternalHref(secondaryCta.href) ? 'noopener noreferrer' : undefined}
               >
@@ -92,7 +92,7 @@ function isExternalHref(href: string) {
         {chips.length > 0 && (
           <div class="mt-2 flex flex-wrap gap-2">
             {chips.map((chip) => (
-              <span class="rounded-full border border-[#EBEEF1] bg-[#F7F8FA] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#4D555D]">
+              <span class="rounded-full border border-[#E6ECF1] bg-[#F1F5F9] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#3D5566]">
                 {chip}
               </span>
             ))}
@@ -106,11 +106,11 @@ function isExternalHref(href: string) {
             <div>
               <h2 class="text-lg font-semibold text-[#0B2A3C]">{visual.title}</h2>
               {visual.subtitle && (
-                <p class="text-sm text-[#4D555D]">{visual.subtitle}</p>
+                <p class="text-sm text-[#3D5566]">{visual.subtitle}</p>
               )}
             </div>
             {visual.badge && (
-              <span class="rounded-md border border-[#3FA9F5]/30 bg-[#3FA9F5]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#0B2A3C]">
+              <span class="rounded-md border border-[#2FBF71]/30 bg-[#2FBF71]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#0B2A3C]">
                 {visual.badge}
               </span>
             )}
@@ -119,7 +119,7 @@ function isExternalHref(href: string) {
           <ol class="mt-5 space-y-5">
             {visual.steps.map((step, index) => (
               <li class="flex items-start gap-4">
-                <span class="flex h-10 w-10 items-center justify-center rounded-lg border border-[#EBEEF1] bg-[#F7F8FA] text-sm font-semibold text-[#0B2A3C]">
+                <span class="flex h-10 w-10 items-center justify-center rounded-lg border border-[#E6ECF1] bg-[#F1F5F9] text-sm font-semibold text-[#0B2A3C]">
                   {index + 1}
                 </span>
                 <div class="flex-1">
@@ -136,14 +136,14 @@ function isExternalHref(href: string) {
     </div>
 
     {qualifySection && (
-      <section class="border-t border-[rgba(11,42,60,0.06)] bg-[#F7F8FA] px-4 py-10 sm:px-6 lg:px-10">
+      <section class="border-t border-[rgba(11,42,60,0.06)] bg-[#F1F5F9] px-4 py-10 sm:px-6 lg:px-10">
         <div class="mx-auto max-w-[900px]">
           <h2 class="mb-6 text-base font-semibold uppercase tracking-[0.15em] text-[#0B2A3C]">
             {qualifySection.title}
           </h2>
           <ul class="grid gap-3 sm:grid-cols-2">
             {qualifySection.bullets.map((item) => (
-              <li class="flex items-start gap-3 rounded-xl border border-[#EBEEF1] bg-white px-4 py-3 text-sm text-[#4D555D]">
+              <li class="flex items-start gap-3 rounded-xl border border-[#E6ECF1] bg-white px-4 py-3 text-sm text-[#3D5566]">
                 <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2FBF71]"></span>
                 <span class="leading-snug">{item}</span>
               </li>

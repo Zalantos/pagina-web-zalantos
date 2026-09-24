@@ -11,11 +11,11 @@ interface ChatPanelProps {
 export default function ChatPanel({ isReady, onRegistrationRequired, exampleToFill }: ChatPanelProps) {
   return (
     <div
-      className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden flex flex-col h-full"
+      className="bg-white rounded-2xl border border-[#D7DFE6] shadow-lg overflow-hidden flex flex-col h-full"
       style={{ minHeight: '70vh', maxHeight: '85vh' }}
     >
       {/* Header del chat */}
-      <div className="flex-shrink-0 px-6 py-4 border-b border-gray-200 bg-[#2FBF71]/10">
+      <div className="flex-shrink-0 px-6 py-4 border-b border-[#D7DFE6] bg-[#2FBF71]/10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-[#2FBF71] flex items-center justify-center">
@@ -38,7 +38,7 @@ export default function ChatPanel({ isReady, onRegistrationRequired, exampleToFi
               <p className="text-xs text-[#6F7A83]">Respuestas en tiempo real</p>
             </div>
           </div>
-          <span className="rounded-full bg-[#2FBF71]/20 px-3 py-1 text-xs font-semibold text-[#2FBF71]">
+          <span className="rounded-full bg-[#2FBF71]/20 px-3 py-1 text-xs font-semibold text-[#1F7F4A]">
             Beta
           </span>
         </div>

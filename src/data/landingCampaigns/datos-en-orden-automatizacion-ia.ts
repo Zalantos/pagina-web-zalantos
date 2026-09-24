@@ -2,14 +2,14 @@ import type { LinkedInCampaignContent } from '../../types/linkedinCampaignLandin
 
 export const landingContent: LinkedInCampaignContent = {
   meta: {
-    title: 'Datos en orden: la base de cualquier proyecto de IA o automatización | Zalantos',
+    title: 'Datos en orden: la base de cualquier proyecto de IA o automatización | zalantos',
     description:
       'Antes de implementar IA o automatizar procesos, su organización necesita una arquitectura de datos confiable. Diagnóstico gratuito en 1 semana con Sprint 0.',
   },
   eyebrow: 'ARQUITECTURA DE DATOS',
   headline: 'La IA y la automatización funcionan solo si los datos que las alimentan están en orden',
   subheadline:
-    'La mayoría de los proyectos de automatización e inteligencia artificial no fracasan por la tecnología elegida. Fracasan porque la información que debe alimentarlos no está lo suficientemente ordenada para que funcione. En Zalantos evaluamos el estado real de sus datos antes de proponer cualquier solución.',
+    'La mayoría de los proyectos de automatización e inteligencia artificial no fracasan por la tecnología elegida. Fracasan porque la información que debe alimentarlos no está lo suficientemente ordenada para que funcione. En zalantos evaluamos el estado real de sus datos antes de proponer cualquier solución.',
   bullets: [
     'Diagnóstico del estado real de sus fuentes y arquitectura de datos',
     'Identificación de brechas antes de comprometer presupuesto en tecnología',
@@ -17,7 +17,7 @@ export const landingContent: LinkedInCampaignContent = {
   ],
   primaryCta: {
     label: 'Agenda un diagnóstico sin costo',
-    href: '/?section=contact',
+    href: '/contacto/?agendar=1',
   },
   secondaryCta: {
     label: 'Hablar con un consultor',
@@ -57,5 +57,5 @@ export const landingContent: LinkedInCampaignContent = {
     siteUrl: '/',
     backToSiteLabel: 'volver al sitio',
   },
-  footerLine: '© Zalantos',
+  footerLine: '© zalantos',
 }
