@@ -12,7 +12,7 @@ Documento de referencia para asistentes de IA y desarrolladores. Resume qué es 
 | **Nombre npm** | `zalantos-astro` |
 | **Producto** | Sitio corporativo estático de **Zalantos** |
 | **URL producción** | https://zalantos.com |
-| **Empresa** | Zalantos SPA — consultoría en IA, automatización de procesos y análisis de datos para empresas |
+| **Empresa** | zalantos — consultoría en IA, automatización de procesos y análisis de datos para empresas |
 | **Email contacto** | contacto@zalantos.com |
 
 **Importante:** El sitio migró de **Next.js 15** a **Astro 4** (output estático). `docs/architecture.md` describe la arquitectura antigua de Next.js y **no refleja el código actual**. Usar este `context.md` y el `README.md` como fuente de verdad.
@@ -78,7 +78,7 @@ docs/                       # Guías de estilo y architecture.md (obsoleto Next)
 
 | Ruta | Archivo | Notas |
 |------|---------|--------|
-| `/` | `src/pages/index.astro` | Secciones marketing; `?section=contact` muestra Calendly |
+| `/` | `src/pages/index.astro` | Secciones marketing (las URLs antiguas `/?section=contact` redirigen a `/contacto/`) |
 | `/blog/` | `src/pages/blog/index.astro` | Listado de posts |
 | `/blog/{slug}/` | `src/pages/blog/[slug].astro` | Artículo individual |
 | `/consultor-ia/` | `src/pages/consultor-ia.astro` | Isla React completa |

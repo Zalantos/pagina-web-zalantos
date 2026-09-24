@@ -2,6 +2,8 @@
 import Section from '../ui/Section.astro'
 import Card from '../ui/Card.astro'
 import Badge from '../ui/Badge.astro'
+import LinkButton from '../ui/LinkButton.astro'
+import { LINKS } from '../../lib/constants'
 
 const cases = [
   {
@@ -41,10 +43,10 @@ const cases = [
 <Section variant="white">
   <div class="text-center mb-12 md:mb-16">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] mb-4 px-4">
-      Casos de uso que implementamos
+      Qué podemos automatizar en tu empresa
     </h2>
     <p class="text-base sm:text-lg md:text-xl text-[#6F7A83] max-w-[700px] mx-auto px-4">
-      Soluciones de IA adaptadas a las necesidades reales de su operación
+      Casos prácticos adaptables a las necesidades de tu operación.
     </p>
   </div>
 
@@ -62,7 +64,7 @@ const cases = [
             <Badge variant="success">{c.badge}</Badge>
             <a
               href={c.href}
-              class="inline-flex items-center gap-1 text-sm font-medium text-[#2BA8DC] hover:text-[#0B2A3C] transition-colors"
+              class="inline-flex items-center gap-1 text-sm font-medium text-[#1F7F4A] hover:text-[#0B2A3C] transition-colors"
             >
               Leer insight <span aria-hidden="true">→</span>
             </a>
@@ -70,12 +72,26 @@ const cases = [
         ) : (
           <a
             href={c.href}
-            class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#2BA8DC] hover:text-[#0B2A3C] transition-colors"
+            class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1F7F4A] hover:text-[#0B2A3C] transition-colors"
           >
             Leer insight <span aria-hidden="true">→</span>
           </a>
         )}
       </Card>
     ))}
+  </div>
+
+  <div class="mt-12 md:mt-16 text-center">
+    <LinkButton
+      href={LINKS.contact}
+      variant="primary"
+      class="w-full sm:w-auto"
+      ariaLabel="Ir a contacto para conversar con zalantos"
+    >
+      Conversemos
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </LinkButton>
   </div>
 </Section>

@@ -13,6 +13,7 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
   ],
   output: 'static',
+  trailingSlash: 'always',
   build: {
     format: 'directory',
   },

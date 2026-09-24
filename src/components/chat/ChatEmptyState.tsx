@@ -5,7 +5,7 @@ interface ChatEmptyStateProps {
 }
 
 const SUGGESTIONS = [
-  "¿Qué servicios ofrece Zalantos?",
+  "¿Qué servicios ofrece zalantos?",
   "¿Cómo implementan IA en empresas?",
   "Cuéntame sobre casos de éxito",
   "¿Qué es análisis predictivo?",
@@ -38,7 +38,7 @@ export default function ChatEmptyState({ onSuggestionClick }: ChatEmptyStateProp
         {/* Texto guía compacto */}
         <div className="space-y-1.5">
           <h3 className="text-base font-bold text-[#0B2A3C]">
-            ¡Hola! Soy el Consultor IA de Zalantos
+            ¡Hola! Soy el Consultor IA de zalantos
           </h3>
           <p className="text-xs text-[#6F7A83]">
             Prueba con alguna de estas preguntas:
@@ -51,7 +51,7 @@ export default function ChatEmptyState({ onSuggestionClick }: ChatEmptyStateProp
             <button
               key={idx}
               onClick={() => onSuggestionClick(suggestion)}
-              className="text-xs px-3 py-1 bg-white hover:bg-[#2FBF71]/10 border border-gray-200 hover:border-[#2FBF71]/50 rounded-full text-[#0B2A3C] transition-all hover:shadow-md hover:scale-105"
+              className="text-xs px-3 py-1 bg-white hover:bg-[#2FBF71]/10 border border-[#D7DFE6] hover:border-[#2FBF71]/50 rounded-full text-[#0B2A3C] transition-all hover:shadow-md hover:scale-105"
             >
               {suggestion}
             </button>

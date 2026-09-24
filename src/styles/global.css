@@ -8,12 +8,11 @@
   --z-value: #2FBF71;          /* Verde valor/ROI */
   --z-neutral: #6F7A83;        /* Gris neutro */
   --z-white: #FFFFFF;          /* Blanco */
-  --z-accent: #3FA9F5;         /* Acento innovación (limitado) */
 
   /* Dirección digital v2.2 (Brand Book v2.2, sección 10) - tokens extendidos */
   --ink-soft: #3D5566;
   --ink-faint: #6F7A83;
-  --ground: #F4F6F8;
+  --ground: #F1F5F9;
   --panel: #FFFFFF;
   --rule: #D7DFE6;
   --rule-soft: #E6ECF1;
@@ -23,7 +22,6 @@
 
   /* Bordes y fondos derivados */
   --z-border: rgba(11, 42, 60, 0.1);
-  --z-surface: #FAFBFC;
 
   /* Espaciado 8pt grid */
   --space-1: 8px;
@@ -80,6 +78,13 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -173,13 +178,13 @@ body {
 
   .gradient-dark {
     background:
-      radial-gradient(60% 90% at 88% -10%, rgba(47, 191, 113, 0.30) 0%, rgba(47, 191, 113, 0) 55%),
+      radial-gradient(60% 90% at 88% -10%, rgba(47, 191, 113, 0.22) 0%, rgba(47, 191, 113, 0) 55%),
       linear-gradient(160deg, #0B2A3C 0%, #163B2C 100%);
   }
 
   .gradient-dark-alt {
     background:
-      radial-gradient(70% 120% at 12% 120%, rgba(47, 191, 113, 0.28) 0%, rgba(47, 191, 113, 0) 55%),
+      radial-gradient(70% 120% at 12% 120%, rgba(47, 191, 113, 0.22) 0%, rgba(47, 191, 113, 0) 55%),
       linear-gradient(160deg, #0B2A3C 0%, #163B2C 100%);
   }
 
@@ -218,7 +223,7 @@ body {
   }
 
   .form-input {
-    @apply w-full px-4 py-3 min-h-[44px] rounded-[var(--radius-md)] bg-white border border-[rgba(11,42,60,0.15)] text-[#0B2A3C] focus:outline-none focus:border-[#3FA9F5] focus:ring-2 focus:ring-[#3FA9F5]/10 transition-colors duration-150 touch-manipulation;
+    @apply w-full px-4 py-3 min-h-[44px] rounded-[var(--radius-md)] bg-white border border-[rgba(11,42,60,0.15)] text-[#0B2A3C] focus:outline-none focus:border-[#0B2A3C] focus:ring-2 focus:ring-[#0B2A3C]/10 transition-colors duration-150 touch-manipulation;
   }
 
   .form-label {
@@ -226,7 +231,7 @@ body {
   }
 
   .blog-content {
-    @apply text-[#374151] text-base sm:text-lg leading-relaxed;
+    @apply text-[#0B2A3C] text-base sm:text-lg leading-relaxed;
     overflow: hidden;
   }
 
@@ -268,7 +273,7 @@ body {
 
   .blog-content a {
     @apply underline underline-offset-2 transition-colors duration-150;
-    color: #2FBF71;
+    color: #1F7F4A;
   }
 
   .blog-content a:hover {

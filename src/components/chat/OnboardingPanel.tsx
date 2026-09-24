@@ -7,7 +7,7 @@ const EXAMPLE_QUESTIONS = [
   "¿Cómo puede ayudarme la IA en mi negocio?",
   "¿Qué servicios de análisis de datos ofrecen?",
   "Quiero implementar IA en mi empresa",
-  "¿Cuál es el proceso de trabajo con Zalantos?",
+  "¿Cuál es el proceso de trabajo con zalantos?",
   "¿Tienen casos de éxito documentados?"
 ]
 
@@ -19,7 +19,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
     >
       <div className="flex-1 overflow-y-auto space-y-6 pr-1">
         {/* Cómo funciona */}
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-[#D7DFE6] shadow-sm p-6">
           <h3 className="text-lg font-bold text-[#0B2A3C] mb-4 flex items-center gap-2">
           <svg 
             className="w-5 h-5 text-[#2FBF71]" 
@@ -38,15 +38,15 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
         </h3>
         <ul className="space-y-3">
           <li className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-white text-xs font-bold">
+            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-[#0B2A3C] text-xs font-bold">
               1
             </div>
             <div className="flex-1 text-sm text-[#6F7A83]">
-              <strong className="text-[#0B2A3C]">Escribe tu consulta</strong> sobre análisis de datos, IA o transformación digital
+              <strong className="text-[#0B2A3C]">Escribe tu consulta</strong> sobre automatización de procesos, IA o análisis de datos
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-white text-xs font-bold">
+            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-[#0B2A3C] text-xs font-bold">
               2
             </div>
             <div className="flex-1 text-sm text-[#6F7A83]">
@@ -54,7 +54,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-white text-xs font-bold">
+            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-[#0B2A3C] text-xs font-bold">
               3
             </div>
             <div className="flex-1 text-sm text-[#6F7A83]">
@@ -65,7 +65,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
         </div>
 
         {/* Ejemplos rápidos */}
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-[#D7DFE6] shadow-sm p-6">
           <h3 className="text-lg font-bold text-[#0B2A3C] mb-4 flex items-center gap-2">
           <svg 
             className="w-5 h-5 text-[#2FBF71]" 
@@ -123,7 +123,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
               No compartimos información con terceros.{' '}
               <a
                 href="/privacy/"
-                className="text-[#2FBF71] hover:text-[#26a662] underline font-medium"
+                className="text-[#1F7F4A] hover:text-[#0B2A3C] underline font-medium"
               >
                 Ver política de privacidad
               </a>

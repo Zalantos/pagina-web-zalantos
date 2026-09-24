@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const title = 'Política de Privacidad | Zalantos'
+const title = 'Política de Privacidad | zalantos'
 const description =
-  'Política de privacidad de Zalantos SPA. Conoce cómo recopilamos, tratamos y protegemos tus datos personales conforme a la Ley N° 19.628 de Chile.'
+  'Política de privacidad de zalantos. Conoce cómo recopilamos, tratamos y protegemos tus datos personales conforme a la Ley N° 19.628 de Chile.'
 const canonical = 'https://zalantos.com/privacy/'
 
 const definitions = [
@@ -25,7 +25,7 @@ const definitions = [
   {
     term: 'Consultor AI',
     description:
-      'La herramienta basada en Modelos de Lenguaje Grande (LLM) que Zalantos utiliza para interacción automatizada.',
+      'La herramienta basada en Modelos de Lenguaje Grande (LLM) que zalantos utiliza para interacción automatizada.',
   },
 ]
 
@@ -58,22 +58,22 @@ const retentionPeriods = [
 ---
 <BaseLayout title={title} description={description} canonical={canonical} type="website">
   <main class="pt-20">
-    <div class="py-16 px-4 text-gray-800">
+    <div class="py-16 px-4 text-[#0B2A3C]">
       <div class="mx-auto max-w-3xl space-y-12 sm:px-6 lg:px-0">
         <header class="space-y-4">
-          <p class="text-xs font-semibold uppercase tracking-[0.4em] text-gray-500">Política de privacidad</p>
-          <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">Confianza, transparencia y control sobre tus datos</h1>
-          <p class="text-lg text-gray-600 leading-relaxed">
-            Zalantos SPA reconoce la importancia de proteger los datos personales de sus usuarios, clientes y visitantes.
+          <p class="text-xs font-semibold uppercase tracking-[0.4em] text-[#6F7A83]">Política de privacidad</p>
+          <h1 class="text-4xl font-bold text-[#0B2A3C] sm:text-5xl">Confianza, transparencia y control sobre tus datos</h1>
+          <p class="text-lg text-[#3D5566] leading-relaxed">
+            zalantos reconoce la importancia de proteger los datos personales de sus usuarios, clientes y visitantes.
             Esta Política explica cómo recopilamos, tratamos, almacenamos y compartimos la información en cumplimiento con la Ley
             N° 19.628 sobre Protección de la Vida Privada y otras buenas prácticas internacionales.
           </p>
         </header>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">1. Introducción y compromiso</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">1. Introducción y compromiso</h2>
           <p class="leading-relaxed">
-            Zalantos SPA, sociedad legalmente constituida en Chile con RUT 76.882.235-2 y domicilio en Padre mariano 210 Of.
+            zalantos, sociedad legalmente constituida en Chile con RUT 76.882.235-2 y domicilio en Padre mariano 210 Of.
             405, Providencia, se compromete a manejar la información personal con responsabilidad, confidencialidad y rigurosos
             estándares de seguridad.
           </p>
@@ -85,50 +85,64 @@ const retentionPeriods = [
 
         <section class="space-y-6">
           <div class="space-y-3">
-            <h2 class="text-2xl font-semibold text-gray-900">2. Definiciones clave</h2>
-            <p class="text-gray-600 leading-relaxed">
+            <h2 class="text-2xl font-semibold text-[#0B2A3C]">2. Definiciones clave</h2>
+            <p class="text-[#3D5566] leading-relaxed">
               Para facilitar la comprensión del documento definimos los principales conceptos utilizados a lo largo de esta política.
             </p>
           </div>
-          <dl class="space-y-4 border-l-2 border-gray-200 pl-5">
+          <dl class="space-y-4 border-l-2 border-[#D7DFE6] pl-5">
             {definitions.map((definition) => (
               <div>
-                <dt class="text-base font-semibold text-gray-900">{definition.term}</dt>
-                <dd class="text-gray-700 leading-relaxed">{definition.description}</dd>
+                <dt class="text-base font-semibold text-[#0B2A3C]">{definition.term}</dt>
+                <dd class="text-[#3D5566] leading-relaxed">{definition.description}</dd>
               </div>
             ))}
           </dl>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">3. Datos que recopilamos</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">3. Datos que recopilamos</h2>
           <p class="leading-relaxed">
-            Zalantos limita la recolección de datos a lo estrictamente necesario para la prestación del servicio y para fines legítimos
+            zalantos limita la recolección de datos a lo estrictamente necesario para la prestación del servicio y para fines legítimos
             de operación y seguridad.
           </p>
           <div class="space-y-4">
             <article class="space-y-2">
-              <h3 class="text-lg font-semibold text-gray-900">3.1 Datos proporcionados por el Usuario</h3>
-              <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+              <h3 class="text-lg font-semibold text-[#0B2A3C]">3.1 Datos proporcionados por el Usuario</h3>
+              <ul class="list-disc pl-5 space-y-1 text-[#3D5566] leading-relaxed">
                 <li>Información de identificación y contacto: nombre completo, correo, teléfono, cargo y empresa.</li>
                 <li>Contenido de comunicaciones compartidas en formularios, correos o sesiones con el Consultor AI.</li>
                 <li>Datos de facturación (razón social, RUT, giro, dirección) en caso de contratación.</li>
               </ul>
             </article>
             <article class="space-y-2">
-              <h3 class="text-lg font-semibold text-gray-900">3.2 Datos de navegación y uso</h3>
-              <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+              <h3 class="text-lg font-semibold text-[#0B2A3C]">3.2 Datos de navegación y uso</h3>
+              <ul class="list-disc pl-5 space-y-1 text-[#3D5566] leading-relaxed">
                 <li>Datos técnicos: dirección IP anonimizada o hasheada, navegador, sistema operativo, ISP.</li>
                 <li>Datos de interacción: timestamps, páginas visitadas, tiempo de permanencia, session_id y flujos.</li>
                 <li>Logs de seguridad: intentos de acceso, limitación de tasas y detección de anomalías.</li>
               </ul>
             </article>
-            <article class="space-y-2 bg-[#f8fafc] border border-gray-200 rounded-lg p-4 text-gray-800">
-              <h3 class="text-lg font-semibold text-gray-900">3.3 Datos en el Consultor AI</h3>
+            <article class="space-y-2">
+              <h3 class="text-lg font-semibold text-[#0B2A3C]">3.3 Analítica web (Google Analytics 4)</h3>
+              <p class="leading-relaxed text-[#3D5566]">
+                Este sitio usa Google Analytics 4, servicio de Google LLC, para medir cómo se utiliza y mejorar su contenido. Google Analytics
+                instala cookies propias (_ga y _ga_*) y recopila datos agregados de navegación: páginas visitadas, duración de la visita,
+                origen del tráfico, tipo de dispositivo y ubicación aproximada (país o ciudad). Google Analytics 4 no registra ni almacena
+                direcciones IP.
+              </p>
+              <p class="leading-relaxed text-[#3D5566]">
+                Puedes evitar esta medición bloqueando las cookies desde tu navegador o instalando el
+                <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-[#1F7F4A] underline hover:text-[#0B2A3C]">complemento de inhabilitación de Google Analytics</a>.
+                Los datos pueden ser procesados en Estados Unidos u otras ubicaciones donde opera Google.
+              </p>
+            </article>
+            <article class="space-y-2 bg-[#F1F5F9] border border-[#D7DFE6] rounded-lg p-4 text-[#0B2A3C]">
+              <h3 class="text-lg font-semibold text-[#0B2A3C]">3.4 Datos en el Consultor AI</h3>
               <p class="leading-relaxed">
                 Al interactuar con el Consultor AI, los textos ingresados son procesados para generar respuestas. No se recomienda incluir
                 información sensible (claves bancarias, contraseñas, datos de salud o RUT de terceros sin autorización), ya que la responsabilidad
-                por su divulgación recae en el Usuario. Zalantos aplica filtros de seguridad, pero no garantiza la completa eliminación de esos datos
+                por su divulgación recae en el Usuario. zalantos aplica filtros de seguridad, pero no garantiza la completa eliminación de esos datos
                 cuando se ingresan en campos de texto libre.
               </p>
             </article>
@@ -136,30 +150,30 @@ const retentionPeriods = [
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">4. Finalidad del tratamiento</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">4. Finalidad del tratamiento</h2>
           <p class="leading-relaxed">
             Los datos recopilados se usan exclusivamente para los fines indicados a continuación y no se emplean para propósitos distintos sin previo aviso.
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+          <ul class="list-disc pl-5 space-y-1 text-[#3D5566] leading-relaxed">
             {purposes.map((purpose) => <li>{purpose}</li>)}
           </ul>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">5. Bases legales</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">5. Bases legales</h2>
           <p class="leading-relaxed">
             El tratamiento se fundamenta en consentimiento expreso, ejecución contractual e interés legítimo cuando se activan medidas de seguridad y mejora.
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+          <ul class="list-disc pl-5 space-y-1 text-[#3D5566] leading-relaxed">
             {treatmentBases.map((base) => <li>{base}</li>)}
           </ul>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">6. Inteligencia artificial y terceros procesadores</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">6. Inteligencia artificial y terceros procesadores</h2>
           <article class="space-y-3">
             <p class="leading-relaxed">
-              Para ofrecer servicios punteros, Zalantos integra proveedores de IA (ej. OpenAI, Anthropic). Las APIs empresariales utilizadas
+              Para ofrecer servicios punteros, zalantos integra proveedores de IA (ej. OpenAI, Anthropic). Las APIs empresariales utilizadas
               no entrenan los modelos públicos sin consentimiento adicional y retienen registros hasta 30 días únicamente para monitoreo de abusos.
             </p>
             <p class="leading-relaxed">
@@ -174,48 +188,48 @@ const retentionPeriods = [
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">7. Plazos de conservación</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">7. Plazos de conservación</h2>
           <p class="leading-relaxed">
             Conservamos los datos solo durante el tiempo necesario para cumplir los fines o según lo exige la ley. Pasados estos plazos, los datos
             se eliminan de forma segura o se anonimizan para fines estadísticos.
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+          <ul class="list-disc pl-5 space-y-1 text-[#3D5566] leading-relaxed">
             {retentionPeriods.map((item) => <li>{item}</li>)}
           </ul>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">8. Seguridad de la información</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">8. Seguridad de la información</h2>
           <p class="leading-relaxed">
             Implementamos cifrado TLS para datos en tránsito, controles de acceso estrictos y monitoreo continuo para detectar amenazas.
           </p>
           <p class="leading-relaxed">
-            Aunque ningún sistema es 100% invulnerable, Zalantos actúa con diligencia ante incidentes y mantiene protocolos de respuesta inmediata.
+            Aunque ningún sistema es 100% invulnerable, zalantos actúa con diligencia ante incidentes y mantiene protocolos de respuesta inmediata.
           </p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">9. Derechos ARCO</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">9. Derechos ARCO</h2>
           <p class="leading-relaxed">
             En cumplimiento de la Ley N° 19.628, el titular puede ejercer derechos de acceso, rectificación, cancelación u oposición.
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
+          <ul class="list-disc pl-5 space-y-1 text-[#3D5566] leading-relaxed">
             {rights.map((right) => <li>{right}</li>)}
           </ul>
           <p class="leading-relaxed">
-            Las solicitudes deben enviarse al correo <span class="font-semibold text-gray-900">soporte@zalantos.com</span> con el asunto "Solicitud ARCO". Respondemos dentro de los plazos legales.
+            Las solicitudes deben enviarse al correo <span class="font-semibold text-[#0B2A3C]">contacto@zalantos.com</span> con el asunto "Solicitud ARCO". Respondemos dentro de los plazos legales.
           </p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">10. Gestión de incidentes</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">10. Gestión de incidentes</h2>
           <p class="leading-relaxed">
-            Ante una brecha que afecte los derechos patrimoniales o morales, Zalantos activa mecanismos de mitigación y notifica a los afectados y autoridades cuando corresponde.
+            Ante una brecha que afecte los derechos patrimoniales o morales, zalantos activa mecanismos de mitigación y notifica a los afectados y autoridades cuando corresponde.
           </p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-900">11. Modificaciones</h2>
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">11. Modificaciones</h2>
           <p class="leading-relaxed">
             Nos reservamos el derecho de actualizar esta política para reflejar cambios legales o de industria. La última versión siempre estará publicada
             en esta página y el uso continuado implica su aceptación.
@@ -223,9 +237,9 @@ const retentionPeriods = [
         </section>
 
         <section class="space-y-4 pb-6">
-          <h2 class="text-2xl font-semibold text-gray-900">Contacto</h2>
-          <p class="leading-relaxed text-gray-700">
-            Dudas o solicitudes pueden dirigirse a <span class="font-semibold text-gray-900">soporte@zalantos.com</span> o a nuestra oficina en Padre mariano 210 Of. 405, Providencia.
+          <h2 class="text-2xl font-semibold text-[#0B2A3C]">Contacto</h2>
+          <p class="leading-relaxed text-[#3D5566]">
+            Dudas o solicitudes pueden dirigirse a <span class="font-semibold text-[#0B2A3C]">contacto@zalantos.com</span> o a nuestra oficina en Padre mariano 210 Of. 405, Providencia.
           </p>
         </section>
       </div>

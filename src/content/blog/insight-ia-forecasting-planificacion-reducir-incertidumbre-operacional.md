@@ -1,9 +1,11 @@
 ---
 title: "Cómo aplicar IA a forecasting y planificación para reducir incertidumbre operacional"
-description: "Cuando la planificación depende demasiado de intuición, planillas manuales o revisiones tardías, la operación pierde capacidad de anticipación. Este insight muestra cómo aplicar IA a forecasting y planificación para mejorar visibilidad futura, asignación de recursos y toma de decisiones."
+seoTitle: "IA en forecasting para reducir incertidumbre"
+description: "Cómo aplicar IA a forecasting y planificación para anticipar la demanda, asignar mejor los recursos y decidir con visibilidad futura."
 pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
+image: "/images/og/insight-ia-forecasting-planificacion-reducir-incertidumbre-operacional.png"
 excerpt: "Cuando la planificación depende demasiado de intuición, planillas manuales o revisiones tardías, la operación pierde capacidad de anticipación. Este insight muestra cómo aplicar IA a forecasting y planificación para mejorar visibilidad futura, asignación de recursos y toma de decisiones."
 ---
 <h2>El problema: muchas operaciones siguen planificando con visibilidad insuficiente</h2>

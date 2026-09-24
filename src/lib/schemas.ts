@@ -1,10 +1,12 @@
 export const SITE_URL = 'https://zalantos.com'
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`
+export const WEBSITE_ID = `${SITE_URL}/#website`
 
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': `${SITE_URL}/#organization`,
-  name: 'Zalantos SPA',
+  '@id': ORGANIZATION_ID,
+  name: 'zalantos',
   url: SITE_URL,
   logo: `${SITE_URL}/icon.png`,
   image: `${SITE_URL}/icon.png`,
@@ -25,13 +27,15 @@ export const organizationSchema = {
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Zalantos',
+  '@id': WEBSITE_ID,
+  name: 'zalantos',
   url: SITE_URL,
+  publisher: { '@id': ORGANIZATION_ID },
   description:
     'Soluciones de inteligencia artificial, automatización de procesos y análisis de datos para empresas en Chile.',
   potentialAction: {
     '@type': 'SearchAction',
-    target: `${SITE_URL}/blog?q={search_term_string}`,
+    target: `${SITE_URL}/blog/?q={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 }
@@ -41,17 +45,13 @@ export const serviceSchema = {
   '@type': 'Service',
   name: 'Automatización IA y Análisis de Datos para Empresas',
   serviceType: 'Consultoría en Tecnología e Inteligencia Artificial',
-  provider: {
-    '@type': 'Organization',
-    name: 'Zalantos SPA',
-    url: SITE_URL,
-  },
+  provider: { '@id': ORGANIZATION_ID },
   description:
     'Diseñamos e implementamos soluciones de inteligencia artificial, automatización de procesos y análisis de datos para empresas en Chile.',
   areaServed: { '@type': 'Country', name: 'Chile' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Servicios Zalantos',
+    name: 'Servicios zalantos',
     itemListElement: [
       {
         '@type': 'Offer',
@@ -105,7 +105,8 @@ export function articleSchema(post: ArticleSchemaInput) {
     author: { '@type': 'Person', name: post.author },
     publisher: {
       '@type': 'Organization',
-      name: 'Zalantos',
+      '@id': ORGANIZATION_ID,
+      name: 'zalantos',
       url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.png` },
     },

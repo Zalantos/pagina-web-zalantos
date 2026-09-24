@@ -1,10 +1,10 @@
 /* TEAM */
-Company: Zalantos SPA
+Company: zalantos
 Contact: contacto@zalantos.com
 Location: Padre Mariano 210, Of. 405, Providencia, Santiago, Chile
 
 /* TECHNOLOGY */
-Framework: Next.js 15 (App Router)
+Framework: Astro 4
 Language: TypeScript
 Styling: Tailwind CSS
 Deployment: Static Export

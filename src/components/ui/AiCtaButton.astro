@@ -16,7 +16,7 @@ const {
 } = Astro.props
 
 const baseClasses =
-  'inline-flex items-center justify-center gap-2 transition-all duration-300 min-h-[44px] touch-manipulation font-medium rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
+  'inline-flex items-center justify-center gap-2 transition-all duration-300 min-h-[44px] touch-manipulation font-semibold rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
 
 const variantClasses = {
   navbar: 'text-xs sm:text-sm px-3 sm:px-4 lg:px-5 py-2.5 whitespace-nowrap',
@@ -28,7 +28,7 @@ const iconOnlyClasses = iconOnly
   : ''
 
 const aiStyles =
-  'bg-[#2FBF71] text-white shadow-lg shadow-[#2FBF71]/30 hover:shadow-xl hover:shadow-[#2FBF71]/50 hover:scale-105 active:scale-100 focus-visible:ring-[#2FBF71] relative overflow-hidden before:absolute before:inset-0 before:bg-[#26a662] before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-30'
+  'bg-[#2FBF71] text-[#0B2A3C] shadow-lg shadow-[#2FBF71]/30 hover:shadow-xl hover:shadow-[#2FBF71]/50 hover:scale-105 active:scale-100 focus-visible:ring-[#2FBF71] relative overflow-hidden before:absolute before:inset-0 before:bg-[#0B2A3C] before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-10'
 ---
 <a
   href={href}
@@ -58,7 +58,7 @@ const aiStyles =
     <span class="relative z-10 flex items-center gap-2">
       <slot />
       {betaLabel && (
-        <span class="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/90">
+        <span class="rounded-full bg-[#0B2A3C]/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#0B2A3C]">
           {betaLabel}
         </span>
       )}

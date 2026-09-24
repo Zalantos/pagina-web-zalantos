@@ -9,10 +9,11 @@ interface Props {
 const { extraLink } = Astro.props
 
 const pathname = Astro.url.pathname
-const section = Astro.url.searchParams.get('section') || 'home'
 const isHome = pathname === '/' || pathname === ''
 const isBlog = pathname.startsWith('/blog')
-const isHomeActive = isHome && section === 'home'
+const isContact = pathname.startsWith('/contacto')
+const isConsultor = pathname.startsWith('/consultor-ia')
+const isHomeActive = isHome
 ---
 <nav
   class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#0B2A3C]/10"
@@ -67,6 +68,24 @@ const isHomeActive = isHome && section === 'home'
             </svg>
             <span class="hidden lg:block">Blog</span>
           </a>
+
+          <a
+            href={LINKS.aiConsultant}
+            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isConsultor ? 'text-[#0B2A3C] border-[#2FBF71]' : 'text-[#0B2A3C]/60 hover:text-[#0B2A3C] border-transparent'}`}
+            aria-current={isConsultor ? 'page' : undefined}
+            aria-label="Consultor IA"
+          >
+            <svg
+              class="w-5 h-5 block lg:hidden flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l1.3-3.9C3.5 14.9 3 13.5 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <span class="hidden lg:block">Consultor IA</span>
+          </a>
         </div>
 
         {extraLink && (
@@ -85,6 +104,7 @@ const isHomeActive = isHome && section === 'home'
           <a
             href={LINKS.contact}
             class="btn-primary hidden sm:inline-flex text-xs sm:text-sm px-3 sm:px-4 lg:px-6 py-2.5 whitespace-nowrap"
+            aria-current={isContact ? 'page' : undefined}
             aria-label="Ir a página de contacto"
           >
             Contacto
@@ -93,6 +113,7 @@ const isHomeActive = isHome && section === 'home'
           <a
             href={LINKS.contact}
             class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[#2FBF71] shadow-lg items-center justify-center text-[#0B2A3C] border border-[#0B2A3C]/10"
+            aria-current={isContact ? 'page' : undefined}
             aria-label="Ir a página de contacto"
           >
             <svg

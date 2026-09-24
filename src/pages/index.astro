@@ -1,53 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Hero from '../components/sections/Hero.astro'
+import FeaturedCases from '../components/sections/FeaturedCases.astro'
 import Pillars from '../components/sections/Pillars.astro'
 import Sprint0Section from '../components/sections/Sprint0Section.astro'
 import Process from '../components/sections/Process.astro'
 import Clients from '../components/sections/Clients.astro'
 import UseCases from '../components/sections/UseCases.astro'
-import CTAFinal from '../components/sections/CTAFinal.astro'
-import ContactSection from '../components/sections/ContactSection.astro'
+import { organizationSchema, websiteSchema, serviceSchema } from '../lib/schemas'
 
-const title = 'Automatización IA para Empresas | Zalantos'
+const title = 'Acelera la conversión de tus ventas en liquidez | zalantos'
 const description =
-  'Zalantos diseña soluciones de inteligencia artificial, automatización de procesos y análisis de datos para empresas. Transformamos datos en decisiones.'
+  'Conectamos tus sistemas y automatizamos tus procesos, de la venta al cobro, para que tus ventas se conviertan en caja. Sprint 0 sin costo.'
 const canonical = 'https://zalantos.com/'
 ---
-<BaseLayout title={title} description={description} canonical={canonical} type="website">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  type="website"
+  extraSchemas={[organizationSchema, websiteSchema, serviceSchema]}
+>
   <main id="main-content" class="flex-grow w-full pt-20">
-    <div id="home-sections">
-      <Hero />
-      <Pillars />
-      <Sprint0Section />
-      <Process />
-      <Clients />
-      <UseCases />
-      <CTAFinal />
-    </div>
-    <div id="contact-section" hidden>
-      <ContactSection />
-    </div>
+    <Hero />
+    <FeaturedCases />
+    <Pillars />
+    <Process />
+    <Sprint0Section />
+    <Clients />
+    <UseCases />
   </main>
 </BaseLayout>
 
 <script is:inline>
-  (function () {
-    function applySection() {
-      const params = new URLSearchParams(window.location.search)
-      const section = params.get('section')
-      const home = document.getElementById('home-sections')
-      const contact = document.getElementById('contact-section')
-      if (!home || !contact) return
-      if (section === 'contact') {
-        home.hidden = true
-        contact.hidden = false
-      } else {
-        home.hidden = false
-        contact.hidden = true
-      }
+  // Compatibilidad con enlaces antiguos (/?section=contact) hacia la página /contacto/
+  ;(function () {
+    var params = new URLSearchParams(window.location.search)
+    if (params.get('section') === 'contact') {
+      var destino = '/contacto/' + (params.get('agendar') === '1' ? '?agendar=1' : '')
+      window.location.replace(destino)
     }
-    applySection()
-    window.addEventListener('popstate', applySection)
   })()
 </script>

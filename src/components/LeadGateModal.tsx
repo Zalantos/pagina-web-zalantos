@@ -5,51 +5,18 @@ import { registerLead, ApiError, getErrorMapping } from '@/lib/api'
 import { getLeadContext } from '@/lib/zalantosSession'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
-
-type FieldName = 'firstName' | 'lastName' | 'email' | 'privacy'
-type FieldErrors = Record<FieldName, string | null>
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+import {
+  getFieldError,
+  initialFieldErrors,
+  type FieldErrors,
+  type FieldName,
+} from '@/lib/lead-form'
 
 const ERROR_IDS: Record<FieldName, string> = {
   firstName: 'lead-first-name-error',
   lastName: 'lead-last-name-error',
   email: 'lead-email-error',
   privacy: 'lead-privacy-error',
-}
-
-const initialFieldErrors: FieldErrors = {
-  firstName: null,
-  lastName: null,
-  email: null,
-  privacy: null,
-}
-
-function getFieldError(field: FieldName, value: string | boolean): string | null {
-  if (field === 'firstName') {
-    return typeof value === 'string' && value.trim() === '' ? 'Completa tu nombre' : null
-  }
-
-  if (field === 'lastName') {
-    return typeof value === 'string' && value.trim() === '' ? 'Completa tu apellido' : null
-  }
-
-  if (field === 'email') {
-    const emailValue = typeof value === 'string' ? value.trim() : ''
-    if (emailValue === '') {
-      return 'Ingresa tu correo'
-    }
-    if (!EMAIL_REGEX.test(emailValue)) {
-      return 'Ingresa un email válido (ej: nombre@empresa.com)'
-    }
-    return null
-  }
-
-  if (field === 'privacy') {
-    return value === true ? null : 'Debes aceptar la política para continuar'
-  }
-
-  return null
 }
 
 interface LeadGateModalProps {
@@ -172,13 +139,13 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
 
   if (!isVisible && isRegistered) {
     return (
-      <div className="fixed bottom-4 right-4 z-50 max-w-sm rounded-2xl border border-green-200 bg-white/90 shadow-2xl p-4">
+      <div className="fixed bottom-4 right-4 z-50 max-w-sm rounded-2xl border border-[#1F7F4A]/30 bg-white/90 shadow-2xl p-4">
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-semibold text-green-900 flex items-center gap-2">
+          <p className="text-sm font-semibold text-[#1F7F4A] flex items-center gap-2">
             <span className="text-base">✓</span>
             Ya estás registrado
           </p>
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-[#3D5566]">
             Puedes continuar al chat sin volver a registrarte.
           </p>
         </div>
@@ -194,15 +161,15 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
         <button
           type="button"
           onClick={handleClose}
-          aria-label="Cerrar registro y volver al inicio de Zalantos"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-2xl font-light text-gray-500 hover:border-gray-300 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+          aria-label="Cerrar registro y volver al inicio de zalantos"
+          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-[#D7DFE6] bg-white text-2xl font-light text-[#6F7A83] hover:border-[#D7DFE6] hover:text-[#3D5566] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2A3C]"
         >
           ×
         </button>
         <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-100 to-violet-100 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#2FBF71]/10 rounded-full mb-4">
             <svg
-              className="w-5 h-5 text-violet-600"
+              className="w-5 h-5 text-[#1F7F4A]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -215,7 +182,7 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
               />
             </svg>
-            <span className="text-sm font-medium text-violet-900">Registro Requerido</span>
+            <span className="text-sm font-medium text-[#0B2A3C]">Registro Requerido</span>
           </div>
 
           <h2 className="text-2xl font-bold text-[#0B2A3C] mb-2">Bienvenido al Consultor IA</h2>
@@ -228,7 +195,7 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="firstName" className="block text-sm font-medium text-[#0B2A3C] mb-1">
-              Nombre <span className="text-red-500">*</span>
+              Nombre <span className="text-[#D6455D]">*</span>
             </label>
             <Input
               id="firstName"
@@ -243,10 +210,10 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
               required
               ariaInvalid={Boolean(fieldErrors.firstName)}
               ariaDescribedBy={fieldErrors.firstName ? ERROR_IDS.firstName : undefined}
-              className={`w-full ${fieldErrors.firstName ? 'ring-1 ring-red-400 focus:ring-red-500' : ''}`}
+              className={`w-full ${fieldErrors.firstName ? 'ring-1 ring-[#D6455D] focus:ring-[#D6455D]' : ''}`}
             />
             {fieldErrors.firstName && (
-              <p id={ERROR_IDS.firstName} className="mt-1 text-xs text-red-600">
+              <p id={ERROR_IDS.firstName} className="mt-1 text-xs text-[#D6455D]">
                 {fieldErrors.firstName}
               </p>
             )}
@@ -254,7 +221,7 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
 
           <div>
             <label htmlFor="lastName" className="block text-sm font-medium text-[#0B2A3C] mb-1">
-              Apellido <span className="text-red-500">*</span>
+              Apellido <span className="text-[#D6455D]">*</span>
             </label>
             <Input
               id="lastName"
@@ -269,10 +236,10 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
               required
               ariaInvalid={Boolean(fieldErrors.lastName)}
               ariaDescribedBy={fieldErrors.lastName ? ERROR_IDS.lastName : undefined}
-              className={`w-full ${fieldErrors.lastName ? 'ring-1 ring-red-400 focus:ring-red-500' : ''}`}
+              className={`w-full ${fieldErrors.lastName ? 'ring-1 ring-[#D6455D] focus:ring-[#D6455D]' : ''}`}
             />
             {fieldErrors.lastName && (
-              <p id={ERROR_IDS.lastName} className="mt-1 text-xs text-red-600">
+              <p id={ERROR_IDS.lastName} className="mt-1 text-xs text-[#D6455D]">
                 {fieldErrors.lastName}
               </p>
             )}
@@ -280,7 +247,7 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-[#0B2A3C] mb-1">
-              Email <span className="text-red-500">*</span>
+              Email <span className="text-[#D6455D]">*</span>
             </label>
             <Input
               id="email"
@@ -295,16 +262,16 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
               required
               ariaInvalid={Boolean(fieldErrors.email)}
               ariaDescribedBy={fieldErrors.email ? ERROR_IDS.email : undefined}
-              className={`w-full ${fieldErrors.email ? 'ring-1 ring-red-400 focus:ring-red-500' : ''}`}
+              className={`w-full ${fieldErrors.email ? 'ring-1 ring-[#D6455D] focus:ring-[#D6455D]' : ''}`}
             />
             {fieldErrors.email && (
-              <p id={ERROR_IDS.email} className="mt-1 text-xs text-red-600">
+              <p id={ERROR_IDS.email} className="mt-1 text-xs text-[#D6455D]">
                 {fieldErrors.email}
               </p>
             )}
           </div>
 
-          <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+          <div className="flex items-start gap-3 p-4 bg-[#F1F5F9] rounded-lg">
             <input
               type="checkbox"
               id="consent"
@@ -313,17 +280,17 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
                 setConsentAccepted(e.target.checked)
                 handleFieldUpdate('privacy', e.target.checked)
               }}
-              className="mt-1 h-4 w-4 text-violet-600 border-gray-300 rounded focus:ring-violet-500"
+              className="mt-1 h-4 w-4 accent-[#1F7F4A] border-[#D7DFE6] rounded focus:ring-[#0B2A3C]"
               aria-invalid={Boolean(fieldErrors.privacy)}
               aria-describedby={fieldErrors.privacy ? ERROR_IDS.privacy : undefined}
             />
             <label htmlFor="consent" className="text-sm text-[#6F7A83] flex-1">
-              Acepto que Zalantos almacene mis datos para mejorar la experiencia del chat y enviar comunicaciones relevantes. Puedes consultar nuestra política de privacidad en{' '}
+              Acepto que zalantos almacene mis datos para mejorar la experiencia del chat y enviar comunicaciones relevantes. Puedes consultar nuestra política de privacidad en{' '}
               <a
                 href="https://zalantos.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-violet-600 hover:text-violet-700 underline"
+                className="text-[#1F7F4A] hover:text-[#0B2A3C] underline"
               >
                 zalantos.com
               </a>
@@ -331,18 +298,18 @@ export default function LeadGateModal({ pageUrl, onReady }: LeadGateModalProps) 
             </label>
           </div>
           {fieldErrors.privacy && (
-            <p id={ERROR_IDS.privacy} className="text-xs text-red-600">
+            <p id={ERROR_IDS.privacy} className="text-xs text-[#D6455D]">
               {fieldErrors.privacy}
             </p>
           )}
 
           {generalError && (
             <div
-              className="p-3 bg-red-50 border border-red-200 rounded-lg"
+              className="p-3 bg-[#D6455D]/10 border border-[#D6455D]/30 rounded-lg"
               role="alert"
               aria-live="assertive"
             >
-              <p className="text-sm text-red-700">{generalError}</p>
+              <p className="text-sm text-[#0B2A3C]">{generalError}</p>
             </div>
           )}
 
