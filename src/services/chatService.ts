@@ -1,5 +1,7 @@
 // Servicio para comunicación con el Consultor IA (Cloudflare Worker)
 
+import { CHAT_API_URL } from '@/lib/constants'
+
 export interface ConsentData {
   privacy: boolean
   consent_version: string
@@ -41,14 +43,11 @@ export class ChatServiceError extends Error {
 }
 
 export class ChatService {
-  // Cloudflare Worker público (NO requiere headers secretos desde el navegador)
-  private static readonly CHAT_API_URL = 'https://silent-union-0457.tom-s-account-3d0.workers.dev'
-  
   /**
    * Envía un mensaje al Consultor IA
    */
   static async sendMessage(request: ChatMessageRequest): Promise<ChatServiceResponse> {
-    console.log('[ChatService] Enviando mensaje a:', this.CHAT_API_URL)
+    console.log('[ChatService] Enviando mensaje a:', CHAT_API_URL)
     console.log('[ChatService] Payload:', {
       session_id: request.session_id,
       page: request.page,
@@ -57,7 +56,7 @@ export class ChatService {
     })
 
     try {
-      const response = await fetch(this.CHAT_API_URL, {
+      const response = await fetch(CHAT_API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
