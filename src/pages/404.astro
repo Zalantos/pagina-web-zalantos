@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import LinkButton from '../components/ui/LinkButton.astro'
+import { LINKS } from '../lib/constants'
+
+const title = 'Página no encontrada'
+const description =
+  'La página que buscas no existe o cambió de dirección. Vuelve al inicio o revisa el blog de zalantos.'
+const canonical = 'https://zalantos.com/404.html'
+
+const atajos = [
+  { href: LINKS.home, label: 'Inicio', detalle: 'Qué hacemos y cómo lo hacemos' },
+  { href: LINKS.blog, label: 'Blog', detalle: 'Insights y casos de automatización e IA' },
+  { href: LINKS.aiConsultant, label: 'Consultor IA', detalle: 'Resuelve tu duda al instante' },
+  { href: LINKS.contact, label: 'Contacto', detalle: 'Agenda tu Sprint 0 sin costo' },
+]
+---
+<BaseLayout title={title} description={description} canonical={canonical} noindex>
+  <main id="main-content" class="flex-grow w-full pt-20">
+    <section class="section-full bg-[var(--ground)]">
+      <div class="section-inner-narrow text-center">
+        <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--z-border)] mb-6">
+          Error 404
+        </span>
+
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
+          Esta página se nos fue a la calle
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed max-w-2xl mx-auto mb-10">
+          La dirección que abriste no existe o cambió. Te dejamos los caminos que sí llevan a alguna parte.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left mb-10">
+          {atajos.map((atajo) => (
+            <a
+              href={atajo.href}
+              class="group block rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-5 transition-colors hover:border-[var(--accent-flat)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2"
+            >
+              <span class="font-display font-semibold text-[var(--z-primary)] inline-flex items-center gap-1.5">
+                {atajo.label}
+                <span class="text-[var(--accent)] transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+              </span>
+              <span class="block text-sm text-[var(--ink-faint)] mt-1 leading-relaxed">
+                {atajo.detalle}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <LinkButton href={LINKS.home} variant="primary" class="w-full sm:w-auto">
+          Volver al inicio
+        </LinkButton>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

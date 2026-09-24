@@ -43,14 +43,14 @@ const steps = [
   },
 ]
 ---
-<section class="section-full bg-[#F1F5F9] bg-[radial-gradient(circle_at_0%_100%,rgba(47,191,113,0.2),transparent_55%)]">
+<section class="section-full bg-[var(--ground)] bg-[radial-gradient(circle_at_0%_100%,rgba(47,191,113,0.2),transparent_55%)]">
   <div class="section-inner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div class="text-center mb-16 md:mb-20">
-        <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[#0B2A3C] mb-6">
-          Nuestra Metodología
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--z-primary)] mb-6">
+          Cómo trabajamos
         </h2>
-        <p class="text-[#3D5566] text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+        <p class="text-[var(--ink-soft)] text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
           Un enfoque que comienza con entender tu negocio, tus problemas y tus necesidades.
         </p>
       </div>
@@ -59,7 +59,7 @@ const steps = [
         {steps.map((step) => (
           <div class="relative overflow-hidden h-full rounded-3xl border border-white/60 bg-white/60 backdrop-blur-xl shadow-[0_20px_40px_-15px_rgba(11,42,60,0.08)] p-6 md:p-8">
             <svg
-              class="absolute -bottom-8 -right-8 w-44 h-44 text-[#0B2A3C] opacity-[0.03] pointer-events-none"
+              class="absolute -bottom-8 -right-8 w-44 h-44 text-[var(--z-primary)] opacity-[0.03] pointer-events-none"
               fill="none"
               stroke="currentColor"
               stroke-width="1.5"
@@ -74,16 +74,16 @@ const steps = [
             </svg>
 
             <span
-              class="absolute top-4 right-6 font-display font-bold text-5xl md:text-6xl leading-none text-[#0B2A3C]/10 select-none pointer-events-none"
+              class="absolute top-4 right-6 font-display font-bold text-5xl md:text-6xl leading-none text-[rgba(11,42,60,0.1)] select-none pointer-events-none"
               aria-hidden="true"
             >
               {step.badge}
             </span>
 
             <div class="relative">
-              <div class="w-14 h-14 rounded-full bg-[#2FBF71] shadow-inner flex items-center justify-center mb-6">
+              <div class="w-14 h-14 rounded-full bg-[var(--accent-flat)] shadow-inner flex items-center justify-center mb-6">
                 <svg
-                  class="w-7 h-7 text-[#0B2A3C]"
+                  class="w-7 h-7 text-[var(--z-primary)]"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
@@ -96,17 +96,17 @@ const steps = [
                 </svg>
               </div>
 
-              <h3 class="font-display text-2xl font-bold text-[#0B2A3C] mb-3">
+              <h3 class="font-display text-2xl font-bold text-[var(--z-primary)] mb-3">
                 {step.title}
               </h3>
-              <p class="text-[#1F7F4A] font-semibold mb-6">
+              <p class="text-[var(--accent)] font-semibold mb-6">
                 {step.subtitle}
               </p>
               <ul class="space-y-4">
                 {step.bullets.map((bullet) => (
                   <li class="flex items-start gap-3">
                     <svg
-                      class="w-5 h-5 text-[#1F7F4A] flex-shrink-0 mt-0.5"
+                      class="w-5 h-5 text-[var(--accent)] flex-shrink-0 mt-0.5"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2.5"
@@ -117,7 +117,7 @@ const steps = [
                     >
                       <path d="M5 13l4 4L19 7" />
                     </svg>
-                    <span class="text-[#3D5566] text-sm leading-relaxed">
+                    <span class="text-[var(--ink-soft)] text-sm leading-relaxed">
                       {bullet}
                     </span>
                   </li>
@@ -128,14 +128,14 @@ const steps = [
         ))}
       </div>
 
-      <p class="mt-14 md:mt-16 mb-8 text-center text-[#3D5566] text-lg md:text-xl italic font-display max-w-3xl mx-auto leading-relaxed">
+      <p class="mt-14 md:mt-16 mb-8 text-center text-[var(--ink-soft)] text-lg md:text-xl italic font-display max-w-3xl mx-auto leading-relaxed">
         Somos una boutique de soluciones tecnológicas que te acompaña en "convertir tus ventas en liquidez"
       </p>
 
       <div class="text-center">
         <a
           href={LINKS.contact}
-          class="btn-primary w-full sm:w-auto shadow-lg shadow-[#2FBF71]/30 hover:shadow-xl hover:shadow-[#2FBF71]/40 hover:-translate-y-0.5 transition-all duration-300"
+          class="btn-primary w-full sm:w-auto shadow-lg shadow-[rgba(47,191,113,0.3)] hover:shadow-xl hover:shadow-[rgba(47,191,113,0.4)] hover:-translate-y-0.5 transition-all duration-300"
           title="Contactar a zalantos"
         >
           Contáctanos

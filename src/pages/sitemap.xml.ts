@@ -4,13 +4,12 @@ import { getCollection } from 'astro:content'
 const SITE_URL = 'https://zalantos.com'
 
 // Solo se declara <lastmod> cuando existe una fecha real de modificación (posts).
+// Las landings de campaña (/lp/*) quedan fuera: son noindex y solo reciben tráfico pagado.
 const staticPaths = [
   '/',
   '/blog/',
   '/contacto/',
   '/consultor-ia/',
-  '/lp/no-todos-problemas-operativos-necesitan-ia/',
-  '/lp/datos-en-orden-automatizacion-ia/',
   '/privacy/',
 ]
 

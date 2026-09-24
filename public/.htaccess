@@ -21,7 +21,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*)$ /$1/index.html [L]
 
-# Página 404 (Astro genera /404/index.html si existe una página 404.astro)
+# Página 404 (Astro emite /404.html en la raíz, incluso con build.format: 'directory')
 ErrorDocument 404 /404.html
 
 # Cache agresivo para assets estáticos

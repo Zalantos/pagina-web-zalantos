@@ -16,7 +16,7 @@ const isConsultor = pathname.startsWith('/consultor-ia')
 const isHomeActive = isHome
 ---
 <nav
-  class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#0B2A3C]/10"
+  class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--z-border)]"
   role="navigation"
   aria-label="Navegación principal"
 >
@@ -35,7 +35,7 @@ const isHomeActive = isHome
         <div class="flex gap-1 sm:gap-2 lg:gap-8 flex-shrink-0">
           <a
             href={LINKS.home}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isHomeActive ? 'text-[#0B2A3C] border-[#2FBF71]' : 'text-[#0B2A3C]/60 hover:text-[#0B2A3C] border-transparent'}`}
+            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isHomeActive ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
             aria-current={isHomeActive ? 'page' : undefined}
             aria-label="Inicio"
           >
@@ -53,7 +53,7 @@ const isHomeActive = isHome
 
           <a
             href={LINKS.blog}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isBlog ? 'text-[#0B2A3C] border-[#2FBF71]' : 'text-[#0B2A3C]/60 hover:text-[#0B2A3C] border-transparent'}`}
+            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isBlog ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
             aria-current={isBlog ? 'page' : undefined}
             aria-label="Blog"
           >
@@ -71,7 +71,7 @@ const isHomeActive = isHome
 
           <a
             href={LINKS.aiConsultant}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2FBF71] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isConsultor ? 'text-[#0B2A3C] border-[#2FBF71]' : 'text-[#0B2A3C]/60 hover:text-[#0B2A3C] border-transparent'}`}
+            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isConsultor ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
             aria-current={isConsultor ? 'page' : undefined}
             aria-label="Consultor IA"
           >
@@ -92,7 +92,7 @@ const isHomeActive = isHome
           <div class="hidden lg:block">
             <a
               href={extraLink.href}
-              class="text-sm font-semibold text-[#0B2A3C] transition-colors hover:text-[#2FBF71]"
+              class="text-sm font-semibold text-[var(--z-primary)] transition-colors hover:text-[var(--accent-flat)]"
               aria-label={extraLink.label}
             >
               {extraLink.label}
@@ -112,7 +112,7 @@ const isHomeActive = isHome
 
           <a
             href={LINKS.contact}
-            class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[#2FBF71] shadow-lg items-center justify-center text-[#0B2A3C] border border-[#0B2A3C]/10"
+            class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[var(--accent-flat)] shadow-lg items-center justify-center text-[var(--z-primary)] border border-[var(--z-border)]"
             aria-current={isContact ? 'page' : undefined}
             aria-label="Ir a página de contacto"
           >

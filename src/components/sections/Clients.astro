@@ -1,13 +1,13 @@
 ---
 import Section from '../ui/Section.astro'
 
+// Casos propios de zalantos. A diferencia de FeaturedCases (referentes de terceros),
+// estos SÍ son proyectos ejecutados por el equipo.
 const featuredCases = [
   {
     name: 'Colegio San Francisco de Machalí',
     logo: '/images/icono_colegio.jpeg',
     alt: 'Logo del Colegio San Francisco de Machalí',
-    accentColor: '#2FBF71',
-    textColor: '#1F7F4A',
     label: 'Caso',
     href: '/blog/caso-colegio-rag-sistema-consultas-ia/',
     pain: '¿Cuál es el protocolo vigente? Una pregunta simple que obliga a docentes y administrativos a revisar carpetas, correos y PDFs dispersos. Se pierden horas y siempre queda la duda de estar usando una versión desactualizada.',
@@ -18,32 +18,32 @@ const featuredCases = [
     name: 'Stem Inversiones',
     logo: '/images/icono_stem.png',
     alt: 'Logo de Stem Inversiones',
-    accentColor: '#2FBF71',
-    textColor: '#1F7F4A',
     label: 'Caso',
     pain: 'Los gastos se registran en planillas y correos dispersos, sin categorías comunes ni respaldo asociado. Cada cierre exige cruzar manualmente los movimientos del banco con los comprobantes, con alto riesgo de errores, partidas sin identificar y diferencias que se detectan tarde.',
     solution: 'Spentx, plataforma de control de gastos y conciliación bancaria asistida por IA. Centraliza cada gasto con su documento de respaldo en el mismo momento que se realiza, lo clasifica automáticamente y cruza los movimientos bancarios contra los registros, marcando coincidencias, pendientes e incidencias para revisión.',
     result: 'Mayor trazabilidad de cada gasto, menos tiempo administrativo y más para análisis y ejecución. El cierre deja de depender de cruces manuales, las diferencias se detectan a tiempo y el equipo dedica su tiempo a decidir, no a reconstruir información.',
   },
 ]
+
+const bloqueLabel = 'text-[10px] font-semibold uppercase tracking-widest block'
 ---
 <Section variant="gray">
   <div class="text-center mb-12 md:mb-16">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] mb-4 px-4">
-      Casos de clientes
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--z-primary)] mb-4 px-4">
+      Nuestros Proyectos
     </h2>
-  </div>
+    <p class="text-base sm:text-lg md:text-xl text-[var(--ink-faint)] max-w-[700px] mx-auto px-4">
+      Dolores que nuestros clientes nos han confiado.
+    </p>
+</div>
 
   <div class="max-w-[1200px] mx-auto space-y-6 sm:space-y-8">
     {featuredCases.map((featured) => (
-      <div class="relative overflow-hidden rounded-2xl bg-white border border-[rgba(11,42,60,0.08)] p-5 sm:p-8 md:p-12 shadow-[0_2px_8px_rgba(11,42,60,0.04)]">
-        <div
-          class="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
-          style={`background-color:${featured.accentColor}`}
-        ></div>
+      <div class="relative overflow-hidden rounded-2xl bg-[var(--panel)] border border-[var(--z-border)] p-5 sm:p-8 md:p-12 shadow-[var(--shadow-sm)]">
+        <div class="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-[var(--accent-flat)]"></div>
 
         <div class="relative flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-          <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-xl bg-[#0B2A3C]/[0.04] p-3 mx-auto md:mx-0">
+          <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-xl bg-[rgba(11,42,60,0.04)] p-3 mx-auto md:mx-0">
             <img
               src={featured.logo}
               alt={featured.alt}
@@ -56,46 +56,34 @@ const featuredCases = [
           </div>
 
           <div class="flex-1 min-w-0">
-            <p
-              class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2"
-              style={`color:${featured.textColor}`}
-            >
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-[var(--accent)]">
               {featured.label}
             </p>
-            <h3 class="text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-8 leading-tight">
+            <h3 class="font-display text-2xl md:text-3xl font-bold text-[var(--z-primary)] mb-8 leading-tight">
               {featured.name}
             </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div class="space-y-1.5">
-                <span class="text-[10px] font-semibold uppercase tracking-widest text-[#6F7A83] block">
-                  Desafío
-                </span>
-                <p class="text-[#0B2A3C]/90 text-sm leading-relaxed">{featured.pain}</p>
+                <span class={`${bloqueLabel} text-[var(--ink-faint)]`}>Desafío</span>
+                <p class="text-[var(--ink-soft)] text-sm leading-relaxed">{featured.pain}</p>
               </div>
 
               <div class="space-y-1.5">
-                <span class="text-[10px] font-semibold uppercase tracking-widest text-[#6F7A83] block">
-                  Solución
-                </span>
-                <p class="text-[#0B2A3C]/90 text-sm leading-relaxed">{featured.solution}</p>
+                <span class={`${bloqueLabel} text-[var(--ink-faint)]`}>Solución</span>
+                <p class="text-[var(--ink-soft)] text-sm leading-relaxed">{featured.solution}</p>
               </div>
 
               <div class="space-y-1.5">
-                <span
-                  class="text-[10px] font-semibold uppercase tracking-widest block"
-                  style={`color:${featured.textColor}`}
-                >
-                  Impacto
-                </span>
-                <p class="text-[#0B2A3C] font-medium text-sm leading-relaxed">{featured.result}</p>
+                <span class={`${bloqueLabel} text-[var(--accent)]`}>Impacto</span>
+                <p class="text-[var(--z-primary)] font-medium text-sm leading-relaxed">{featured.result}</p>
               </div>
             </div>
 
             {featured.href && (
               <a
                 href={featured.href}
-                class="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[#1F7F4A] hover:text-[#0B2A3C] transition-colors"
+                class="inline-flex items-center gap-1.5 mt-8 text-sm font-semibold text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
                 title={`Leer el caso completo: ${featured.name}`}
               >
                 Leer el caso completo <span aria-hidden="true">→</span>
