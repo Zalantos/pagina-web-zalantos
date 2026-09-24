@@ -9,10 +9,21 @@ export const COLORS = {
 
 export const CONTACT_EMAIL = 'contacto@zalantos.com'
 
+// NAP visible: debe coincidir con el PostalAddress del schema (src/lib/schemas.ts)
+export const CONTACT_ADDRESS = {
+  street: 'Padre Mariano 210, Oficina 405',
+  locality: 'Providencia',
+  region: 'Región Metropolitana',
+  country: 'Chile',
+} as const
+
 export const SITE_URL = 'https://zalantos.com'
 
 export const LINKS = {
   home: '/',
+  solutions: '/soluciones/',
+  ai: '/inteligencia-artificial-empresarial/',
+  about: '/nosotros/',
   contact: '/contacto/',
   schedule: '/contacto/?agendar=1',
   aiConsultant: '/consultor-ia/',

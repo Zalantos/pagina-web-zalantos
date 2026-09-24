@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
+import { SOLUCIONES } from '../data/soluciones'
 
 const SITE_URL = 'https://zalantos.com'
 
@@ -7,6 +8,10 @@ const SITE_URL = 'https://zalantos.com'
 // Las landings de campaña (/lp/*) quedan fuera: son noindex y solo reciben tráfico pagado.
 const staticPaths = [
   '/',
+  '/soluciones/',
+  ...SOLUCIONES.map((s) => `/soluciones/${s.slug}/`),
+  '/inteligencia-artificial-empresarial/',
+  '/nosotros/',
   '/blog/',
   '/contacto/',
   '/consultor-ia/',

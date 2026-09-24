@@ -32,3 +32,6 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://zalantos.com/sitemap.xml
+
+# Resumen del sitio para agentes y modelos de lenguaje
+# https://zalantos.com/llms.txt

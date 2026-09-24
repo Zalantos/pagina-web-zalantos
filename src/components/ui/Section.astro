@@ -11,8 +11,8 @@ const { variant = 'white', hero = false, narrow = false, class: className = '', 
 
 const variantClass = {
   white: 'bg-white',
-  gray: 'bg-[#F1F5F9]',
-  dark: 'bg-[#163B2C] text-white',
+  gray: 'bg-[var(--ground)]',
+  dark: 'bg-[var(--verde-bosque)] text-white',
 }[variant]
 
 const sectionClass = hero ? 'section-full-hero' : 'section-full'

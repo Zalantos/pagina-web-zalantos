@@ -12,9 +12,10 @@ const casos = [
     etapa: '01',
     fase: 'Pedido',
     title: 'El pedido entra solo',
+    solucion: 'integracion-erp-facturacion-electronica',
     dolor:
       'El pedido llega en PDF o por correo y alguien lo teclea en el ERP. Cada hora de tipeo es una hora en que la factura todavía no existe.',
-    dato: 'De 10 a 3 minutos por pedido',
+    dato: 'Digitación: de 10 a 3 minutos por pedido',
     beneficio:
       'El pedido queda facturable el mismo día que llega, no cuando alguien alcanza a digitarlo.',
   },
@@ -22,9 +23,10 @@ const casos = [
     etapa: '02',
     fase: 'Crédito',
     title: 'Aprobar al cliente sin frenar la venta',
+    solucion: 'evaluacion-de-credito-y-alta-de-clientes',
     dolor:
       'La evaluación de crédito y el alta del cliente demoran días. El cliente ya decidió comprar y es tu proceso el que lo hace esperar.',
-    dato: 'De 30 días a 1 día',
+    dato: 'Alta de cliente: de 30 días a 1 día',
     beneficio:
       'El cliente nuevo queda operativo en 24 horas. Un mes menos de espera antes de su primera factura.',
   },
@@ -32,9 +34,10 @@ const casos = [
     etapa: '03',
     fase: 'Facturación',
     title: 'Facturar el mismo día, no a fin de mes',
+    solucion: 'integracion-erp-facturacion-electronica',
     dolor:
       'Si facturas por lote en el cierre, la venta del día 2 espera casi un mes antes de convertirse en un cobro exigible.',
-    dato: 'De un mes a una semana',
+    dato: 'Emisión: de un mes a una semana',
     beneficio:
       'Cada semana que adelantas la factura es una semana menos de tu dinero en la calle.',
   },
@@ -42,9 +45,10 @@ const casos = [
     etapa: '04',
     fase: 'Cobranza',
     title: 'Cobrar antes de que la factura envejezca',
+    solucion: 'automatizacion-de-cobranza',
     dolor:
       'Nadie hace seguimiento hasta que la factura ya está vencida. Para entonces tu caja tiene un saldo negativo que debes cubrir.',
-    dato: '30% menos en tu ciclo de cobro',
+    dato: 'Ciclo de cobro: 30% menos',
     beneficio:
       'Si hoy cobras en 60 días, pasas a 42. Ese diferencial es dinero que dejas de financiar.',
   },
@@ -52,9 +56,10 @@ const casos = [
     etapa: '05',
     fase: 'Disputas',
     title: 'Resolver la disputa que frena el pago',
+    solucion: 'automatizacion-de-cobranza',
     dolor:
       'Una factura en disputa deja de ser cobrable hasta que alguien reconstruye a mano qué se pactó, qué se entregó y qué se facturó.',
-    dato: 'De 97 a 5 horas para resolver una disputa',
+    dato: 'Resolución de disputa: de 97 a 5 horas',
     beneficio:
       'La factura vuelve a ser cobrable el mismo día, en vez de quedar semanas dando vueltas entre áreas.',
   },
@@ -62,15 +67,16 @@ const casos = [
     etapa: '06',
     fase: 'Caja',
     title: 'Saber hoy qué entró a la caja',
+    solucion: 'visibilidad-de-caja-y-conciliacion',
     dolor:
       'La conciliación bancaria se hace a mano y tarda días. Operas la semana sin saber tu posición real.',
-    dato: 'De 15 a 3 días de conciliación',
+    dato: 'Conciliación: de 15 a 3 días',
     beneficio:
       'Conoces tu posición de caja el lunes, no a fin de mes. Decides con el saldo que existe hoy.',
   },
 ]
 ---
-<Section variant="gray">
+<Section variant="white">
   <div class="text-center mb-12 md:mb-16">
     <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(11,42,60,0.15)] mb-4">
       Casos de uso
@@ -93,7 +99,12 @@ const casos = [
           <span class="eyebrow">{caso.fase}</span>
         </div>
         <h3 class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-3">
-          {caso.title}
+          <a
+            href={`/soluciones/${caso.solucion}/`}
+            class="hover:text-[var(--accent)] transition-colors focus:outline-none focus-visible:underline"
+          >
+            {caso.title}
+          </a>
         </h3>
         <p class="text-[var(--ink-faint)] leading-relaxed text-sm sm:text-base flex-1">
           {caso.dolor}
@@ -105,6 +116,12 @@ const casos = [
           <p class="text-sm text-[var(--ink-soft)] leading-relaxed">
             {caso.beneficio}
           </p>
+          <a
+            href={`/soluciones/${caso.solucion}/`}
+            class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+          >
+            Cómo lo abordamos <span aria-hidden="true">→</span>
+          </a>
         </div>
       </Card>
     ))}
@@ -117,12 +134,12 @@ const casos = [
 
   <div class="mt-10 md:mt-12 text-center">
     <LinkButton
-      href={LINKS.contact}
+      href={LINKS.solutions}
       variant="primary"
       class="w-full sm:w-auto"
-      ariaLabel="Ir a contacto para conversar con zalantos"
+      ariaLabel="Ver cómo automatizamos el ciclo order to cash"
     >
-      Conversemos
+      Ver el ciclo completo
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>

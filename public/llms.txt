@@ -1,0 +1,38 @@
+# zalantos
+
+> Consultora chilena que automatiza las actividades del ciclo de venta a cobro (order to cash)
+> para convertir más rápido las ventas en caja. Integra los sistemas que la empresa ya usa y
+> aplica inteligencia artificial empresarial donde el proceso depende de interpretar
+> información sin estructura o de anticipar un comportamiento.
+
+Ubicación: Padre Mariano 210, Oficina 405, Providencia, Región Metropolitana, Chile.
+Contacto: contacto@zalantos.com
+Idioma del sitio: español de Chile (es-CL).
+
+Nota sobre atribución: las cifras y casos de Entel, McKinsey y Johnson Controls que aparecen
+en el sitio son casos públicos de terceros, documentados por UiPath, ScienceSoft y McKinsey.
+NO son resultados de proyectos de zalantos. Los proyectos propios están identificados como
+tales en la sección "Casos de éxito" de la portada y en /blog/.
+
+## Soluciones
+
+- [Automatización order to cash](https://zalantos.com/soluciones/): el ciclo de venta a cobro completo, etapa por etapa.
+- [Integración ERP y facturación electrónica](https://zalantos.com/soluciones/integracion-erp-facturacion-electronica/): que el pedido se convierta en factura sin digitación manual ni esperar el cierre de mes.
+- [Automatización de cobranza](https://zalantos.com/soluciones/automatizacion-de-cobranza/): seguimiento antes del vencimiento, priorización por riesgo y expediente de disputa consolidado.
+- [Evaluación de crédito automatizada](https://zalantos.com/soluciones/evaluacion-de-credito-y-alta-de-clientes/): alta de clientes y evaluación crediticia sin que el proceso interno frene la venta.
+- [Visibilidad de caja y conciliación](https://zalantos.com/soluciones/visibilidad-de-caja-y-conciliacion/): conciliación asistida y posición de caja durante el mes, no al cierre.
+
+## Enfoque
+
+- [Inteligencia artificial empresarial](https://zalantos.com/inteligencia-artificial-empresarial/): los cuatro patrones donde la IA aporta dentro de un proceso, sus límites, y los controles de trazabilidad.
+- [Nosotros](https://zalantos.com/nosotros/): quiénes somos y cómo trabajamos.
+
+## Contenido
+
+- [Blog](https://zalantos.com/blog/): artículos sobre automatización, datos e IA aplicada a la operación.
+- [Consultor IA](https://zalantos.com/consultor-ia/): asistente que responde dudas sobre automatización, IA y datos aplicados al negocio.
+
+## Contacto
+
+- [Contacto y Sprint 0](https://zalantos.com/contacto/): el Sprint 0 es un diagnóstico de una semana, sin costo y sin compromiso posterior.
+- [Política de privacidad](https://zalantos.com/privacy/)
