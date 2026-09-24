@@ -173,39 +173,39 @@ body {
 
   .eyebrow {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    @apply text-[12px] font-medium uppercase tracking-[0.1em] text-[#6F7A83];
+    @apply text-[12px] font-medium uppercase tracking-[0.1em] text-[var(--ink-faint)];
   }
 
   .gradient-dark {
     background:
       radial-gradient(60% 90% at 88% -10%, rgba(47, 191, 113, 0.22) 0%, rgba(47, 191, 113, 0) 55%),
-      linear-gradient(160deg, #0B2A3C 0%, #163B2C 100%);
+      linear-gradient(160deg, var(--z-primary) 0%, var(--verde-bosque) 100%);
   }
 
   .gradient-dark-alt {
     background:
       radial-gradient(70% 120% at 12% 120%, rgba(47, 191, 113, 0.22) 0%, rgba(47, 191, 113, 0) 55%),
-      linear-gradient(160deg, #0B2A3C 0%, #163B2C 100%);
+      linear-gradient(160deg, var(--z-primary) 0%, var(--verde-bosque) 100%);
   }
 
   /* Botones pill (Clover fill/texto Prussian para primario, outline para secundario) */
   .btn-primary {
     font-family: 'Space Grotesk', 'Inter', sans-serif;
-    @apply bg-[#2FBF71] hover:bg-[#2FBF71]/90 active:scale-100 text-[#0B2A3C] font-semibold px-8 py-4 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[52px] min-w-[44px] touch-manipulation;
+    @apply bg-[var(--accent-flat)] hover:bg-[rgba(47,191,113,0.9)] active:scale-100 text-[var(--z-primary)] font-semibold px-8 py-4 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[52px] min-w-[44px] touch-manipulation;
   }
 
   .btn-primary:focus-visible {
-    @apply outline-none ring-2 ring-[#2FBF71] ring-offset-2;
+    @apply outline-none ring-2 ring-[var(--accent-flat)] ring-offset-2;
   }
 
   /* Secundario pill (borde navy) - para usar sobre fondos claros */
   .btn-secondary {
     font-family: 'Space Grotesk', 'Inter', sans-serif;
-    @apply bg-transparent border-[1.5px] border-[#0B2A3C]/25 hover:border-[#0B2A3C] text-[#0B2A3C] font-semibold px-7 py-3.5 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] touch-manipulation;
+    @apply bg-transparent border-[1.5px] border-[rgba(11,42,60,0.25)] hover:border-[var(--z-primary)] text-[var(--z-primary)] font-semibold px-7 py-3.5 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] touch-manipulation;
   }
 
   .btn-secondary:focus-visible {
-    @apply outline-none ring-2 ring-[#0B2A3C] ring-offset-2;
+    @apply outline-none ring-2 ring-[var(--z-primary)] ring-offset-2;
   }
 
   /* Outline pill (borde blanco) - para usar sobre fondos oscuros/gradiente */
@@ -223,26 +223,26 @@ body {
   }
 
   .form-input {
-    @apply w-full px-4 py-3 min-h-[44px] rounded-[var(--radius-md)] bg-white border border-[rgba(11,42,60,0.15)] text-[#0B2A3C] focus:outline-none focus:border-[#0B2A3C] focus:ring-2 focus:ring-[#0B2A3C]/10 transition-colors duration-150 touch-manipulation;
+    @apply w-full px-4 py-3 min-h-[44px] rounded-[var(--radius-md)] bg-white border border-[rgba(11,42,60,0.15)] text-[var(--z-primary)] focus:outline-none focus:border-[var(--z-primary)] focus:ring-2 focus:ring-[rgba(11,42,60,0.1)] transition-colors duration-150 touch-manipulation;
   }
 
   .form-label {
-    @apply block text-[#6F7A83] mb-2 font-medium text-sm;
+    @apply block text-[var(--ink-faint)] mb-2 font-medium text-sm;
   }
 
   .blog-content {
-    @apply text-[#0B2A3C] text-base sm:text-lg leading-relaxed;
+    @apply text-[var(--z-primary)] text-base sm:text-lg leading-relaxed;
     overflow: hidden;
   }
 
   .blog-content h2 {
     @apply text-2xl sm:text-3xl font-bold mt-12 mb-4;
-    color: #0B2A3C;
+    color: var(--z-primary);
   }
 
   .blog-content h3 {
     @apply text-xl sm:text-2xl font-semibold mt-8 mb-3;
-    color: #0B2A3C;
+    color: var(--z-primary);
   }
 
   .blog-content p {
@@ -268,16 +268,16 @@ body {
 
   .blog-content strong {
     @apply font-semibold;
-    color: #0B2A3C;
+    color: var(--z-primary);
   }
 
   .blog-content a {
     @apply underline underline-offset-2 transition-colors duration-150;
-    color: #1F7F4A;
+    color: var(--accent);
   }
 
   .blog-content a:hover {
-    color: #0B2A3C;
+    color: var(--z-primary);
   }
 
   .animate-fade-in {

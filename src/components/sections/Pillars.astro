@@ -1,85 +1,68 @@
 ---
 import Section from '../ui/Section.astro'
-import Card from '../ui/Card.astro'
+
+const pilares = [
+  {
+    image: '/images/control_gestion.webp',
+    alt: 'Sistemas de gestión de información',
+    width: 320,
+    height: 186,
+    title: 'Sistemas de gestión de información',
+    bodyHtml:
+      'Dejamos atrás las planillas infinitas para darte <strong>tableros de control con datos consistentes</strong> y una <strong>fuente única de información</strong> para decidir sin depender de "la persona que sabe".',
+  },
+  {
+    image: '/images/automtizacion.webp',
+    alt: 'Automatización de procesos',
+    width: 320,
+    height: 212,
+    title: 'Automatización de procesos',
+    bodyHtml:
+      'Conectamos tus sistemas aislados para <strong>eliminar la carga manual</strong> y reducir <strong>errores por traspasos</strong>, automatizando flujos operativos de punta a punta.',
+  },
+  {
+    image: '/images/ia.webp',
+    alt: 'Soluciones de inteligencia artificial',
+    width: 320,
+    height: 195,
+    title: 'Inteligencia artificial aplicada',
+    bodyHtml:
+      'Aplicamos IA donde realmente aporta: <strong>asistentes internos</strong>, búsqueda en documentación (RAG) y automatizaciones inteligentes, con <strong>límites y control</strong>.',
+  },
+]
 ---
-<Section variant="gray">
+<Section variant="white">
   <div class="text-center mb-12 md:mb-16">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] mb-4">
-      Soluciones para gestionar tu negocio
+    <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(11,42,60,0.15)] mb-4">
+      Qué hacemos
+    </span>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--z-primary)] mb-4">
+      Con qué cerramos esas fugas
     </h2>
-    <p class="text-base sm:text-lg md:text-xl text-[#6F7A83] max-w-[700px] mx-auto px-4">
-      Nos adaptamos a tus necesidades para implementar sistemas que resuelven tus problemas
+    <p class="text-base sm:text-lg md:text-xl text-[var(--ink-faint)] max-w-[700px] mx-auto px-4">
+      Tres capacidades que combinamos según dónde esté el cuello de botella de tu negocio.
     </p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-[1200px] mx-auto">
-    <Card class="text-center group">
-      <div class="mb-6 flex justify-center">
-        <img
-          src="/images/control_gestion.webp"
-          alt="Sistemas de Gestión de Información"
-          width="320"
-          height="186"
-          class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
-          loading="lazy"
-          decoding="async"
-        />
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 lg:gap-16 max-w-[1150px] mx-auto">
+    {pilares.map((pilar) => (
+      <div class="text-center">
+        <div class="mb-6 flex justify-center">
+          <img
+            src={pilar.image}
+            alt={pilar.alt}
+            width={pilar.width}
+            height={pilar.height}
+            class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <h3 class="font-display font-semibold text-lg sm:text-xl text-[var(--z-primary)] mb-3 md:min-h-[3.75rem] md:flex md:items-center md:justify-center">
+          {pilar.title}
+        </h3>
+        <p class="text-[var(--ink-faint)] leading-relaxed text-sm sm:text-base" set:html={pilar.bodyHtml} />
       </div>
-      <h3 class="font-semibold text-lg sm:text-xl text-[#0B2A3C] mb-1">
-        Sistemas de Gestión de Información
-      </h3>
-      <p class="text-sm sm:text-base font-semibold text-[#1F7F4A] mb-3">
-        Datos y BI
-      </p>
-      <p class="text-[#6F7A83] leading-relaxed text-sm sm:text-base">
-        Dejamos atrás las planillas infinitas para darte <strong>tableros de control con datos consistentes</strong> y una <strong>fuente única de información</strong> para decidir sin depender de "la persona que sabe".
-      </p>
-    </Card>
-
-    <Card class="text-center group">
-      <div class="mb-6 flex justify-center">
-        <img
-          src="/images/automtizacion.webp"
-          alt="Automatización de Procesos"
-          width="320"
-          height="212"
-          class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <h3 class="font-semibold text-lg sm:text-xl text-[#0B2A3C] mb-1">
-        Automatización de Procesos
-      </h3>
-      <p class="text-sm sm:text-base font-semibold text-[#1F7F4A] mb-3">
-        Automatización (n8n + Integraciones)
-      </p>
-      <p class="text-[#6F7A83] leading-relaxed text-sm sm:text-base">
-        Conectamos tus sistemas aislados para <strong>eliminar la carga manual</strong> y reducir <strong>errores por traspasos</strong>, automatizando flujos operativos de punta a punta.
-      </p>
-    </Card>
-
-    <Card class="text-center group">
-      <div class="mb-6 flex justify-center">
-        <img
-          src="/images/ia.webp"
-          alt="Soluciones de IA"
-          width="320"
-          height="195"
-          class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <h3 class="font-semibold text-lg sm:text-xl text-[#0B2A3C] mb-1">
-        Soluciones de Inteligencia Artificial
-      </h3>
-      <p class="text-sm sm:text-base font-semibold text-[#1F7F4A] mb-3">
-        IA aplicada
-      </p>
-      <p class="text-[#6F7A83] leading-relaxed text-sm sm:text-base">
-        Aplicamos IA donde realmente aporta: <strong>asistentes internos</strong>, búsqueda en documentación (RAG) y automatizaciones inteligentes, con <strong>límites y control</strong>.
-      </p>
-    </Card>
+    ))}
   </div>
 </Section>

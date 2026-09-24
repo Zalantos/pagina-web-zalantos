@@ -17,6 +17,7 @@ interface Props {
   bodyClass?: string
   hideHeader?: boolean
   hideFooter?: boolean
+  noindex?: boolean
   extraSchemas?: Record<string, unknown>[]
 }
 
@@ -32,6 +33,7 @@ const {
   bodyClass = '',
   hideHeader = false,
   hideFooter = false,
+  noindex = false,
   extraSchemas = [],
 } = Astro.props
 
@@ -77,6 +79,7 @@ const FONTS_URL =
       pubDate={pubDate}
       updatedDate={updatedDate}
       author={author}
+      noindex={noindex}
     />
 
     {extraSchemas.map((schema) => <JsonLd schema={schema} />)}

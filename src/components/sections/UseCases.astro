@@ -1,87 +1,121 @@
 ---
 import Section from '../ui/Section.astro'
 import Card from '../ui/Card.astro'
-import Badge from '../ui/Badge.astro'
 import LinkButton from '../ui/LinkButton.astro'
 import { LINKS } from '../../lib/constants'
 
-const cases = [
+// Casos de uso ordenados como el ciclo venta → cobro que promete el Hero.
+// Cada tarjeta lleva un dato de un caso público de terceros (ver nota al pie) y su
+// traducción a efecto en caja. No son resultados de proyectos de zalantos.
+const casos = [
   {
-    title: 'Agentes de IA para soporte interno',
-    text: 'Asistentes para políticas, procesos, manuales y preguntas frecuentes del negocio.',
-    href: '/blog/insight-asistente-interno-ia-politicas-procesos-faqs/',
+    etapa: '01',
+    fase: 'Pedido',
+    title: 'El pedido entra solo',
+    dolor:
+      'El pedido llega en PDF o por correo y alguien lo teclea en el ERP. Cada hora de tipeo es una hora en que la factura todavía no existe.',
+    dato: 'De 10 a 3 minutos por pedido',
+    beneficio:
+      'El pedido queda facturable el mismo día que llega, no cuando alguien alcanza a digitarlo.',
   },
   {
-    title: 'IA para insights de inteligencia de negocio',
-    text: 'Consultas en lenguaje natural, alertas y hallazgos accionables sobre KPIs.',
-    href: '/blog/insight-ia-kpis-hallazgos-lenguaje-natural/',
-    badge: 'Alto ROI',
+    etapa: '02',
+    fase: 'Crédito',
+    title: 'Aprobar al cliente sin frenar la venta',
+    dolor:
+      'La evaluación de crédito y el alta del cliente demoran días. El cliente ya decidió comprar y es tu proceso el que lo hace esperar.',
+    dato: 'De 30 días a 1 día',
+    beneficio:
+      'El cliente nuevo queda operativo en 24 horas. Un mes menos de espera antes de su primera factura.',
   },
   {
-    title: 'Software de tracking con IA',
-    text: 'Seguimiento de tareas, proyectos, activos y operaciones con acceso rápido vía IA.',
-    href: '/blog/insight-sistema-tracking-operacional-acceso-rapido-ia/',
+    etapa: '03',
+    fase: 'Facturación',
+    title: 'Facturar el mismo día, no a fin de mes',
+    dolor:
+      'Si facturas por lote en el cierre, la venta del día 2 espera casi un mes antes de convertirse en un cobro exigible.',
+    dato: 'De un mes a una semana',
+    beneficio:
+      'Cada semana que adelantas la factura es una semana menos de tu dinero en la calle.',
   },
   {
-    title: 'Forecasting y planificación operacional',
-    text: 'Proyección de demanda, carga de trabajo y mantenciones para reducir incertidumbre.',
-    href: '/blog/insight-ia-forecasting-planificacion-reducir-incertidumbre-operacional/',
+    etapa: '04',
+    fase: 'Cobranza',
+    title: 'Cobrar antes de que la factura envejezca',
+    dolor:
+      'Nadie hace seguimiento hasta que la factura ya está vencida. Para entonces tu caja tiene un saldo negativo que debes cubrir.',
+    dato: '30% menos en tu ciclo de cobro',
+    beneficio:
+      'Si hoy cobras en 60 días, pasas a 42. Ese diferencial es dinero que dejas de financiar.',
   },
   {
-    title: 'Monitoreo de performance y alertas ejecutivas',
-    text: 'Semáforos, desviaciones y alertas automáticas para foco gerencial.',
-    href: '/blog/insight-alertas-ejecutivas-inteligentes-desvios-criticos/',
-    badge: 'Valor ejecutivo',
+    etapa: '05',
+    fase: 'Disputas',
+    title: 'Resolver la disputa que frena el pago',
+    dolor:
+      'Una factura en disputa deja de ser cobrable hasta que alguien reconstruye a mano qué se pactó, qué se entregó y qué se facturó.',
+    dato: 'De 97 a 5 horas para resolver una disputa',
+    beneficio:
+      'La factura vuelve a ser cobrable el mismo día, en vez de quedar semanas dando vueltas entre áreas.',
   },
   {
-    title: 'Automatización de procesos con trazabilidad',
-    text: 'Flujos aprobatorios, auditoría y registro de decisiones para control y gobierno.',
-    href: '/blog/insight-automatizacion-procesos-trazabilidad-control-auditoria/',
+    etapa: '06',
+    fase: 'Caja',
+    title: 'Saber hoy qué entró a la caja',
+    dolor:
+      'La conciliación bancaria se hace a mano y tarda días. Operas la semana sin saber tu posición real.',
+    dato: 'De 15 a 3 días de conciliación',
+    beneficio:
+      'Conoces tu posición de caja el lunes, no a fin de mes. Decides con el saldo que existe hoy.',
   },
 ]
 ---
-<Section variant="white">
+<Section variant="gray">
   <div class="text-center mb-12 md:mb-16">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2A3C] mb-4 px-4">
-      Qué podemos automatizar en tu empresa
+    <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(11,42,60,0.15)] mb-4">
+      Casos de uso
+    </span>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--z-primary)] mb-4 px-4">
+      Dónde se queda tu dinero
     </h2>
-    <p class="text-base sm:text-lg md:text-xl text-[#6F7A83] max-w-[700px] mx-auto px-4">
-      Casos prácticos adaptables a las necesidades de tu operación.
+    <p class="text-base sm:text-lg md:text-xl text-[var(--ink-faint)] max-w-[700px] mx-auto px-4">
+      En cada etapa del ciclo order to cash pueden existir fugas. Estas son acciones que otras empresas ya implementaron.
     </p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1200px] mx-auto">
-    {cases.map((c) => (
+    {casos.map((caso) => (
       <Card class="flex flex-col">
-        <h3 class="text-lg sm:text-xl font-semibold text-[#0B2A3C] mb-3">
-          {c.title}
+        <div class="flex items-baseline gap-3 mb-4">
+          <span class="font-display text-2xl font-bold text-[var(--accent-flat)] leading-none">
+            {caso.etapa}
+          </span>
+          <span class="eyebrow">{caso.fase}</span>
+        </div>
+        <h3 class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-3">
+          {caso.title}
         </h3>
-        <p class="text-[#6F7A83] leading-relaxed text-sm sm:text-base flex-1">
-          {c.text}
+        <p class="text-[var(--ink-faint)] leading-relaxed text-sm sm:text-base flex-1">
+          {caso.dolor}
         </p>
-        {c.badge ? (
-          <div class="flex items-center justify-between mt-4">
-            <Badge variant="success">{c.badge}</Badge>
-            <a
-              href={c.href}
-              class="inline-flex items-center gap-1 text-sm font-medium text-[#1F7F4A] hover:text-[#0B2A3C] transition-colors"
-            >
-              Leer insight <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        ) : (
-          <a
-            href={c.href}
-            class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#1F7F4A] hover:text-[#0B2A3C] transition-colors"
-          >
-            Leer insight <span aria-hidden="true">→</span>
-          </a>
-        )}
+        <div class="mt-5 pt-5 border-t border-[var(--rule)]">
+          <p class="font-display text-base sm:text-lg font-semibold text-[var(--accent)] leading-snug mb-1.5">
+            {caso.dato}
+          </p>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">
+            {caso.beneficio}
+          </p>
+        </div>
       </Card>
     ))}
   </div>
 
-  <div class="mt-12 md:mt-16 text-center">
+  <p class="mt-8 md:mt-10 text-center text-xs text-[var(--ink-faint)] max-w-[760px] mx-auto px-4 leading-relaxed">
+    Las cifras de cada tarjeta provienen de casos públicos documentados por UiPath, ScienceSoft y McKinsey
+    en múltiples industrias.
+  </p>
+
+  <div class="mt-10 md:mt-12 text-center">
     <LinkButton
       href={LINKS.contact}
       variant="primary"
@@ -93,5 +127,13 @@ const cases = [
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
     </LinkButton>
+    <p class="mt-5">
+      <a
+        href={LINKS.blog}
+        class="inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+      >
+        Ver otros insights en el blog <span aria-hidden="true">→</span>
+      </a>
+    </p>
   </div>
 </Section>
