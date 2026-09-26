@@ -1,0 +1,64 @@
+---
+import { getMiembro } from '../data/equipo'
+import { personaAnchor } from '../lib/schemas'
+import { LINKS } from '../lib/constants'
+
+interface Props {
+  /** Valor del frontmatter `author` del post. */
+  author: string
+}
+
+const { author } = Astro.props
+
+// Solo se acreditan autores del equipo: un nombre que no esté en la fuente única no
+// puede respaldarse con cargo ni perfil, y un pie de autoría sin credencial verificable
+// no aporta nada al E-E-A-T. En ese caso el bloque simplemente no se renderiza.
+const persona = getMiembro(author)
+const perfilUrl = persona ? `${LINKS.about}#${personaAnchor(persona.nombre)}` : undefined
+---
+{persona && (
+  <aside
+    class="mt-16 rounded-2xl border border-[var(--rule)] bg-[var(--panel)] p-6 sm:p-8"
+    aria-labelledby="autor-heading"
+  >
+    <p class="eyebrow mb-3">Sobre el autor</p>
+
+    <h2 id="autor-heading" class="font-display text-lg sm:text-xl font-bold text-[var(--z-primary)] leading-snug">
+      <a
+        href={perfilUrl}
+        class="hover:text-[var(--accent)] transition-colors"
+        title={`Ver el perfil de ${persona.nombre} en el equipo de zalantos`}
+      >
+        {persona.nombre}
+      </a>
+    </h2>
+    <p class="eyebrow !text-[var(--ink-faint)] mb-3">{persona.cargo}, zalantos</p>
+
+    <p class="text-sm text-[var(--ink-soft)] leading-relaxed">{persona.bioCorta}</p>
+
+    <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+      {persona.linkedin && (
+        <a
+          href={persona.linkedin}
+          target="_blank"
+          rel="author noopener noreferrer"
+          title={`Ver el perfil de ${persona.nombre} en LinkedIn`}
+          class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+          </svg>
+          LinkedIn
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      )}
+      <a
+        href={perfilUrl}
+        class="inline-flex items-center gap-1 text-sm font-medium text-[var(--ink-faint)] hover:text-[var(--z-primary)] transition-colors"
+        title="Conocer al equipo de zalantos"
+      >
+        Ver perfil completo <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </aside>
+)}

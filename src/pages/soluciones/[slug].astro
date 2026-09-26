@@ -135,6 +135,43 @@ const extraSchemas = [
     </Section>
 
     <Section variant="gray">
+      <div class="max-w-[1100px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-4">
+          {solucion.tabla.titulo}
+        </h2>
+        <p class="text-[var(--ink-faint)] text-base sm:text-lg leading-relaxed mb-8 max-w-[760px]">
+          Si reconoces el síntoma de una fila, ahí está el tramo que tu empresa puede recuperar.
+        </p>
+
+        <div class="z-table-wrap">
+          <table class="z-table">
+            <caption class="sr-only">{solucion.tabla.caption}</caption>
+            <thead>
+              <tr>
+                {solucion.tabla.columnas.map((col) => <th scope="col">{col}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {solucion.tabla.filas.map((fila) => (
+                <tr>
+                  {fila.map((celda, i) =>
+                    i === 0 ? <th scope="row">{celda}</th> : <td>{celda}</td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-6 text-sm text-[var(--ink-faint)] leading-relaxed max-w-[760px]">
+          Las cifras provienen de casos públicos documentados por UiPath, ScienceSoft y McKinsey
+          en múltiples industrias: no son resultados de proyectos de zalantos. Los días que
+          recupera tu empresa se miden sobre tu propio proceso en el Sprint&nbsp;0.
+        </p>
+      </div>
+    </Section>
+
+    <Section variant="gray">
       <div class="max-w-[820px] mx-auto">
         <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-8">
           Esto es para ti si

@@ -35,7 +35,7 @@ export default function ConsultorIAContent() {
     <div className="min-h-screen flex flex-col bg-[#F1F5F9]">
       <div className="h-16 md:h-20" />
 
-      <main className="flex-1 w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-10">
+      <div className="flex-1 w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-10">
         <div className="max-w-[1200px] mx-auto mb-6 md:mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-2 bg-[#2FBF71]/20 rounded-full w-fit mb-4">
             <svg
@@ -92,7 +92,7 @@ export default function ConsultorIAContent() {
             setIsReady(true)
           }}
         />
-      </main>
+      </div>
     </div>
   )
 }

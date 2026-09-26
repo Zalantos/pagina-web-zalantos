@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { breadcrumbSchema, pageSchema, SITE_URL } from '../lib/schemas'
 
 const title = 'Política de Privacidad | zalantos'
 const description =
@@ -55,8 +56,29 @@ const retentionPeriods = [
   'Logs de conversación (IA): Conservación entre 6 y 24 meses para auditoría y mejora continua, luego se anonimizan o eliminan.',
   'Logs de seguridad: Entre 3 y 12 meses para análisis forense según criticidad.',
 ]
+
+const migas = [
+  { name: 'Inicio', url: `${SITE_URL}/` },
+  { name: 'Política de Privacidad', url: canonical },
+]
+
+const schemas = [
+  pageSchema({
+    name: 'Política de Privacidad',
+    description,
+    url: canonical,
+    breadcrumb: migas,
+  }),
+  breadcrumbSchema(migas),
+]
 ---
-<BaseLayout title={title} description={description} canonical={canonical} type="website">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  type="website"
+  extraSchemas={schemas}
+>
   <main class="pt-16 md:pt-20">
     <div class="py-16 px-4 text-[#0B2A3C]">
       <div class="mx-auto max-w-3xl space-y-12 sm:px-6 lg:px-0">

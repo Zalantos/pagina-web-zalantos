@@ -3,42 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 import Section from '../../components/ui/Section.astro'
 import Card from '../../components/ui/Card.astro'
 import LinkButton from '../../components/ui/LinkButton.astro'
-import { SOLUCIONES } from '../../data/soluciones'
+import { SOLUCIONES, FAQ_ORDER_TO_CASH } from '../../data/soluciones'
 import { LINKS } from '../../lib/constants'
 import { breadcrumbSchema, solutionServiceSchema, faqSchema, SITE_URL } from '../../lib/schemas'
 
-const title = 'Automatización order to cash, etapa por etapa'
+const title = 'Automatizar facturación, cobranza y conciliación'
 const description =
-  'Automatizamos el ciclo order to cash completo: pedido, crédito, facturación, cobranza, disputas y conciliación, sobre los sistemas que ya usas.'
+  'Automatizamos facturación, cobranza, crédito y conciliación: las cuatro etapas del ciclo de venta a cobro (order to cash), sobre los sistemas que ya usas.'
 const canonical = `${SITE_URL}/soluciones/`
 
-const faq = [
-  {
-    pregunta: '¿Qué es el ciclo order to cash?',
-    respuesta:
-      'Es el recorrido completo que va desde que un cliente hace un pedido hasta que el dinero de esa venta está disponible en la caja de la empresa. Incluye el ingreso del pedido, la evaluación de crédito, la facturación, la cobranza, la gestión de disputas y la conciliación del pago. Se le llama order to cash o ciclo de venta a cobro.',
-  },
-  {
-    pregunta: '¿Por qué automatizar el ciclo completo y no solo una etapa?',
-    respuesta:
-      'Porque el tiempo total que tu dinero pasa en la calle es la suma de todas las etapas. Automatizar la cobranza sirve de poco si la factura se emitió tres semanas tarde, y facturar rápido sirve de poco si después nadie hace seguimiento. Las mejoras de una etapa se pierden en la siguiente si el proceso sigue cortado.',
-  },
-  {
-    pregunta: '¿Necesito cambiar mi ERP o comprar una plataforma nueva?',
-    respuesta:
-      'No. Trabajamos sobre los sistemas que la empresa ya tiene y conectamos las etapas que hoy están sueltas. Si tu problema puntual se resuelve mejor comprando un producto del mercado, te lo decimos en el diagnóstico en vez de venderte un desarrollo.',
-  },
-  {
-    pregunta: '¿Dónde interviene la inteligencia artificial?',
-    respuesta:
-      'En los puntos donde el proceso depende de interpretar información sin estructura o de anticipar un comportamiento: leer un pedido que llega en PDF, identificar a qué factura corresponde un pago sin referencia, estimar qué facturas se van a atrasar o reconstruir el origen de una disputa. La IA prepara y ordena; las decisiones con consecuencia comercial las sigue tomando una persona.',
-  },
-  {
-    pregunta: '¿Por dónde se parte?',
-    respuesta:
-      'Por el Sprint 0: una actividad sin costo para ti en la que mapeamos el proceso o actividad de tu ciclo actual, identificamos dónde se pierden los días y proponemos qué automatizar primero según impacto en caja. No requiere compromiso posterior.',
-  },
-]
+const faq = FAQ_ORDER_TO_CASH
 
 const extraSchemas = [
   solutionServiceSchema({
@@ -67,7 +41,7 @@ const extraSchemas = [
           Soluciones
         </span>
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
-          Automatización <span class="text-[var(--accent)]">order to cash</span>, etapa por etapa
+          Automatizar el <span class="text-[var(--accent)]">ciclo de venta a cobro</span>, etapa por etapa
         </h1>
         <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed mb-6">
           El ciclo de venta a cobro es el recorrido que va desde que el cliente pide hasta que
@@ -75,7 +49,11 @@ const extraSchemas = [
           que financias tú.
         </p>
         <p class="text-base sm:text-lg text-[var(--ink-faint)] leading-relaxed">
-          Trabajamos en cada actividad del ciclo order to cash. Integramos los sistemas que ya usas
+          Trabajamos en cada actividad del{' '}
+          <a
+            href="/glosario/order-to-cash/"
+            class="underline underline-offset-4 decoration-[var(--rule)] hover:text-[var(--accent)] transition-colors"
+          >ciclo order to cash</a>. Integramos los sistemas que ya usas
           y aplicamos inteligencia artificial en los puntos donde el proceso depende de
           interpretar información o de anticipar un comportamiento.
         </p>
@@ -132,6 +110,64 @@ const extraSchemas = [
         Las cifras provienen de casos públicos documentados por UiPath, ScienceSoft y McKinsey
         en múltiples industrias.
       </p>
+    </Section>
+
+    <Section variant="white" id="diagnostico-por-etapa">
+      <div class="max-w-[1100px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-4">
+          ¿En qué etapa se están perdiendo tus días?
+        </h2>
+        <p class="text-[var(--ink-faint)] text-base sm:text-lg leading-relaxed mb-8 max-w-[760px]">
+          Cada etapa del ciclo order to cash se delata por un síntoma distinto. Si reconoces el
+          síntoma de una fila, ahí está el tramo de días que tu empresa puede recuperar.
+        </p>
+
+        <div class="z-table-wrap">
+          <table class="z-table">
+            <caption class="sr-only">
+              Etapas del ciclo order to cash que automatiza zalantos, con el síntoma que delata
+              cada una y los días de ciclo que se recuperan al resolverla.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class="w-[24%]">Etapa</th>
+                <th scope="col" class="w-[44%]">Síntoma que la delata</th>
+                <th scope="col" class="w-[32%]">Días recuperables</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SOLUCIONES.map((sol) => (
+                <tr>
+                  <th scope="row">
+                    <span class="eyebrow block mb-1">{sol.etapa} · {sol.fase}</span>
+                    <a
+                      href={`/soluciones/${sol.slug}/`}
+                      class="text-[var(--z-primary)] hover:text-[var(--accent)] transition-colors underline underline-offset-4 decoration-[var(--rule)]"
+                    >
+                      {sol.seoTitle}
+                    </a>
+                  </th>
+                  <td>{sol.diagnostico.sintoma}</td>
+                  <td>
+                    <span class="font-display font-semibold text-[var(--accent)] block mb-1">
+                      {sol.diagnostico.dias}
+                    </span>
+                    <span class="block text-sm text-[var(--ink-faint)] leading-snug">
+                      {sol.diagnostico.base}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-6 text-sm text-[var(--ink-faint)] leading-relaxed max-w-[760px]">
+          Las cifras provienen de casos públicos documentados por UiPath, ScienceSoft y McKinsey
+          en múltiples industrias: no son resultados de proyectos de zalantos. Los días que
+          recupera tu empresa se miden sobre tu propio ciclo en el Sprint&nbsp;0.
+        </p>
+      </div>
     </Section>
 
     <Section variant="white">

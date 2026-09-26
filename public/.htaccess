@@ -24,6 +24,11 @@ RewriteRule ^(.*)$ /$1/index.html [L]
 # Página 404 (Astro emite /404.html en la raíz, incluso con build.format: 'directory')
 ErrorDocument 404 /404.html
 
+# Tipo MIME de las fuentes autohospedadas (Apache antiguo no lo trae de serie)
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+</IfModule>
+
 # Cache agresivo para assets estáticos
 <IfModule mod_headers.c>
   <FilesMatch "\.(ico|png|jpg|jpeg|gif|webp|svg|woff2|woff|ttf|css|js)$">

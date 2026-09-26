@@ -84,7 +84,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Space Grotesk', 'Space Grotesk Fallback', 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -93,7 +93,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Patrón de grilla sutil reutilizable */
@@ -168,7 +168,7 @@ body {
 
   /* Dirección digital v2.2: display font, eyebrow mono, gradientes oscuros */
   .font-display {
-    font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Space Grotesk', 'Space Grotesk Fallback', 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
   }
 
   .eyebrow {
@@ -190,7 +190,7 @@ body {
 
   /* Botones pill (Clover fill/texto Prussian para primario, outline para secundario) */
   .btn-primary {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Space Grotesk Fallback', 'Inter', 'Inter Fallback', sans-serif;
     @apply bg-[var(--accent-flat)] hover:bg-[rgba(47,191,113,0.9)] active:scale-100 text-[var(--z-primary)] font-semibold px-8 py-4 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[52px] min-w-[44px] touch-manipulation;
   }
 
@@ -200,7 +200,7 @@ body {
 
   /* Secundario pill (borde navy) - para usar sobre fondos claros */
   .btn-secondary {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Space Grotesk Fallback', 'Inter', 'Inter Fallback', sans-serif;
     @apply bg-transparent border-[1.5px] border-[rgba(11,42,60,0.25)] hover:border-[var(--z-primary)] text-[var(--z-primary)] font-semibold px-7 py-3.5 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] touch-manipulation;
   }
 
@@ -210,7 +210,7 @@ body {
 
   /* Outline pill (borde blanco) - para usar sobre fondos oscuros/gradiente */
   .btn-outline {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Space Grotesk Fallback', 'Inter', 'Inter Fallback', sans-serif;
     @apply border-[1.5px] border-white/35 text-white hover:bg-white/10 font-semibold px-7 py-3.5 rounded-[var(--radius-pill)] transition-all duration-200 inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] touch-manipulation;
   }
 
@@ -278,6 +278,94 @@ body {
 
   .blog-content a:hover {
     color: var(--z-primary);
+  }
+
+  .blog-content hr {
+    @apply my-10 border-0 border-t;
+    border-color: var(--rule);
+  }
+
+  /* Nota de revisión al pie de un artículo actualizado: deja por escrito QUÉ cambió,
+     de modo que el `updatedDate` sea verificable por el lector y no solo una fecha
+     declarada en el <head>. Se usa junto con el campo updatedDate del frontmatter. */
+  .blog-content .nota-revision {
+    @apply text-sm leading-relaxed rounded-xl p-5 border;
+    color: var(--ink-soft);
+    background: var(--ground);
+    border-color: var(--rule);
+  }
+
+  /* ── Tablas de comparación ────────────────────────────────────────────────
+     Los motores generativos extraen tablas con prioridad sobre el texto corrido:
+     la relación fila–columna ya es la estructura pregunta–respuesta que buscan.
+     El <caption> (sr-only) y los <th scope> no son decoración: son lo que permite
+     leer una celda suelta sin perder a qué fila y columna pertenece. */
+  .z-table-wrap {
+    @apply -mx-4 sm:mx-0 overflow-x-auto;
+    scrollbar-width: thin;
+  }
+
+  .z-table {
+    @apply w-full min-w-[640px] border-collapse text-left text-sm sm:text-base;
+  }
+
+  .z-table thead th {
+    @apply align-bottom px-4 py-3 font-semibold text-xs sm:text-sm uppercase tracking-wider border-b-2;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    color: var(--ink-faint);
+    border-color: var(--z-primary);
+    letter-spacing: 0.08em;
+  }
+
+  .z-table tbody th,
+  .z-table tbody td {
+    @apply align-top px-4 py-4 leading-relaxed border-b;
+    border-color: var(--rule);
+    color: var(--ink-soft);
+  }
+
+  .z-table tbody th {
+    @apply font-semibold;
+    color: var(--z-primary);
+  }
+
+  .z-table tbody tr:last-child th,
+  .z-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .z-table tbody tr:hover th,
+  .z-table tbody tr:hover td {
+    background: rgba(11, 42, 60, 0.02);
+  }
+
+  /* Veredicto binario de la tabla «cuándo sí IA / cuándo no»: el color refuerza,
+     pero el texto («Sí» / «No») basta por sí solo — no hay información solo en color. */
+  .z-verdict {
+    @apply inline-flex items-center justify-center rounded-[var(--radius-pill)] px-3 py-1 text-sm font-semibold whitespace-nowrap;
+  }
+
+  .z-verdict-si {
+    background: rgba(47, 191, 113, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(47, 191, 113, 0.35);
+  }
+
+  .z-verdict-no {
+    background: rgba(11, 42, 60, 0.05);
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+  }
+
+  /* ── Bloque de respuesta directa ──────────────────────────────────────────
+     Párrafo autocontenido de 40–60 palabras que responde la pregunta del título
+     antes del primer H2. Es el fragmento que un motor generativo cita: tiene que
+     entenderse sin el resto del artículo y nombrar a la empresa. */
+  .respuesta-corta {
+    @apply mb-10 rounded-[var(--radius-lg)] border-l-4 px-5 py-5 sm:px-6 sm:py-6 text-base sm:text-lg leading-relaxed font-medium;
+    color: var(--z-primary);
+    background: rgba(47, 191, 113, 0.06);
+    border-color: var(--accent-flat);
   }
 
   .animate-fade-in {

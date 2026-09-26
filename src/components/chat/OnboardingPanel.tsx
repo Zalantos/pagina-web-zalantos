@@ -20,7 +20,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
       <div className="flex-1 overflow-y-auto space-y-6 pr-1">
         {/* Cómo funciona */}
         <div className="bg-white rounded-2xl border border-[#D7DFE6] shadow-sm p-6">
-          <h3 className="text-lg font-bold text-[#0B2A3C] mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-[#0B2A3C] mb-4 flex items-center gap-2">
           <svg 
             className="w-5 h-5 text-[#2FBF71]" 
             fill="none" 
@@ -35,7 +35,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
             />
           </svg>
           Cómo funciona
-        </h3>
+        </h2>
         <ul className="space-y-3">
           <li className="flex items-start gap-3">
             <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2FBF71] flex items-center justify-center text-[#0B2A3C] text-xs font-bold">
@@ -66,7 +66,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
 
         {/* Ejemplos rápidos */}
         <div className="bg-white rounded-2xl border border-[#D7DFE6] shadow-sm p-6">
-          <h3 className="text-lg font-bold text-[#0B2A3C] mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-[#0B2A3C] mb-4 flex items-center gap-2">
           <svg 
             className="w-5 h-5 text-[#2FBF71]" 
             fill="none" 
@@ -81,7 +81,7 @@ export default function OnboardingPanel({ onExampleClick }: OnboardingPanelProps
             />
           </svg>
           Ejemplos rápidos
-        </h3>
+        </h2>
         <p className="text-sm text-[#6F7A83] mb-3">
           Haz clic en cualquier pregunta para comenzar:
         </p>

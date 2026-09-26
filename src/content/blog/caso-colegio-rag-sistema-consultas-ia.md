@@ -7,8 +7,9 @@ author: "Tomás Rodríguez"
 category: "Casos de Éxito"
 pilar: "ia"
 excerpt: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo de secretaría respondía las mismas 40 preguntas cada semana. Implementamos un sistema RAG que transformó esa carga en una consulta instantánea."
+respuestaCorta: "Un colegio de 1.200 alumnos redujo en 70% su tiempo de respuesta a apoderados con un sistema RAG que zalantos implementó sobre sus propios reglamentos y circulares. La secretaría pasó de responder 200 consultas repetidas por semana a revisar solo las excepciones, y cada respuesta cita el documento oficial del que salió."
 ---
-<h2>El problema: 40 preguntas, 200 veces por semana</h2>
+<h2>¿Por qué la secretaría de un colegio responde las mismas 40 preguntas cada semana?</h2>
 <p>
   El equipo de secretaría de un colegio con 1.200 alumnos dedicaba más del 60% de su jornada
   a responder las mismas preguntas de siempre: fechas de matrícula, calendario académico,
@@ -20,7 +21,7 @@ excerpt: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo
   El problema no era de personas; era de arquitectura.
 </p>
 
-<h2>El diagnóstico: información valiosa, dispersa e inaccesible</h2>
+<h2>¿Qué encontró el diagnóstico en cinco días de levantamiento?</h2>
 <p>
   Hicimos un levantamiento rápido del Sprint 0. En 5 días encontramos:
 </p>
@@ -35,7 +36,7 @@ excerpt: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo
   para la persona correcta, en el formato correcto.
 </p>
 
-<h2>La solución: un sistema RAG conectado a sus documentos reales</h2>
+<h2>¿Cómo funciona un sistema RAG sobre los documentos reales del colegio?</h2>
 <p>
   Diseñamos e implementamos un asistente conversacional basado en <strong>Retrieval-Augmented
   Generation (RAG)</strong>. En términos simples: un modelo de lenguaje que no "alucina"
@@ -64,7 +65,7 @@ excerpt: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo
   </li>
 </ol>
 
-<h2>Los resultados a los 30 días</h2>
+<h2>¿Qué resultados entregó el sistema a los 30 días?</h2>
 <p>
   Los números fueron claros e inmediatos:
 </p>
@@ -80,7 +81,7 @@ excerpt: "Un colegio con 1.200 alumnos enfrentaba un caos operacional: el equipo
   pero es el impacto real.
 </p>
 
-<h2>Lo que aprendimos (y que aplica a tu organización)</h2>
+<h2>¿Qué de este caso aplica a otra organización?</h2>
 <p>
   Este caso no es exclusivo de colegios. Cualquier organización con información dispersa,
   equipos que responden las mismas preguntas y una brecha entre el conocimiento institucional

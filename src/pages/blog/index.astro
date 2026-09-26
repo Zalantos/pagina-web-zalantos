@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { SITE_URL } from '../../lib/schemas'
+import { blogListSchema, breadcrumbSchema, pageSchema, SITE_URL } from '../../lib/schemas'
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -14,24 +14,63 @@ function normalize(text: string): string {
 }
 
 function formatDate(date: Date): string {
+  // timeZone UTC es obligatorio: `pubDate: 2026-09-25` del frontmatter se parsea como
+  // medianoche UTC y, al formatearlo en la zona local de Chile (UTC-3/-4), retrocede al
+  // día anterior. Sin esto el texto visible contradice al <time datetime> y al JSON-LD.
   return date.toLocaleDateString('es-CL', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   })
 }
+
+const title = 'Blog de automatización e IA para empresas'
+const description =
+  'Artículos y casos sobre automatización del ciclo de venta a cobro, integración de sistemas e IA aplicada en empresas chilenas. Con criterio, sin humo.'
+const canonical = `${SITE_URL}/blog/`
+
+const migas = [
+  { name: 'Inicio', url: `${SITE_URL}/` },
+  { name: 'Blog', url: canonical },
+]
+
+// El índice declara su contenido: CollectionPage + Blog con cada artículo enumerado
+// y su autor apuntando al @id de la persona. Sin esto la página era invisible para
+// el grafo de entidades aunque cada post sí tuviera su Article.
+const schemas = [
+  pageSchema({
+    name: title,
+    description,
+    url: canonical,
+    type: 'CollectionPage',
+    breadcrumb: migas,
+  }),
+  blogListSchema(
+    posts.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      slug: post.slug,
+      pubDate: post.data.pubDate,
+      updatedDate: post.data.updatedDate,
+      author: post.data.author,
+    })),
+  ),
+  breadcrumbSchema(migas),
+]
 ---
 <BaseLayout
-  title="Blog de automatización e IA para empresas"
-  description="Artículos y casos sobre automatización de procesos e inteligencia artificial para empresas."
-  canonical={`${SITE_URL}/blog/`}
+  title={title}
+  description={description}
+  canonical={canonical}
+  extraSchemas={schemas}
 >
   <main class="flex-grow w-full pt-16 md:pt-20">
     <section class="w-full relative pt-8 md:pt-12 pb-8 bg-white">
       <div class="section-inner">
         <div class="max-w-2xl">
           <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4 text-[#0B2A3C]">
-            Blog
+            Blog de automatización e IA para empresas
           </h1>
           <p class="text-lg text-[#6F7A83]">
             Artículos y casos sobre automatización de procesos e inteligencia artificial para empresas.
@@ -101,7 +140,18 @@ function formatDate(date: Date): string {
                     {post.data.title}
                   </h2>
                   <p class="text-xs mb-4 text-[#6F7A83]">
-                    {formatDate(post.data.pubDate)}
+                    <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+                    {post.data.updatedDate && (
+                      <>
+                        {' · '}
+                        <span class="text-[#1F7F4A] font-medium">
+                          Actualizado el{' '}
+                          <time datetime={post.data.updatedDate.toISOString()}>
+                            {formatDate(post.data.updatedDate)}
+                          </time>
+                        </span>
+                      </>
+                    )}
                   </p>
                   <p class="text-sm leading-relaxed flex-grow text-[#6F7A83]">
                     {post.data.excerpt}

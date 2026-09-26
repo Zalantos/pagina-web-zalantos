@@ -1,20 +1,16 @@
 ---
 title: "El motivo oculto por el que tu proyecto de IA está destinado al fracaso"
 seoTitle: "Por qué fallan los proyectos de IA: los datos"
-description: "El 60% de los proyectos de IA fracasará, y la causa no es la tecnología sino los datos. Cómo preparar tu organización a tiempo."
+description: "Gartner proyecta que se abandonará el 60% de los proyectos de IA sin datos AI-Ready. Por qué la causa son los datos y cómo anticiparse."
 pubDate: 2026-06-07
+updatedDate: 2026-09-25
 author: "Tomás Rodríguez"
 category: "Insights"
 pilar: "ia"
-excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la tecnología: son los datos. Exploramos por qué esta realidad es ineludible y cómo preparar tu organización antes de que sea demasiado tarde."
+excerpt: "La razón por la que se abandonará el 60% de los proyectos de IA sin datos AI-Ready no es la tecnología: son los datos. Exploramos por qué esta realidad es ineludible y cómo preparar tu organización antes de que sea demasiado tarde."
+respuestaCorta: "Los proyectos de inteligencia artificial fracasan por los datos, no por la tecnología: Gartner proyecta que se abandonará el 60% de los que no cuentan con datos AI-Ready. zalantos parte siempre por auditar la calidad, la trazabilidad y el gobierno de los datos, porque un modelo sobre información desordenada amplifica el desorden."
 ---
-<p>
-  <strong>La razón por la que el 60% de los proyectos de IA fracasará no es la tecnología: son los datos.</strong>
-  En este artículo, exploramos por qué esta realidad es ineludible y cómo preparar tu organización
-  antes de que sea demasiado tarde.
-</p>
-
-<h2>El Patrón que se Repite</h2>
+<h2>¿Por qué fracasan los proyectos de inteligencia artificial?</h2>
 <img
   src="/images/blog-datos.webp"
   alt="Datos AI-Ready"
@@ -32,9 +28,17 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
   los obstáculos. Fragmentación. Inconsistencias. Datos desactualizados.
 </p>
 <p>
-  Gartner proyecta que las organizaciones abandonarán el 60% de los proyectos de IA que no cuenten con
-  datos AI-Ready. Además, 63% de las organizaciones admite que no tiene —o no está segura de tener—
-  las prácticas de gestión de datos correctas para soportar IA.
+  En febrero de 2025, <a href="https://www.gartner.com/en/newsroom/press-releases/2025-02-26-lack-of-ai-ready-data-puts-ai-projects-at-risk" target="_blank" rel="noopener noreferrer">Gartner
+  proyectó</a> que hasta 2026 las organizaciones abandonarían el 60% de los proyectos de IA que no
+  estén respaldados por datos AI-Ready. Conviene leer bien la cifra: no dice que fracasará el 60%
+  de los proyectos de IA, sino el 60% de aquellos que se levantan sobre datos que no están preparados.
+  Esa es, precisamente, la parte que sí está bajo tu control.
+</p>
+<p>
+  La misma publicación cita una encuesta a 248 líderes de gestión de datos: el 63% de las
+  organizaciones admite que no tiene —o no está segura de tener— las prácticas de gestión de datos
+  correctas para soportar IA. Dicho de otro modo, dos de cada tres empresas no puede afirmar que
+  está fuera de ese 60%.
 </p>
 <p>
   No es casualidad. Es porque nadie verificó inicialmente la pregunta fundamental:
@@ -42,7 +46,7 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
 </p>
 <p>Esa pregunta no es técnica. Es arquitectónica.</p>
 
-<h2>Qué son Datos AI-Ready</h2>
+<h2>¿Qué son los datos AI-Ready?</h2>
 <p>
   Los datos AI-Ready no son simplemente "datos buenos". Son datos diseñados específicamente para alimentar
   modelos de IA de forma confiable y escalable. No es un atributo que tengan naturalmente: es un estado
@@ -111,7 +115,7 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
   Es la diferencia entre datos que viven en silos desconectados y datos que forman un ecosistema coherente.
 </p>
 
-<h2>Nuestro Enfoque</h2>
+<h2>¿Cómo se prepara una organización antes de aplicar IA?</h2>
 <p>
   La mayoría de vendedores de automatización con IA buscan vender una herramienta. Nosotros buscamos
   subsanar el dolor. No comenzamos asumiendo que necesitas IA. Iniciamos diagnosticando: ¿realmente tus
@@ -142,7 +146,7 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
 </p>
 <p>Eso es exactamente lo que proporciona el Sprint 0.</p>
 
-<h2>El Sprint 0: Tu Punto de Partida</h2>
+<h2>¿Qué es el Sprint 0 y qué entrega?</h2>
 <p>Si reconoces estos síntomas en tu organización:</p>
 <ul>
   <li>Datos fragmentados en múltiples sistemas desconectados</li>
@@ -156,3 +160,12 @@ excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la
   <strong>Sin costo. Sin compromisos.</strong>
 </p>
 <p>El resultado: claridad sobre cómo alimentar tu próxima iniciativa.</p>
+
+<hr />
+<p class="nota-revision">
+  <strong>Nota de revisión — 25 de septiembre de 2026.</strong> Se agregó el enlace a la
+  <a href="https://www.gartner.com/en/newsroom/press-releases/2025-02-26-lack-of-ai-ready-data-puts-ai-projects-at-risk" target="_blank" rel="noopener noreferrer">publicación original de Gartner</a>
+  (26 de febrero de 2025) y se precisó el alcance de la cifra del 60%: corresponde a los proyectos
+  de IA no respaldados por datos AI-Ready, no al total de proyectos de IA. Se identificó además la
+  encuesta detrás del 63% (248 líderes de gestión de datos).
+</p>

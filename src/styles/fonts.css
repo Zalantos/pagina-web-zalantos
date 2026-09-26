@@ -1,0 +1,77 @@
+/*
+ * Tipografías autohospedadas (subset latin, woff2).
+ *
+ * Sustituyen a Google Fonts: elimina 2 conexiones a terceros (fonts.googleapis.com
+ * y fonts.gstatic.com), el FOUT del truco media="print" y la transferencia de IP
+ * del visitante a Google (ver manifests/PII.md).
+ *
+ * Inter y Space Grotesk son fuentes variables: un único archivo cubre todos los
+ * pesos usados (400-700 y 500-700). Total: 84 KB frente a ~210 KB en estáticas.
+ *
+ * Los archivos llevan la versión de Google en el nombre (v20, v22) porque
+ * .htaccess sirve woff2 con Cache-Control immutable a 1 año: al actualizar una
+ * fuente cambia el nombre y se invalida la caché sola.
+ */
+
+/* ---------- Inter (cuerpo de texto) ---------- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Space Grotesk (titulares y botones) ---------- */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-v22-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- IBM Plex Mono (eyebrows) ---------- */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-v20-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+ * Fallbacks con métricas ajustadas (método capsize): Arial se reescala para que
+ * su altura de x y sus líneas base coincidan con la webfont, de modo que el
+ * intercambio de font-display: swap no desplace el texto (CLS ~ 0).
+ *
+ * Valores calculados con fontTools sobre los propios woff2:
+ *   size-adjust = xHeight(webfont) / xHeight(Arial)
+ *   ascent/descent-override = métrica typo de la webfont / size-adjust
+ */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 105.27%;
+  ascent-override: 92.02%;
+  descent-override: 22.91%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 93.72%;
+  ascent-override: 104.99%;
+  descent-override: 31.16%;
+  line-gap-override: 0%;
+}

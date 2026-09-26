@@ -1,6 +1,6 @@
 ---
 import LogoLockup from './LogoLockup.astro'
-import { LINKS } from '../lib/constants'
+import { LINKS, NAV_ITEMS } from '../lib/constants'
 
 interface Props {
   extraLink?: { href: string; label: string }
@@ -9,13 +9,37 @@ interface Props {
 const { extraLink } = Astro.props
 
 const pathname = Astro.url.pathname
-const isHome = pathname === '/' || pathname === ''
-const isBlog = pathname.startsWith('/blog')
-const isSolutions = pathname.startsWith('/soluciones')
-const isAi = pathname.startsWith('/inteligencia-artificial-empresarial')
-const isContact = pathname.startsWith('/contacto')
-const isConsultor = pathname.startsWith('/consultor-ia')
-const isHomeActive = isHome
+
+function isActive(match: string): boolean {
+  // El inicio no puede compararse por prefijo: '/' calzaría con todas las rutas.
+  if (match === '/') return pathname === '/' || pathname === ''
+  return pathname.startsWith(match)
+}
+
+// Bajo lg el header oculta las etiquetas y deja solo el icono, así que cada sección
+// necesita uno. Los paths viven aquí y no en NAV_ITEMS: son presentación del header.
+const ICON_PATHS: Record<string, string> = {
+  [LINKS.home]:
+    'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
+  [LINKS.solutions]:
+    'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z',
+  [LINKS.ai]:
+    'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+  [LINKS.about]:
+    'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+  [LINKS.blog]:
+    'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+  [LINKS.aiConsultant]:
+    'M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l1.3-3.9C3.5 14.9 3 13.5 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+}
+
+const navLinks = NAV_ITEMS.filter((item) => !item.cta)
+const contactItem = NAV_ITEMS.find((item) => item.cta)
+
+const linkBase =
+  'text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2'
+const linkActive = 'text-[var(--z-primary)] border-[var(--accent-flat)]'
+const linkIdle = 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'
 ---
 <nav
   class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--z-border)]"
@@ -35,95 +59,25 @@ const isHomeActive = isHome
 
       <div class="flex gap-1.5 sm:gap-2 lg:gap-8 items-center flex-shrink-0">
         <div class="flex gap-1 sm:gap-2 lg:gap-8 flex-shrink-0">
-          <a
-            href={LINKS.home}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isHomeActive ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
-            aria-current={isHomeActive ? 'page' : undefined}
-            aria-label="Inicio"
-          >
-            <svg
-              class="w-5 h-5 block lg:hidden flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
+          {navLinks.map((item) => (
+            <a
+              href={item.href}
+              class={`${linkBase} ${isActive(item.match) ? linkActive : linkIdle}`}
+              aria-current={isActive(item.match) ? 'page' : undefined}
+              aria-label={item.label}
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            <span class="hidden lg:block">Inicio</span>
-          </a>
-
-          <a
-            href={LINKS.solutions}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isSolutions ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
-            aria-current={isSolutions ? 'page' : undefined}
-            aria-label="Soluciones"
-          >
-            <svg
-              class="w-5 h-5 block lg:hidden flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-            </svg>
-            <span class="hidden lg:block">Soluciones</span>
-          </a>
-
-          <a
-            href={LINKS.ai}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isAi ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
-            aria-current={isAi ? 'page' : undefined}
-            aria-label="IA empresarial"
-          >
-            <svg
-              class="w-5 h-5 block lg:hidden flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-            </svg>
-            <span class="hidden lg:block whitespace-nowrap">IA empresarial</span>
-          </a>
-
-          <a
-            href={LINKS.blog}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isBlog ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
-            aria-current={isBlog ? 'page' : undefined}
-            aria-label="Blog"
-          >
-            <svg
-              class="w-5 h-5 block lg:hidden flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span class="hidden lg:block">Blog</span>
-          </a>
-
-          <a
-            href={LINKS.aiConsultant}
-            class={`text-sm font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded px-1.5 sm:px-2 lg:px-0 flex-shrink-0 border-b-2 ${isConsultor ? 'text-[var(--z-primary)] border-[var(--accent-flat)]' : 'text-[rgba(11,42,60,0.6)] hover:text-[var(--z-primary)] border-transparent'}`}
-            aria-current={isConsultor ? 'page' : undefined}
-            aria-label="Consultor IA"
-          >
-            <svg
-              class="w-5 h-5 block lg:hidden flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l1.3-3.9C3.5 14.9 3 13.5 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-            <span class="hidden lg:block">Consultor IA</span>
-          </a>
+              <svg
+                class="w-5 h-5 block lg:hidden flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICON_PATHS[item.href]} />
+              </svg>
+              <span class="hidden lg:block whitespace-nowrap">{item.label}</span>
+            </a>
+          ))}
         </div>
 
         {extraLink && (
@@ -138,39 +92,41 @@ const isHomeActive = isHome
           </div>
         )}
 
-        <div class="flex flex-wrap items-center gap-1.5 sm:gap-3 justify-end w-full sm:w-auto">
-          <a
-            href={LINKS.contact}
-            class="btn-primary hidden sm:inline-flex text-xs sm:text-sm px-3 sm:px-4 lg:px-6 py-2.5 whitespace-nowrap"
-            aria-current={isContact ? 'page' : undefined}
-            aria-label="Ir a página de contacto"
-          >
-            Contacto
-          </a>
-
-          <a
-            href={LINKS.contact}
-            class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[var(--accent-flat)] shadow-lg items-center justify-center text-[var(--z-primary)] border border-[var(--z-border)]"
-            aria-current={isContact ? 'page' : undefined}
-            aria-label="Ir a página de contacto"
-          >
-            <svg
-              class="w-5 h-5"
-              viewBox="0 0 64 64"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              role="img"
+        {contactItem && (
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-3 justify-end w-full sm:w-auto">
+            <a
+              href={contactItem.href}
+              class="btn-primary hidden sm:inline-flex text-xs sm:text-sm px-3 sm:px-4 lg:px-6 py-2.5 whitespace-nowrap"
+              aria-current={isActive(contactItem.match) ? 'page' : undefined}
+              aria-label="Ir a página de contacto"
             >
-              <circle cx="32" cy="32" r="28" />
-              <path d="M16 24h32c2.2 0 4 1.8 4 4v14c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V28c0-2.2 1.8-4 4-4z" />
-              <path d="M12 26l20 12 20-12" />
-            </svg>
-          </a>
-        </div>
+              {contactItem.label}
+            </a>
+
+            <a
+              href={contactItem.href}
+              class="sm:hidden inline-flex w-11 h-11 rounded-full bg-[var(--accent-flat)] shadow-lg items-center justify-center text-[var(--z-primary)] border border-[var(--z-border)]"
+              aria-current={isActive(contactItem.match) ? 'page' : undefined}
+              aria-label="Ir a página de contacto"
+            >
+              <svg
+                class="w-5 h-5"
+                viewBox="0 0 64 64"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                role="img"
+              >
+                <circle cx="32" cy="32" r="28" />
+                <path d="M16 24h32c2.2 0 4 1.8 4 4v14c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V28c0-2.2 1.8-4 4-4z" />
+                <path d="M12 26l20 12 20-12" />
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   </div>

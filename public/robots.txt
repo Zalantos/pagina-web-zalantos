@@ -1,6 +1,25 @@
+# zalantos — https://zalantos.com
+# El sitio es 100% indexable. Los agentes se declaran uno por uno de forma
+# explícita: User-agent: * ya los cubre, pero dejar cada token por escrito evita
+# que un crawler con parser estricto caiga en una regla heredada.
+# Nota: Google-Extended y Applebot-Extended NO controlan el rastreo (eso lo hacen
+# Googlebot y Applebot); solo declaran el permiso de uso del contenido para
+# entrenamiento y respuestas generativas. Aquí se declaran en Allow a propósito.
+
 User-agent: *
 Allow: /
 
+# --- Buscadores tradicionales ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# --- OpenAI ---
 User-agent: GPTBot
 Allow: /
 
@@ -10,28 +29,69 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: Claude-Web
+# --- Anthropic ---
+User-agent: ClaudeBot
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-Web
 Allow: /
 
 User-agent: Anthropic-AI
 Allow: /
 
+# --- Perplexity ---
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# --- Google (uso generativo y Vertex AI) ---
 User-agent: Google-Extended
 Allow: /
 
-User-agent: Googlebot
+User-agent: Google-CloudVertexBot
 Allow: /
 
-User-agent: Bingbot
+# --- Apple ---
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Meta ---
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# --- Amazon ---
+User-agent: Amazonbot
+Allow: /
+
+# --- Mistral ---
+User-agent: MistralAI-User
+Allow: /
+
+# --- DuckDuckGo (asistente) ---
+User-agent: DuckAssistBot
+Allow: /
+
+# --- Common Crawl (corpus de entrenamiento de terceros) ---
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://zalantos.com/sitemap.xml
 
 # Resumen del sitio para agentes y modelos de lenguaje
 # https://zalantos.com/llms.txt
+# Texto completo del sitio en un solo archivo
+# https://zalantos.com/llms-full.txt

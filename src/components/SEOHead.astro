@@ -44,7 +44,10 @@ const absoluteOgImage = ogImageResuelta.startsWith('http')
   name="robots"
   content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}
 />
-<link rel="canonical" href={canonical} />
+{/* Una página noindex no declara canonical: son señales contradictorias para el
+    rastreador (no indexes esto / esta es la versión a indexar). El canonical se usa igual
+    para resolver og:url y la imagen OG. */}
+{!noindex && <link rel="canonical" href={canonical} />}
 
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />

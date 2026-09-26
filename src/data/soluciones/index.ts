@@ -8,6 +8,20 @@ export interface PreguntaFrecuente {
   respuesta: string
 }
 
+/**
+ * Tabla de datos de una página. La usan las soluciones y el glosario: los motores
+ * generativos extraen tablas con prioridad sobre la prosa, así que cada bloque que
+ * se pueda expresar como filas se expresa como filas.
+ * `filas[i][0]` se renderiza como <th scope="row">.
+ */
+export interface TablaDatos {
+  titulo: string
+  /** <caption> accesible: describe qué contiene la tabla, no la repite. */
+  caption: string
+  columnas: string[]
+  filas: string[][]
+}
+
 export interface Solucion {
   slug: string
   etapa: string
@@ -24,6 +38,18 @@ export interface Solucion {
   queHacemos: { titulo: string; detalle: string }[]
   ia: string
   impacto: { dato: string; detalle: string }
+  /**
+   * Diagnóstico de la etapa en formato tabla: el síntoma por el que se reconoce
+   * desde fuera y los días de ciclo que se recuperan al resolverla. `base` deja
+   * por escrito de dónde sale la cifra — ninguna es un resultado de zalantos.
+   */
+  diagnostico: { sintoma: string; dias: string; base: string }
+  /**
+   * Desglose síntoma → qué cambia → en cuánto. Solo la fila que corresponde a la
+   * cifra de `impacto` o `diagnostico` lleva número: el resto expresa la magnitud en
+   * términos del proceso. Ninguna cifra es un resultado de zalantos (ver `caption`).
+   */
+  tabla: TablaDatos
   paraTi: string[]
   faq: PreguntaFrecuente[]
   relacionadas: string[]
@@ -73,6 +99,41 @@ export const SOLUCIONES: Solucion[] = [
       dato: 'Digitación: de 10 a 3 minutos por pedido',
       detalle:
         'El pedido queda facturable el mismo día que llega, no cuando alguien alcanza a digitarlo. Y si además dejas de facturar por lote, cada semana que adelantas la emisión es una semana menos de tu dinero financiando al cliente.',
+    },
+    diagnostico: {
+      sintoma:
+        'El pedido llega en PDF o correo y alguien lo teclea en el ERP; la factura se emite en el cierre de mes y no cuando se cumple el hito comercial.',
+      dias: 'Hasta 15 días',
+      base:
+        'Diferencia aritmética entre emitir la factura el día del hito y esperar al cierre mensual: en promedio, medio mes de facturación.',
+    },
+    tabla: {
+      titulo: 'Qué cambia en la etapa de pedido y facturación',
+      caption:
+        'Síntomas de la etapa de pedido y facturación, qué cambia al automatizar cada uno y la magnitud del cambio. Las cifras provienen de casos públicos de terceros, no de proyectos de zalantos.',
+      columnas: ['Síntoma que reconoces', 'Qué cambia al automatizarlo', 'En cuánto'],
+      filas: [
+        [
+          'Los pedidos llegan en PDF, correo o planilla y alguien los transcribe al ERP',
+          'El pedido se lee en el formato en que llega y se carga validado contra maestro de productos, lista de precios y condiciones vigentes',
+          'De 10 a 3 minutos de digitación por pedido',
+        ],
+        [
+          'Facturas por lote en el cierre de mes',
+          'El disparador pasa a ser el hito comercial —despacho, conformidad de recepción, hito— y no la fecha de cierre',
+          'Hasta 15 días de ciclo: medio mes de facturación',
+        ],
+        [
+          'Tu ERP funciona pero no conversa con el resto de los sistemas',
+          'Se integra por la interfaz que el ERP exponga, sin reemplazarlo, con trazabilidad de qué llegó y qué se cargó',
+          'Sin cambiar de ERP ni sumar una plataforma',
+        ],
+        [
+          'Las notas de crédito por errores de digitación son un tema recurrente',
+          'La validación ocurre antes de emitir, y el DTE rechazado se reintenta con control de folios y certificados',
+          'El error se ve antes del DTE, no después',
+        ],
+      ],
     },
     paraTi: [
       'Recibes pedidos en formatos que no controlas y alguien los transcribe',
@@ -153,6 +214,41 @@ export const SOLUCIONES: Solucion[] = [
       detalle:
         'Si hoy cobras en 60 días, pasas a 42. Ese diferencial es capital de trabajo que dejas de financiar: sobre una cartera de mil millones, son cerca de 300 millones que vuelven a tu caja de forma permanente.',
     },
+    diagnostico: {
+      sintoma:
+        'La primera gestión ocurre cuando la factura ya venció, y la cartera se prioriza por monto o antigüedad porque es lo único que se puede calcular rápido.',
+      dias: '18 días sobre un ciclo de 60',
+      base:
+        'Reducción del 30% del ciclo de cobro reportada en casos públicos de UiPath, ScienceSoft y McKinsey.',
+    },
+    tabla: {
+      titulo: 'Qué cambia en la etapa de cobranza',
+      caption:
+        'Síntomas de la etapa de cobranza y disputas, qué cambia al automatizar cada uno y la magnitud del cambio. Las cifras provienen de casos públicos de terceros, no de proyectos de zalantos.',
+      columnas: ['Síntoma que reconoces', 'Qué cambia al automatizarlo', 'En cuánto'],
+      filas: [
+        [
+          'La primera gestión ocurre cuando la factura ya venció',
+          'El seguimiento arranca antes del vencimiento, sobre la cartera que todavía está en plazo',
+          '18 días sobre un ciclo de 60 (−30%)',
+        ],
+        [
+          'Priorizas la cartera por monto o antigüedad porque es lo único calculable rápido',
+          'La cartera se ordena por riesgo de no pago y comportamiento del cliente, no por tamaño de la factura',
+          'La gestión del día queda definida sin reunión',
+        ],
+        [
+          'Cada disputa obliga a reconstruir el caso revisando correos y documentos sueltos',
+          'El expediente queda consolidado: factura, respaldo de entrega, comunicaciones y estado del caso',
+          'El caso está armado cuando se abre',
+        ],
+        [
+          'No sabes con certeza qué compromisos de pago hay vigentes ni quién los tomó',
+          'Cada gestión y cada compromiso quedan en un registro único, con responsable y fecha',
+          'Compromisos visibles el mismo día',
+        ],
+      ],
+    },
     paraTi: [
       'La gestión de cobranza parte cuando la factura ya venció',
       'Priorizas la cartera por monto o antigüedad porque es lo único que puedes calcular rápido',
@@ -232,6 +328,41 @@ export const SOLUCIONES: Solucion[] = [
       detalle:
         'El cliente nuevo queda operativo en 24 horas. Es un mes menos de espera antes de su primera factura, y un mes menos de riesgo de que reconsidere la compra.',
     },
+    diagnostico: {
+      sintoma:
+        'El alta de un cliente nuevo recorre varias manos, nadie sabe en qué paso está y la venta ya cerrada espera por el proceso interno.',
+      dias: '29 días',
+      base:
+        'Alta de cliente de 30 días a 1 día reportada en casos públicos de UiPath, ScienceSoft y McKinsey.',
+    },
+    tabla: {
+      titulo: 'Qué cambia en la etapa de crédito y alta de clientes',
+      caption:
+        'Síntomas de la etapa de evaluación de crédito y alta de clientes, qué cambia al automatizar cada uno y la magnitud del cambio. Las cifras provienen de casos públicos de terceros, no de proyectos de zalantos.',
+      columnas: ['Síntoma que reconoces', 'Qué cambia al automatizarlo', 'En cuánto'],
+      filas: [
+        [
+          'El alta de un cliente nuevo demora semanas y nadie sabe en qué paso está',
+          'La solicitud entra estructurada desde el origen y cada paso queda con estado visible',
+          'De 30 días a 1 día de alta',
+        ],
+        [
+          'La política de crédito existe en un documento pero se aplica con criterio variable',
+          'La política queda ejecutable: los mismos antecedentes producen la misma decisión',
+          'Criterio uniforme, con la excepción explícita',
+        ],
+        [
+          'Consultar antecedentes implica entrar a varios portales y copiar datos a mano',
+          'Los antecedentes se consultan automáticamente y se adjuntan a la solicitud',
+          'Sin copiar datos entre portales',
+        ],
+        [
+          'El equipo comercial persigue internamente sus propias solicitudes',
+          'El estado es consultable y, al aprobarse, el alta se ejecuta en los sistemas',
+          '29 días que la venta deja de esperar',
+        ],
+      ],
+    },
     paraTi: [
       'El alta de un cliente nuevo demora semanas y nadie sabe bien en qué paso está',
       'La política de crédito existe en un documento pero se aplica con criterio variable',
@@ -271,11 +402,11 @@ export const SOLUCIONES: Solucion[] = [
     slug: 'visibilidad-de-caja-y-conciliacion',
     etapa: '04',
     fase: 'Caja y control',
-    titulo: 'Visibilidad de caja: saber hoy qué entró, no a fin de mes',
-    seoTitle: 'Visibilidad de caja y conciliación',
+    titulo: 'Conciliación bancaria automatizada: saber hoy qué entró, no a fin de mes',
+    seoTitle: 'Conciliación bancaria automatizada',
     description:
-      'Conciliación asistida y una fuente única de información para conocer tu posición de caja real durante el mes, no cuando cierra la contabilidad.',
-    keyword: 'visibilidad de caja conciliación empresas',
+      'Automatizamos la conciliación bancaria y unificamos la información para conocer tu posición de caja real durante el mes, no cuando cierra la contabilidad.',
+    keyword: 'conciliación bancaria automatizada empresas',
     entradilla:
       'Operar la semana sin saber la posición real de caja es tomar decisiones con información de hace tres semanas. Y las decisiones financieras no admiten ese desfase.',
     problema: [
@@ -310,6 +441,41 @@ export const SOLUCIONES: Solucion[] = [
       dato: 'Conciliación: de 15 a 3 días',
       detalle:
         'Conoces tu posición de caja el lunes, no a fin de mes. Decides con el saldo que existe hoy y no con el que existía hace tres semanas.',
+    },
+    diagnostico: {
+      sintoma:
+        'La conciliación bancaria se hace a mano cruzando cartolas, hay pagos que nadie logra identificar y la posición de caja se conoce recién al cerrar la contabilidad.',
+      dias: '12 días',
+      base:
+        'Conciliación de 15 a 3 días reportada en casos públicos de UiPath, ScienceSoft y McKinsey.',
+    },
+    tabla: {
+      titulo: 'Qué cambia en la etapa de caja y control',
+      caption:
+        'Síntomas de la etapa de conciliación y visibilidad de caja, qué cambia al automatizar cada uno y la magnitud del cambio. Las cifras provienen de casos públicos de terceros, no de proyectos de zalantos.',
+      columnas: ['Síntoma que reconoces', 'Qué cambia al automatizarlo', 'En cuánto'],
+      filas: [
+        [
+          'La conciliación bancaria ocupa varios días al mes de trabajo manual',
+          'Los movimientos se capturan solos y se cruzan automáticamente contra cuentas por cobrar',
+          'De 15 a 3 días de conciliación',
+        ],
+        [
+          'Hay pagos recibidos que nadie logra identificar a qué factura corresponden',
+          'El cruce propone la correspondencia y deriva a revisión únicamente lo que no calza',
+          'Solo las excepciones llegan a una persona',
+        ],
+        [
+          'La posición de caja se conoce recién cuando cierra la contabilidad',
+          'La posición se actualiza durante el mes, con los movimientos ya conciliados',
+          '12 días antes: el lunes, no a fin de mes',
+        ],
+        [
+          'Las áreas manejan cifras distintas para el mismo indicador',
+          'Una fuente única de información alimenta los tableros de todas las áreas',
+          'Una sola cifra por indicador',
+        ],
+      ],
     },
     paraTi: [
       'La conciliación bancaria ocupa varios días al mes de trabajo manual',
@@ -351,3 +517,34 @@ export const SOLUCIONES: Solucion[] = [
 export function getSolucion(slug: string): Solucion | undefined {
   return SOLUCIONES.find((s) => s.slug === slug)
 }
+
+// FAQ del índice /soluciones/. Vive aquí y no dentro de la página porque la
+// consumen tres destinos: el HTML visible, el JSON-LD de FAQPage y el texto
+// completo de /llms-full.txt.
+export const FAQ_ORDER_TO_CASH: PreguntaFrecuente[] = [
+  {
+    pregunta: '¿Qué es el ciclo order to cash?',
+    respuesta:
+      'Es el recorrido completo que va desde que un cliente hace un pedido hasta que el dinero de esa venta está disponible en la caja de la empresa. Incluye el ingreso del pedido, la evaluación de crédito, la facturación, la cobranza, la gestión de disputas y la conciliación del pago. Se le llama order to cash o ciclo de venta a cobro.',
+  },
+  {
+    pregunta: '¿Por qué automatizar el ciclo completo y no solo una etapa?',
+    respuesta:
+      'Porque el tiempo total que tu dinero pasa en la calle es la suma de todas las etapas. Automatizar la cobranza sirve de poco si la factura se emitió tres semanas tarde, y facturar rápido sirve de poco si después nadie hace seguimiento. Las mejoras de una etapa se pierden en la siguiente si el proceso sigue cortado.',
+  },
+  {
+    pregunta: '¿Necesito cambiar mi ERP o comprar una plataforma nueva?',
+    respuesta:
+      'No. Trabajamos sobre los sistemas que la empresa ya tiene y conectamos las etapas que hoy están sueltas. Si tu problema puntual se resuelve mejor comprando un producto del mercado, te lo decimos en el diagnóstico en vez de venderte un desarrollo.',
+  },
+  {
+    pregunta: '¿Dónde interviene la inteligencia artificial?',
+    respuesta:
+      'En los puntos donde el proceso depende de interpretar información sin estructura o de anticipar un comportamiento: leer un pedido que llega en PDF, identificar a qué factura corresponde un pago sin referencia, estimar qué facturas se van a atrasar o reconstruir el origen de una disputa. La IA prepara y ordena; las decisiones con consecuencia comercial las sigue tomando una persona.',
+  },
+  {
+    pregunta: '¿Por dónde se parte?',
+    respuesta:
+      'Por el Sprint 0: una actividad sin costo para ti en la que mapeamos el proceso o actividad de tu ciclo actual, identificamos dónde se pierden los días y proponemos qué automatizar primero según impacto en caja. No requiere compromiso posterior.',
+  },
+]

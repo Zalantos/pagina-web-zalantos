@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         sans: [
           'Inter',
+          'Inter Fallback',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
@@ -21,6 +22,16 @@ export default {
           'Arial',
           'sans-serif',
         ],
+        display: [
+          'Space Grotesk',
+          'Space Grotesk Fallback',
+          'Inter',
+          'Inter Fallback',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+        ],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
     },
   },

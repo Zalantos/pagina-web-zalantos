@@ -1,14 +1,163 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Section from '../components/ui/Section.astro'
 import ContactSection from '../components/sections/ContactSection.astro'
+import LinkButton from '../components/ui/LinkButton.astro'
+import { LINKS, CONTACT_ADDRESS, CONTACT_EMAIL } from '../lib/constants'
+import {
+  breadcrumbSchema,
+  pageSchema,
+  sprint0OfferNode,
+  sprint0OfferSchema,
+  SITE_URL,
+} from '../lib/schemas'
 
 const title = 'Contacto y Sprint 0 sin costo'
 const description =
-  'Agenda el Sprint 0: una semana sin costo para mapear tu ciclo de venta a cobro y definir qué automatizar primero.'
-const canonical = 'https://zalantos.com/contacto/'
+  'Agenda el Sprint 0: una semana sin costo para mapear tu ciclo de venta a cobro, detectar dónde se atasca la caja y salir con opciones priorizadas.'
+const canonical = `${SITE_URL}/contacto/`
+
+// Qué ocurre entre que alguien escribe y recibe la propuesta. Sin plazos que no podamos cumplir.
+const PASOS = [
+  {
+    numero: '01',
+    titulo: 'Nos escribes',
+    detalle:
+      'Con el formulario o directo al correo. Basta con el proceso que te está costando: pedidos que se digitan dos veces, facturas que se atrasan, cobranza que vive en una planilla.',
+  },
+  {
+    numero: '02',
+    titulo: 'Reunión de diagnóstico',
+    detalle:
+      'Una sesión de trabajo para recorrer tu operación tal como es hoy: qué sistemas hay, dónde se detiene la información y quién termina resolviendo a mano. Sin presentación comercial.',
+  },
+  {
+    numero: '03',
+    titulo: 'Diagnóstico y opciones',
+    detalle:
+      'Te entregamos por escrito el mapa del proceso, las causas de los atascos y las opciones de solución priorizadas por impacto. El documento es tuyo, avances con nosotros o no.',
+  },
+]
+
+const migas = [
+  { name: 'Inicio', url: `${SITE_URL}/` },
+  { name: 'Contacto', url: canonical },
+]
+
+// La página declara el Sprint 0 como Offer con price 0 (mainEntity y nodo propio):
+// es el dato que un motor de IA extrae al responder por diagnósticos sin costo.
+const schemas = [
+  pageSchema({
+    name: title,
+    description,
+    url: canonical,
+    type: 'ContactPage',
+    breadcrumb: migas,
+    mainEntity: sprint0OfferNode,
+  }),
+  sprint0OfferSchema,
+  breadcrumbSchema(migas),
+]
 ---
-<BaseLayout title={title} description={description} canonical={canonical} type="website">
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  type="website"
+  extraSchemas={schemas}
+>
   <main id="main-content" class="flex-grow w-full pt-16 md:pt-20">
     <ContactSection />
+
+    <Section variant="white">
+      <div class="max-w-[900px] mx-auto">
+        <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--z-border)] mb-6">
+          Sin costo · Sin compromiso
+        </span>
+
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6 leading-tight">
+          Qué es el Sprint 0
+        </h2>
+
+        <div class="space-y-5 text-base sm:text-lg text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Casi todas las empresas que nos escriben llegan con el mismo síntoma: la venta ya está
+            hecha, pero la recaudación demora en entrar. Entre el pedido y el pago hay digitación repetida,
+            aprobaciones por correo, facturas que se rechazan y una cobranza que depende de que
+            alguien se acuerde. El problema rara vez está en una sola herramienta: está en la
+            falta de conexión de los sistemas involucrados.
+          </p>
+          <p>
+            El Sprint 0 existe para ver esas conexiones antes de proponer nada. Es un 
+            trabajo acotada, sin costo, en la que recorremos contigo el ciclo de venta a cobro tal
+            como opera hoy y salimos con un diagnóstico escrito. No es una demo ni una presentación
+            de servicios: es el levantamiento que cualquier proyecto serio necesita para saber qué
+            automatizar primero y qué conviene dejar como está.
+          </p>
+          <p>
+            Terminado el Sprint 0 tienes material suficiente para decidir —con nosotros, con otro
+            proveedor o internamente— porque el diagnóstico se queda contigo.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="gray">
+      <div class="max-w-[1000px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-10 leading-tight">
+          Cómo avanzamos desde tu mensaje
+        </h2>
+
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PASOS.map((paso) => (
+            <li class="rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-6">
+              <span
+                class="font-display font-bold text-3xl text-[rgba(11,42,60,0.15)] block mb-3"
+                aria-hidden="true"
+              >
+                {paso.numero}
+              </span>
+              <h3 class="font-display text-lg font-semibold text-[var(--z-primary)] mb-2">
+                {paso.titulo}
+              </h3>
+              <p class="text-sm sm:text-base text-[var(--ink-soft)] leading-relaxed">
+                {paso.detalle}
+              </p>
+            </li>
+          ))}
+        </ol>
+
+        <div class="mt-12 pt-10 border-t border-[var(--rule)]">
+          <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto">
+            Agenda tu Sprint 0
+          </LinkButton>
+          <p class="mt-5 text-sm text-[var(--ink-faint)] leading-relaxed">
+            ¿Quieres ver antes qué etapas del ciclo cubrimos? Revisa
+            <a href={LINKS.solutions} class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors">las soluciones por etapa</a>
+            o cómo aplicamos
+            <a href={LINKS.ai} class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors">inteligencia artificial empresarial</a>.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="white">
+      <div class="max-w-[900px] mx-auto text-center">
+        <h2 class="font-display text-lg font-semibold text-[var(--z-primary)] mb-3">
+          Dónde estamos
+        </h2>
+        <address class="not-italic text-[var(--ink-soft)] text-sm sm:text-base leading-relaxed">
+          <p>{CONTACT_ADDRESS.street} · {CONTACT_ADDRESS.locality}, {CONTACT_ADDRESS.country}</p>
+          <p class="mt-1">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </p>
+        </address>
+      </div>
+    </Section>
   </main>
 </BaseLayout>

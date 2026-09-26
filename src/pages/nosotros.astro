@@ -3,30 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import Section from '../components/ui/Section.astro'
 import LinkButton from '../components/ui/LinkButton.astro'
 import { LINKS, CONTACT_ADDRESS, CONTACT_EMAIL, SOCIAL_LINKS } from '../lib/constants'
-import { breadcrumbSchema, ORGANIZATION_ID, SITE_URL } from '../lib/schemas'
+import { EQUIPO } from '../data/equipo'
+import {
+  breadcrumbSchema,
+  pageSchema,
+  personSchema,
+  personaAnchor,
+  SITE_URL,
+} from '../lib/schemas'
 
 const title = 'Nosotros: quiénes somos y cómo trabajamos'
 const description =
-  'Consultora chilena que libera a las empresas del trabajo administrativo: automatizamos el ciclo de venta a cobro combinando control de gestión, integración de sistemas e IA aplicada.'
+  'Consultora chilena que automatiza el ciclo de venta a cobro: control de gestión, integración de sistemas e IA aplicada. Conoce al equipo y cómo trabaja.'
 const canonical = `${SITE_URL}/nosotros/`
-
-// El `linkedin` de cada persona alimenta el `sameAs` del schema Person y sostiene el
-// E-E-A-T de los artículos del blog. NO agregar personas ni credenciales sin confirmar.
-// Bios redactadas solo con datos presentes en los perfiles públicos de LinkedIn.
-const EQUIPO = [
-  {
-    nombre: 'Juan Pablo Rodríguez',
-    cargo: 'Co-Founder & CEO',
-    bio: 'Ingeniero civil industrial de la Universidad de Santiago de Chile con más de treinta años de experiencia en áreas de control de gestión, riesgo y auditoría interna. Como gerente de Planificación y Control de Gestión de Claro Chile consolidó los procesos de información financiera entre los sistemas después de la fusión, previamente había dirigido el área de auditoría interna de VTR y Liberty Latin America: implementando el estándar SOX, auditando procesos como: order to cash, procure to pay y record to report, entre otros, aplicando analítica de datos para identificar brechas de procesos de negocio.',
-    linkedin: 'https://www.linkedin.com/in/juanpablorodriguezseco/',
-  },
-  {
-    nombre: 'Tomás Rodríguez',
-    cargo: 'Co-Founder & CTO',
-    bio: 'Ingeniero civil industrial de la Pontificia Universidad Católica de Chile, especializado en tecnologías de la información e investigación operativa. En Walmart Chile automatizó procesos con Power Automate y Power Apps y desarrolló agentes de IA en Copilot Studio para mejorar la gestión operacional, acompañando la adopción de esas herramientas en distintas áreas del negocio. En zalantos lidera el desarrollo: conectar los sistemas que la empresa ya tiene y aplicar IA solo donde el proceso realmente la necesita.',
-    linkedin: 'https://www.linkedin.com/in/tomasrodriguezg/',
-  },
-]
 
 const IDENTIDAD = [
   {
@@ -79,22 +68,26 @@ const CREENCIAS = [
   },
 ]
 
-const equipoSchema = EQUIPO.filter((p) => p.linkedin).map((persona) => ({
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: persona.nombre,
-  jobTitle: persona.cargo,
-  worksFor: { '@id': ORGANIZATION_ID },
-  url: canonical,
-  sameAs: [persona.linkedin],
-}))
+const migas = [
+  { name: 'Inicio', url: `${SITE_URL}/` },
+  { name: 'Nosotros', url: canonical },
+]
+
+// Cada Person lleva el @id de src/lib/schemas.ts y el mismo fragmento existe como
+// id= en su tarjeta del HTML: la entidad es direccionable y coincide con el author
+// de los artículos del blog y con el founder de la Organization.
+const equipoSchema = EQUIPO.map((persona) => personSchema(persona))
 
 const extraSchemas = [
+  pageSchema({
+    name: title,
+    description,
+    url: canonical,
+    type: 'AboutPage',
+    breadcrumb: migas,
+  }),
   ...equipoSchema,
-  breadcrumbSchema([
-    { name: 'Inicio', url: `${SITE_URL}/` },
-    { name: 'Nosotros', url: canonical },
-  ]),
+  breadcrumbSchema(migas),
 ]
 ---
 <BaseLayout
@@ -194,7 +187,10 @@ const extraSchemas = [
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {EQUIPO.map((persona) => (
-            <div class="flex h-full flex-col rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-6">
+            <div
+              id={personaAnchor(persona.nombre)}
+              class="flex h-full flex-col rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-6 scroll-mt-28"
+            >
               <h3 class="font-display text-lg font-semibold text-[var(--z-primary)]">
                 {persona.nombre}
               </h3>

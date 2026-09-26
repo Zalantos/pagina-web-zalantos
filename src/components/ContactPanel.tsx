@@ -184,9 +184,9 @@ export default function ContactPanel(): React.ReactElement {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-start">
       <div>
-        <h3 className="font-display text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-6">
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-6">
           Envíanos un mensaje
-        </h3>
+        </h2>
         {sentTo ? (
           <div role="status" aria-live="polite" className="space-y-3 py-6">
             <h3 className="font-display text-2xl font-bold text-[#0B2A3C]">
@@ -371,9 +371,9 @@ export default function ContactPanel(): React.ReactElement {
       </div>
 
       <div id="agenda" className="scroll-mt-28">
-        <h3 className="font-display text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-6">
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-[#0B2A3C] mb-6">
           Agenda tu Sprint
-        </h3>
+        </h2>
         <CalendlyEmbed />
       </div>
     </div>

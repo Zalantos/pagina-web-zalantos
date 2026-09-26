@@ -4,6 +4,9 @@ import BlogLayout from '../../layouts/BlogLayout.astro'
 import LinkButton from '../../components/ui/LinkButton.astro'
 import { LINKS } from '../../lib/constants'
 import { SOLUCIONES } from '../../data/soluciones'
+import { getMiembro } from '../../data/equipo'
+import { personaAnchor } from '../../lib/schemas'
+import AuthorBio from '../../components/AuthorBio.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -33,6 +36,11 @@ const PILARES = {
 } as const
 const pilar = post.data.pilar ? PILARES[post.data.pilar] : undefined
 
+// Firma enlazada al perfil del autor: el nombre deja de ser texto suelto y pasa a
+// apuntar a la entidad Person de /nosotros/, la misma que declara el JSON-LD del artículo.
+const autor = getMiembro(post.data.author)
+const autorUrl = autor ? `${LINKS.about}#${personaAnchor(autor.nombre)}` : undefined
+
 // Artículos relacionados: misma categoría primero, luego los más recientes
 const relatedPosts = (await getCollection('blog'))
   .filter((p) => p.slug !== post.slug)
@@ -44,10 +52,14 @@ const relatedPosts = (await getCollection('blog'))
   .slice(0, 3)
 
 function formatDate(date: Date): string {
+  // timeZone UTC es obligatorio: `pubDate: 2026-09-25` del frontmatter se parsea como
+  // medianoche UTC y, al formatearlo en la zona local de Chile (UTC-3/-4), retrocede al
+  // día anterior. Sin esto el texto visible contradice al <time datetime> y al JSON-LD.
   return date.toLocaleDateString('es-CL', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   })
 }
 
@@ -61,6 +73,7 @@ function readingTime(body: string): string {
   title={post.data.title}
   seoTitle={post.data.seoTitle}
   description={post.data.description}
+  respuestaCorta={post.data.respuestaCorta}
   slug={post.slug}
   pubDate={post.data.pubDate}
   updatedDate={post.data.updatedDate}
@@ -122,13 +135,32 @@ function readingTime(body: string): string {
             {post.data.title}
           </h1>
 
-          <div class="flex items-center justify-center gap-4 text-sm text-[#6F7A83]">
-            <span>{post.data.author}</span>
+          <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-[#6F7A83]">
+            {autorUrl ? (
+              <a
+                href={autorUrl}
+                class="hover:text-[#1F7F4A] transition-colors"
+                title={`Ver las credenciales de ${post.data.author} en el equipo de zalantos`}
+              >
+                {post.data.author}
+              </a>
+            ) : (
+              <span>{post.data.author}</span>
+            )}
             <span aria-hidden="true">·</span>
             <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
             <span aria-hidden="true">·</span>
             <span>{readingTime(post.body)}</span>
           </div>
+
+          {post.data.updatedDate && (
+            <p class="mt-3 text-xs text-[#6F7A83]">
+              Revisado y actualizado el{' '}
+              <time datetime={post.data.updatedDate.toISOString()} class="font-medium text-[#0B2A3C]">
+                {formatDate(post.data.updatedDate)}
+              </time>
+            </p>
+          )}
         </div>
       </div>
     </section>
@@ -138,8 +170,16 @@ function readingTime(body: string): string {
     <section class="section-full bg-white">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <article class="blog-content">
+          {/* Bloque de respuesta directa, antes del primer H2: es el fragmento que
+              un motor generativo extrae como respuesta, así que va fuera del cuerpo
+              del artículo y se mantiene autocontenido. */}
+          {post.data.respuestaCorta && (
+            <p class="respuesta-corta">{post.data.respuestaCorta}</p>
+          )}
           <Content />
         </article>
+
+        <AuthorBio author={post.data.author} />
 
         {relatedPosts.length > 0 && (
           <section class="mt-16" aria-labelledby="related-heading">
@@ -189,8 +229,11 @@ function readingTime(body: string): string {
             En 5 días de trabajo conjunto diagnosticamos el problema, definimos la arquitectura
             y te entregamos un plan de acción concreto sin compromisos.
           </p>
-          <LinkButton href={LINKS.schedule} variant="primary" class="px-8 py-3 text-sm">
-            Agenda tu Sprint 0 gratuito
+          <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto shadow-none">
+            Agenda tu Sprint 0
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </LinkButton>
         </aside>
 

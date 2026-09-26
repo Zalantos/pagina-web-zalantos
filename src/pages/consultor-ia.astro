@@ -1,19 +1,161 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Section from '../components/ui/Section.astro'
+import LinkButton from '../components/ui/LinkButton.astro'
 import ConsultorIAContent from '../components/chat/ConsultorIAContent'
+import { LINKS } from '../lib/constants'
+import { breadcrumbSchema, faqSchema, pageSchema, SITE_URL } from '../lib/schemas'
 
 const title = 'Consultor IA de automatización y datos'
 const description =
   'Resuelve dudas sobre automatización de procesos, IA y análisis de datos con el Consultor IA de zalantos. Respuestas claras y personalizadas para tu negocio.'
-const canonical = 'https://zalantos.com/consultor-ia/'
+const canonical = `${SITE_URL}/consultor-ia/`
+
+// Temas que el consultor cubre bien, con un ejemplo real de pregunta para cada uno.
+const TEMAS = [
+  {
+    titulo: 'Por dónde empezar a automatizar',
+    ejemplo:
+      '«Tenemos el pedido en un CRM y la factura en otro sistema. ¿Qué se automatiza primero?»',
+  },
+  {
+    titulo: 'Si tu caso necesita IA o basta con integrar',
+    ejemplo:
+      '«¿Necesito un modelo para leer las órdenes de compra o me sirve una integración directa?»',
+  },
+  {
+    titulo: 'Qué implica conectar los sistemas que ya tienes',
+    ejemplo: '«¿Cómo se conecta un ERP con la facturación electrónica del SII?»',
+  },
+  {
+    titulo: 'Cómo medir el problema antes de resolverlo',
+    ejemplo: '«¿Qué indicadores muestran que la cobranza se está demorando de más?»',
+  },
+]
+
+const FAQ = [
+  {
+    pregunta: '¿El Consultor IA reemplaza una asesoría?',
+    respuesta:
+      'No. Sirve para ordenar el problema, entender opciones y llegar preparado a una conversación. Un diagnóstico requiere ver tu operación real: eso ocurre en el Sprint 0, que es sin costo.',
+  },
+  {
+    pregunta: '¿Accede a los datos o sistemas de mi empresa?',
+    respuesta:
+      'No. Solo trabaja con lo que escribes en la conversación y con el conocimiento de zalantos sobre automatización del ciclo de venta a cobro. No se conecta a tu ERP, tu CRM ni a ninguna fuente interna.',
+  },
+  {
+    pregunta: '¿Puede darme un precio o un plazo cerrado?',
+    respuesta:
+      'No entrega presupuestos. Alcance, plazo y costo dependen de cómo opera tu empresa y se definen después del diagnóstico, no en una conversación por chat.',
+  },
+  {
+    pregunta: '¿Qué pasa con lo que escribo en el chat?',
+    respuesta:
+      'Lo tratamos como información confidencial y no lo compartimos con terceros. El detalle está en la política de privacidad. Aun así, evita pegar datos personales de clientes o información sensible de tu empresa.',
+  },
+]
+
+const migas = [
+  { name: 'Inicio', url: `${SITE_URL}/` },
+  { name: 'Consultor IA', url: canonical },
+]
+
+const schemas = [
+  pageSchema({
+    name: title,
+    description,
+    url: canonical,
+    breadcrumb: migas,
+  }),
+  breadcrumbSchema(migas),
+  faqSchema(FAQ),
+]
 ---
 <BaseLayout
   title={title}
   description={description}
   canonical={canonical}
   type="website"
+  extraSchemas={schemas}
 >
   <main class="min-h-screen">
     <ConsultorIAContent client:load />
+
+    <Section variant="white">
+      <div class="max-w-[900px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6 leading-tight">
+          Qué puedes preguntarle
+        </h2>
+
+        <div class="space-y-5 text-base sm:text-lg text-[var(--ink-soft)] leading-relaxed mb-10">
+          <p>
+            El Consultor IA está entrenado con la forma en que zalantos mira un proceso: primero el
+            ciclo de venta a cobro completo —pedido, crédito, facturación, cobranza, disputas y
+            conciliación— y recién después la tecnología. Por eso responde mejor cuando le describes
+            una situación concreta que cuando le pides una definición genérica.
+          </p>
+          <p>
+            Sirve especialmente para la etapa en que todavía no sabes si tu problema es de
+            integración, de datos mal capturados o de un control que nadie automatizó. Le cuentas el
+            recorrido de un pedido en tu empresa y te devuelve dónde suele romperse ese flujo y qué
+            tipo de solución aplica.
+          </p>
+        </div>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {TEMAS.map((tema) => (
+            <li class="rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-5">
+              <h3 class="font-display text-base font-semibold text-[var(--z-primary)] mb-2 leading-snug">
+                {tema.titulo}
+              </h3>
+              <p class="text-sm text-[var(--ink-faint)] leading-relaxed">{tema.ejemplo}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
+
+    <Section variant="gray">
+      <div class="max-w-[900px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-10 leading-tight">
+          Límites que conviene saber antes
+        </h2>
+        <dl class="space-y-8">
+          {FAQ.map((item) => (
+            <div>
+              <dt class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-2">
+                {item.pregunta}
+              </dt>
+              <dd class="text-[var(--ink-soft)] leading-relaxed">{item.respuesta}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </Section>
+
+    <Section variant="white">
+      <div class="max-w-[900px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6 leading-tight">
+          Cuándo pasar del chat a una conversación
+        </h2>
+        <p class="text-base sm:text-lg text-[var(--ink-soft)] leading-relaxed mb-8">
+          Cuando la duda deja de ser «qué se puede hacer» y pasa a ser «qué hacemos nosotros
+          primero». Ahí el chat se queda corto: hay que ver los sistemas, los volúmenes y quién
+          resuelve hoy cada excepción. Ese levantamiento es el Sprint 0 y no tiene costo: terminas
+          con tu ciclo de venta a cobro mapeado y las opciones priorizadas por impacto, avances con
+          nosotros o no.
+        </p>
+        <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto">
+          Agenda tu Sprint 0
+        </LinkButton>
+        <p class="mt-5 text-sm text-[var(--ink-faint)] leading-relaxed">
+          También puedes revisar
+          <a href={LINKS.solutions} class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors">las soluciones por etapa del ciclo</a>,
+          los <a href={LINKS.ai} class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors">cuatro patrones de IA empresarial</a>
+          que aplicamos o el <a href={LINKS.blog} class="text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors">blog</a>.
+        </p>
+      </div>
+    </Section>
   </main>
 </BaseLayout>

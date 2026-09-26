@@ -19,6 +19,19 @@ export const CONTACT_ADDRESS = {
 
 export const SITE_URL = 'https://zalantos.com'
 
+// Datos de verificación de entidad que consumen el schema Organization
+// (src/lib/schemas.ts). Cada campo vacío se OMITE del JSON-LD: nunca se publica
+// un valor inventado. Para una empresa chilena, RUT + fecha de constitución son
+// las señales de verificación más fuertes que puede leer un motor.
+//   - rut: formato 'CL-76.123.456-7' (prefijo ISO + RUT con guión)
+//   - telefono: formato E.164, '+56912345678'
+//   - fechaConstitucion: ISO 'YYYY-MM-DD'
+export const ORG_IDENTITY = {
+  rut: '',
+  telefono: '',
+  fechaConstitucion: '',
+} as const
+
 export const LINKS = {
   home: '/',
   solutions: '/soluciones/',
@@ -28,8 +41,63 @@ export const LINKS = {
   schedule: '/contacto/?agendar=1',
   aiConsultant: '/consultor-ia/',
   blog: '/blog/',
+  glossary: '/glosario/',
   privacy: '/privacy/',
 } as const
+
+export interface NavItem {
+  href: string
+  label: string
+  /** Texto del atributo title en el pie de página. */
+  title: string
+  /** Prefijo de ruta que marca la sección como activa en el header. */
+  match: string
+  /** Contacto se renderiza como botón en el header y como enlace más en el footer. */
+  cta?: boolean
+}
+
+// Única fuente de las secciones del sitio: header y footer recorren esta lista.
+// Agregar una sección aquí la publica en ambos menús — no hay dos listas que sincronizar.
+export const NAV_ITEMS: readonly NavItem[] = [
+  { href: LINKS.home, label: 'Inicio', title: 'Volver al inicio de zalantos', match: '/' },
+  {
+    href: LINKS.solutions,
+    label: 'Soluciones',
+    title: 'Ver las etapas del ciclo order to cash que automatizamos',
+    match: '/soluciones',
+  },
+  {
+    href: LINKS.ai,
+    label: 'IA empresarial',
+    title: 'Cómo aplicamos inteligencia artificial en la operación',
+    match: '/inteligencia-artificial-empresarial',
+  },
+  {
+    href: LINKS.about,
+    label: 'Nosotros',
+    title: 'Conocer al equipo de zalantos',
+    match: '/nosotros',
+  },
+  {
+    href: LINKS.blog,
+    label: 'Blog',
+    title: 'Ver artículos de Insights y Casos de zalantos',
+    match: '/blog',
+  },
+  {
+    href: LINKS.contact,
+    label: 'Contacto',
+    title: 'Contactar a zalantos para agendar un Sprint 0',
+    match: '/contacto',
+    cta: true,
+  },
+  {
+    href: LINKS.aiConsultant,
+    label: 'Consultor IA',
+    title: 'Probar el Consultor IA de zalantos',
+    match: '/consultor-ia',
+  },
+]
 
 export const SOCIAL_LINKS = {
   linkedin: 'https://www.linkedin.com/company/zalantos/',

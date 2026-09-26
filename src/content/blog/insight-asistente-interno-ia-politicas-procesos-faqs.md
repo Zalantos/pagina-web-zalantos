@@ -7,8 +7,9 @@ author: "Tomás Rodríguez"
 category: "Insights"
 pilar: "ia"
 excerpt: "Cuando la información interna está dispersa entre PDFs, correos, chats y documentos sueltos, los equipos pierden tiempo valioso buscando respuestas que ya existen. Este insight muestra cómo un asistente interno con IA puede ordenar ese conocimiento y transformarlo en soporte útil para la operación."
+respuestaCorta: "Un asistente interno con IA responde preguntas sobre políticas, procesos y FAQs usando únicamente la documentación oficial de la empresa, y cita de qué documento salió cada respuesta. zalantos lo implementa sobre los archivos que la organización ya tiene, con control de permisos por área y una regla firme: si el documento no lo dice, el asistente no lo responde."
 ---
-<h2>El problema: respuestas que existen, pero nadie encuentra a tiempo</h2>
+<h2>¿Por qué nadie encuentra a tiempo respuestas que ya están documentadas?</h2>
   <p>
     En muchas organizaciones, las mismas preguntas internas se repiten todos los días:
     cómo pedir vacaciones, dónde está el procedimiento correcto, qué política aplica,
@@ -26,7 +27,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     en quienes “se saben todo” dentro de la empresa.
   </p>
   
-  <h2>La fricción real: soporte informal que no escala</h2>
+  <h2>¿Por qué el soporte informal entre colegas deja de escalar?</h2>
   <p>
     Este problema parece menor al principio, pero a medida que la organización crece se transforma
     en una fuente constante de fricción operacional.
@@ -43,7 +44,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     dependencia de personas clave y una sensación constante de desorden interno.
   </p>
   
-  <h2>La oportunidad: convertir documentos dispersos en soporte útil</h2>
+  <h2>¿Cómo se convierten documentos dispersos en soporte útil?</h2>
   <p>
     Un asistente interno con IA bien diseñado permite transformar ese conocimiento disperso
     en una capa de soporte accesible para toda la organización.
@@ -67,7 +68,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     con trazabilidad sobre la fuente de la información.
   </p>
   
-  <h2>Cómo se diseña bien una solución así</h2>
+  <h2>¿Cómo se diseña bien un asistente interno con IA?</h2>
   <p>
     Un asistente interno útil no parte por el modelo, parte por el flujo de información.
     Antes de implementar, hay que responder cuatro preguntas clave:
@@ -95,7 +96,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     siendo otra herramienta más que nadie usa.
   </p>
   
-  <h2>Arquitectura típica de un asistente interno con IA</h2>
+  <h2>¿Cuál es la arquitectura típica de un asistente interno con IA?</h2>
   <p>
     Aunque cada empresa tiene sus particularidades, una arquitectura común para este tipo de solución
     suele incluir estos componentes:
@@ -127,7 +128,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     mantenible y conectada con la realidad documental de la empresa.
   </p>
   
-  <h2>Dónde está el valor real</h2>
+  <h2>¿Dónde está el valor real de un asistente interno con IA?</h2>
   <p>
     El valor de esta solución no está solo en responder rápido. Está en reducir interrupciones,
     acelerar onboarding, disminuir dependencia de personas clave y dar acceso más consistente
@@ -144,7 +145,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     En otras palabras: la IA no reemplaza el conocimiento institucional. Lo vuelve usable.
   </p>
   
-  <h2>Cuándo sí tiene sentido implementar esto</h2>
+  <h2>¿Cuándo tiene sentido implementar un asistente interno con IA?</h2>
   <p>
     Un asistente interno con IA suele tener mucho sentido cuando se combinan varios de estos síntomas:
   </p>
@@ -160,7 +161,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     Hace falta una mejor capa de acceso al conocimiento.
   </p>
   
-  <h2>Qué definir en un Sprint 0</h2>
+  <h2>¿Qué se define en un Sprint 0 de asistente interno?</h2>
   <p>
     Antes de construir, lo correcto es bajar el problema a un diseño concreto.
     En un Sprint 0, normalmente se debería definir:
@@ -177,7 +178,7 @@ excerpt: "Cuando la información interna está dispersa entre PDFs, correos, cha
     implementar una tecnología atractiva, pero desconectada de la fricción real del negocio.
   </p>
   
-  <h2>La idea clave</h2>
+  <h2>¿Cuál es la idea clave de un asistente interno con IA?</h2>
   <p>
     Un asistente interno con IA no es solo un chatbot corporativo. Bien diseñado,
     es una forma de transformar conocimiento disperso en capacidad operativa.

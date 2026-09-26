@@ -1,18 +1,9 @@
 ---
-import { LINKS, CONTACT_EMAIL, CONTACT_ADDRESS, SOCIAL_LINKS } from '../lib/constants'
+import { LINKS, NAV_ITEMS, CONTACT_EMAIL, CONTACT_ADDRESS, SOCIAL_LINKS } from '../lib/constants'
 
 const focusRing = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-flat)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--z-primary)] rounded'
 const navLinkClass = `text-white/70 hover:text-[var(--accent-flat)] transition-colors text-sm inline-flex items-center min-h-[44px] md:min-h-0 ${focusRing}`
 
-const navLinks = [
-  { href: LINKS.home, label: 'Inicio', title: 'Volver al inicio de zalantos' },
-  { href: LINKS.solutions, label: 'Soluciones', title: 'Ver las etapas del ciclo order to cash que automatizamos' },
-  { href: LINKS.ai, label: 'IA empresarial', title: 'Cómo aplicamos inteligencia artificial en la operación' },
-  { href: LINKS.about, label: 'Nosotros', title: 'Conocer al equipo de zalantos' },
-  { href: LINKS.blog, label: 'Blog', title: 'Ver artículos de Insights y Casos de zalantos' },
-  { href: LINKS.contact, label: 'Contacto', title: 'Contactar a zalantos para agendar un Sprint 0' },
-  { href: LINKS.aiConsultant, label: 'Consultor IA', title: 'Probar el Consultor IA de zalantos' },
-]
 ---
 <footer class="w-full bg-[var(--z-primary)] text-white/80 border-t border-[rgba(255,255,255,0.08)]" role="contentinfo">
   <div class="section-inner py-8">
@@ -64,13 +55,24 @@ const navLinks = [
 
       <nav aria-label="Navegación del pie de página">
         <ul class="flex flex-wrap gap-x-6 md:gap-x-8 md:pt-1">
-          {navLinks.map((link) => (
+          {NAV_ITEMS.map((link) => (
             <li>
               <a href={link.href} title={link.title} class={navLinkClass}>
                 {link.label}
               </a>
             </li>
           ))}
+          {/* El glosario se enlaza solo desde el pie: es una sección de referencia,
+              no un paso del recorrido comercial que ordena el menú principal. */}
+          <li>
+            <a
+              href={LINKS.glossary}
+              title="Ver el glosario del ciclo de venta a cobro"
+              class={navLinkClass}
+            >
+              Glosario
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

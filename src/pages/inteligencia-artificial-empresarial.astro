@@ -3,81 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import Section from '../components/ui/Section.astro'
 import LinkButton from '../components/ui/LinkButton.astro'
 import { SOLUCIONES } from '../data/soluciones'
+import { PATRONES_IA, CRITERIOS_IA, FAQ_IA } from '../data/ia-empresarial'
 import { LINKS } from '../lib/constants'
 import { breadcrumbSchema, solutionServiceSchema, faqSchema, SITE_URL } from '../lib/schemas'
 
-const title = 'Inteligencia artificial empresarial'
+const title = 'Inteligencia artificial para empresas en Chile'
 const description =
-  'Implementamos inteligencia artificial empresarial dentro del ciclo de venta a cobro: los cuatro patrones donde aporta, sus límites y los controles de trazabilidad.'
+  'Dónde aporta la inteligencia artificial en una empresa, cuándo NO corresponde usarla y qué controles de trazabilidad y límites exige. Los cuatro patrones.'
 const canonical = `${SITE_URL}/inteligencia-artificial-empresarial/`
 
-// Los cuatro patrones en que la IA aporta dentro de un proceso operativo.
-const patrones = [
-  {
-    nombre: 'Interpretar documentos sin estructura',
-    cuando:
-      'Cuando la información entra en un formato que tú no controlas: un pedido en PDF, una factura de proveedor escaneada, un contrato, un correo con condiciones comerciales.',
-    como:
-      'Modelos de extracción que leen el documento y lo convierten en campos estructurados, con un umbral de confianza explícito. Sobre el umbral el flujo sigue solo; bajo el umbral se deriva a una persona con la duda ya acotada.',
-    limite:
-      'No sirve si el documento es crítico y no hay tolerancia a error. Ahí la IA propone y una persona confirma siempre.',
-  },
-  {
-    nombre: 'Conciliar y emparejar registros',
-    cuando:
-      'Cuando hay que cruzar dos fuentes que no comparten identificador: un pago contra las facturas que cubre, una línea de pedido contra el maestro de productos, un movimiento bancario contra un cliente.',
-    como:
-      'Modelos de similitud que proponen la asignación más probable con su justificación. Cada corrección humana mejora la propuesta siguiente.',
-    limite:
-      'Requiere volumen histórico para ser útil. Con pocos casos, un conjunto de reglas explícitas funciona mejor y es más fácil de auditar.',
-  },
-  {
-    nombre: 'Anticipar comportamiento',
-    cuando:
-      'Cuando la decisión mejora si sabes qué va a pasar: qué facturas se van a atrasar, cuándo va a pagar efectivamente un cliente, qué demanda esperar el próximo trimestre.',
-    como:
-      'Modelos entrenados sobre tu propio historial, que suele ser más predictivo que cualquier fuente externa genérica. Se entrega siempre con el error histórico del modelo a la vista.',
-    limite:
-      'Una predicción que no puedes cuestionar no sirve para decidir. Si el modelo no explica su supuesto, no lo ponemos en producción.',
-  },
-  {
-    nombre: 'Responder sobre documentación propia',
-    cuando:
-      'Cuando el conocimiento existe pero está disperso en PDFs, correos, carpetas y procedimientos que nadie encuentra a tiempo.',
-    como:
-      'Sistemas RAG que responden únicamente con la documentación oficial de la organización, citando de dónde sacaron cada respuesta.',
-    limite:
-      'La calidad de la respuesta es la calidad de la documentación. Si los procedimientos están desactualizados, la IA va a repetir el error más rápido.',
-  },
-]
-
-const faq = [
-  {
-    pregunta: '¿Qué es la inteligencia artificial empresarial?',
-    respuesta:
-      'Es la aplicación de modelos de IA dentro de procesos de negocio existentes, con objetivos operativos medibles y con los controles que exige una operación auditable. Se distingue del uso general de herramientas de IA en que está integrada al flujo de trabajo, opera sobre los datos de la organización y su resultado tiene consecuencias sobre el proceso.',
-  },
-  {
-    pregunta: '¿Cuándo un problema operativo NO necesita IA?',
-    respuesta:
-      'Cuando el proceso está claramente definido y sus reglas son explícitas: ahí una automatización determinista es más barata, más rápida y más fácil de auditar. La IA aporta cuando hay ambigüedad, información sin estructura o necesidad de anticipar. Si tu problema se resuelve con reglas, te vamos a recomendar reglas.',
-  },
-  {
-    pregunta: '¿Cómo se controla que la IA no se equivoque?',
-    respuesta:
-      'Con tres mecanismos: umbrales de confianza que definen qué pasa solo y qué se deriva a revisión, trazabilidad completa de cada decisión —qué entró, qué se propuso, quién confirmó— y límites explícitos sobre lo que el sistema puede y no puede hacer. Una automatización que no se puede auditar es un riesgo, no una eficiencia.',
-  },
-  {
-    pregunta: '¿Los datos de mi empresa entrenan modelos de terceros?',
-    respuesta:
-      'No en las implementaciones que diseñamos. La configuración del proveedor y el tratamiento de los datos es parte explícita del diseño de la solución, y se define antes de mover información. Es una de las primeras preguntas que respondemos en el Sprint 0.',
-  },
-  {
-    pregunta: '¿Necesito tener mis datos ordenados antes de aplicar IA?',
-    respuesta:
-      'Para la mayoría de los casos, sí. Es la causa más común de proyectos de IA que no llegan a producción: el modelo funciona en la demostración y falla con los datos reales. Por eso el diagnóstico parte por revisar qué tan confiable es la información que alimentaría la solución. Y si los datos no están listos, también te ayudamos a ordenarlos antes de automatizar.',
-  },
-]
+const patrones = PATRONES_IA
+const faq = FAQ_IA
 
 const extraSchemas = [
   solutionServiceSchema({
@@ -106,7 +42,7 @@ const extraSchemas = [
           IA empresarial
         </span>
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
-          Inteligencia artificial empresarial <span class="text-[var(--accent)]">donde cambia el resultado</span>
+          Inteligencia artificial para empresas <span class="text-[var(--accent)]">donde cambia el resultado</span>
         </h1>
         <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed mb-6">
           Diseñamos e implementamos IA dentro de procesos que ya están operando —principalmente el
@@ -193,6 +129,62 @@ const extraSchemas = [
             </div>
           ))}
         </div>
+      </div>
+    </Section>
+
+    <Section variant="gray" id="cuando-si-cuando-no">
+      <div class="max-w-[1100px] mx-auto">
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-4">
+          ¿Cuándo conviene usar IA y cuándo no?
+        </h2>
+        <p class="text-[var(--ink-faint)] text-base sm:text-lg leading-relaxed mb-8 max-w-[760px]">
+          Conviene usar IA cuando el proceso depende de interpretar información sin estructura,
+          de emparejar registros sin identificador común o de anticipar un comportamiento. No
+          conviene cuando las reglas son explícitas, los casos son pocos, los datos no son
+          confiables o el error no tiene tolerancia: en esos escenarios una automatización
+          determinística es más barata, más rápida y más fácil de auditar.
+        </p>
+
+        <div class="z-table-wrap">
+          <table class="z-table">
+            <caption class="sr-only">
+              Criterios de zalantos para decidir si un problema operativo requiere inteligencia
+              artificial o se resuelve mejor sin ella, con la alternativa recomendada en cada caso.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class="w-[34%]">Situación operativa</th>
+                <th scope="col" class="w-[10%]">¿IA?</th>
+                <th scope="col" class="w-[28%]">Por qué</th>
+                <th scope="col" class="w-[28%]">Qué corresponde hacer</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CRITERIOS_IA.map((c) => (
+                <tr>
+                  <th scope="row">{c.situacion}</th>
+                  <td>
+                    <span
+                      class:list={[
+                        'z-verdict',
+                        c.veredicto === 'Sí' ? 'z-verdict-si' : 'z-verdict-no',
+                      ]}
+                    >
+                      {c.veredicto}
+                    </span>
+                  </td>
+                  <td>{c.porque}</td>
+                  <td>{c.alternativa}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-6 text-sm text-[var(--ink-faint)] leading-relaxed max-w-[760px]">
+          La fila que aplica a tu caso se determina en el <a href={LINKS.schedule} class="underline underline-offset-2 text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors">Sprint&nbsp;0</a>,
+          donde revisamos el proceso y el estado real de los datos antes de recomendar nada.
+        </p>
       </div>
     </Section>
 

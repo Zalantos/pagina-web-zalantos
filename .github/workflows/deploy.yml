@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Historial completo: el <lastmod> del sitemap sale de `git log` por archivo
+          # (src/lib/git-lastmod.ts). Con el fetch-depth 1 por defecto el runner solo
+          # tiene un commit y TODAS las rutas devuelven esa única fecha, que es
+          # justamente el sitemap plano que la función existe para evitar.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
