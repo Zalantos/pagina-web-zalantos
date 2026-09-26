@@ -9,7 +9,7 @@ export const landingContent: LinkedInCampaignContent = {
   eyebrow: 'ARQUITECTURA DE DATOS',
   headline: 'La IA y la automatización funcionan solo si los datos que las alimentan están en orden',
   subheadline:
-    'La mayoría de los proyectos de automatización e inteligencia artificial no fracasan por la tecnología elegida. Fracasan porque la información que debe alimentarlos no está lo suficientemente ordenada para que funcione. En zalantos evaluamos el estado real de sus datos antes de proponer cualquier solución.',
+    'La mayoría de los proyectos de automatización e inteligencia artificial no fracasan por la tecnología elegida. Fracasan porque la información que debe alimentarlos no está lo suficientemente ordenada para que funcione. En <strong class="font-semibold text-[#0B2A3C]">zalantos</strong> evaluamos el estado real de sus datos antes de proponer cualquier solución.',
   bullets: [
     'Diagnóstico del estado real de sus fuentes y arquitectura de datos',
     'Identificación de brechas antes de comprometer presupuesto en tecnología',

@@ -7,43 +7,75 @@ import { breadcrumbSchema, ORGANIZATION_ID, SITE_URL } from '../lib/schemas'
 
 const title = 'Nosotros: quiénes somos y cómo trabajamos'
 const description =
-  'Consultora chilena que automatiza el ciclo de venta a cobro combinando control de gestión, integración de sistemas e IA aplicada.'
+  'Consultora chilena que libera a las empresas del trabajo administrativo: automatizamos el ciclo de venta a cobro combinando control de gestión, integración de sistemas e IA aplicada.'
 const canonical = `${SITE_URL}/nosotros/`
 
-// TODO (JP): completar con los datos reales del equipo antes de publicar.
-// Cada persona necesita: cargo, bio de 2-3 líneas y su URL de LinkedIn, que alimenta
-// el `sameAs` del schema Person y es lo que sostiene el E-E-A-T de los artículos del blog.
-// Se dejó solo a quien aparece verificablemente en el repo (autor de los posts y titular
-// de la agenda de Calendly). NO agregar personas ni credenciales sin confirmar.
+// El `linkedin` de cada persona alimenta el `sameAs` del schema Person y sostiene el
+// E-E-A-T de los artículos del blog. NO agregar personas ni credenciales sin confirmar.
+// Bios redactadas solo con datos presentes en los perfiles públicos de LinkedIn.
 const EQUIPO = [
   {
+    nombre: 'Juan Pablo Rodríguez',
+    cargo: 'Co-Founder & CEO',
+    bio: 'Ingeniero civil industrial de la Universidad de Santiago de Chile con más de treinta años de experiencia en áreas de control de gestión, riesgo y auditoría interna. Como gerente de Planificación y Control de Gestión de Claro Chile consolidó los procesos de información financiera entre los sistemas después de la fusión, previamente había dirigido el área de auditoría interna de VTR y Liberty Latin America: implementando el estándar SOX, auditando procesos como: order to cash, procure to pay y record to report, entre otros, aplicando analítica de datos para identificar brechas de procesos de negocio.',
+    linkedin: 'https://www.linkedin.com/in/juanpablorodriguezseco/',
+  },
+  {
     nombre: 'Tomás Rodríguez',
-    cargo: 'PENDIENTE: cargo',
-    bio: 'PENDIENTE: dos o tres líneas de trayectoria relevante para el problema que resuelve zalantos.',
-    linkedin: '',
+    cargo: 'Co-Founder & CTO',
+    bio: 'Ingeniero civil industrial de la Pontificia Universidad Católica de Chile, especializado en tecnologías de la información e investigación operativa. En Walmart Chile automatizó procesos con Power Automate y Power Apps y desarrolló agentes de IA en Copilot Studio para mejorar la gestión operacional, acompañando la adopción de esas herramientas en distintas áreas del negocio. En zalantos lidera el desarrollo: conectar los sistemas que la empresa ya tiene y aplicar IA solo donde el proceso realmente la necesita.',
+    linkedin: 'https://www.linkedin.com/in/tomasrodriguezg/',
   },
 ]
 
-const principios = [
+const IDENTIDAD = [
   {
-    titulo: 'Primero el problema, después la tecnología',
+    etiqueta: 'Misión',
+    titulo: 'Devolver el tiempo',
+    texto:
+      'Liberamos a las organizaciones del trabajo que no debería existir. Convertimos cada ciclo de negocio —vender, comprar, cobrar, pagar, cerrar, decidir— en un flujo que opera, se controla y se explica solo, para que el tiempo de las personas vuelva a donde solo una persona puede ponerlo: pensar, crear, cuidar y decidir.',
+  },
+  {
+    etiqueta: 'Visión',
+    titulo: 'Que el trabajo vuelva a ser humano',
+    texto:
+      'Un mundo donde nadie gaste su vida laboral en tareas que una máquina confiable podría hacer por él, y donde ninguna empresa, por pequeña que sea, tenga que elegir entre crecer y mantener el control.',
+  },
+]
+
+// Los seis puntos del Manifiesto Zalantos (docs/identidad-corporativa-zalantos.md),
+// condensados para web. El documento es la fuente: si el manifiesto cambia, este
+// arreglo cambia con él.
+const CREENCIAS = [
+  {
+    titulo: 'El tiempo manda; la fricción es el enemigo',
     detalle:
-      'Partimos por entender dónde se pierde el tiempo y el dinero en tu operación. La herramienta se elige después, y en varios casos la respuesta correcta es que no necesitas IA.',
+      'Cada hora perdida en validaciones manuales, datos que no cuadran o procesos que nadie entiende es tiempo que se le resta al negocio y a las personas. Esa fricción no es un costo inevitable de operar: es un error de diseño.',
+  },
+  {
+    titulo: 'Rigor y velocidad, juntos',
+    detalle:
+      'Casi todos creen que hay que elegir entre control y agilidad. La experiencia diseña el control; la ingeniería digital aporta la velocidad. Por separado, una es lenta y la otra arriesgada. Juntas llegan más lejos.',
+  },
+  {
+    titulo: 'Inteligencia artificial con cinturón de seguridad',
+    detalle:
+      'Rechazamos la automatización como caja negra. Si un proceso automatizado no puede auditarse, conciliarse y explicarse frente a un control de gestión estricto, no se implementa. La IA debe hacer a las empresas más confiables, no más opacas.',
+  },
+  {
+    titulo: 'Jubilamos la burocracia operativa',
+    detalle:
+      'Nadie construyó una carrera para pasar sus años copiando cifras entre sistemas y persiguiendo correos. No automatizamos para prescindir de gente, sino para devolverle el trabajo que vale la pena hacer: entender, decidir y responder.',
+  },
+  {
+    titulo: 'Decir que no es parte del trabajo',
+    detalle:
+      'La tecnología innecesaria también cuesta: dinero, credibilidad y tiempo de mantención. Decimos que no a la IA cuando una regla explícita resuelve mejor, y al proyecto cuando el problema es de proceso. Preferimos perder una venta antes que implementar algo que no debimos implementar.',
   },
   {
     titulo: 'Sobre los sistemas que ya tienes',
     detalle:
       'No reemplazamos tu ERP ni te pedimos migrar a una plataforma nueva. Conectamos lo que ya funciona y construimos solo lo que falta.',
-  },
-  {
-    titulo: 'Auditable de entrada',
-    detalle:
-      'Toda automatización deja registro de qué pasó, qué decidió el sistema y quién confirmó. Si no se puede auditar, no lo damos por terminado.',
-  },
-  {
-    titulo: 'Medido en caja, no en features',
-    detalle:
-      'El criterio de éxito es cuántos días se acortó el ciclo o cuántas horas se liberaron, no cuántas funcionalidades se entregaron.',
   },
 ]
 
@@ -79,38 +111,54 @@ const extraSchemas = [
           Nosotros
         </span>
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
-          Venimos del control de gestión, no del catálogo de software
+          Liberamos a las empresas del trabajo que no debería existir
         </h1>
         <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed">
-          zalantos automatiza las actividades del ciclo de venta a cobro para convertir más rápido
-          las ventas en caja. Trabajamos desde Chile, sobre los sistemas que las empresas ya
-          tienen, y medimos el resultado en días de ciclo y horas liberadas.
+          <strong class="text-[var(--accent)]">zalantos</strong> es una consultora chilena que automatiza las actividades manuales y administrativas de los ciclos de negocio de las empresas. Entre que se vende y se cobra hay un mundo de actividades: ahí trabajamos, y medimos el resultado
+          —<strong class="text-[var(--z-primary)]">mayor venta, ahorro, días de ciclo, horas
+          liberadas y trazabilidad de cada operación</strong>.
         </p>
+      </div>
+
+      <div class="max-w-[820px] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16">
+        {IDENTIDAD.map((bloque) => (
+          <div class="border-t-2 border-[var(--accent-flat)] pt-5">
+            <span class="eyebrow block mb-2">{bloque.etiqueta}</span>
+            <h2 class="font-display text-xl sm:text-2xl font-semibold text-[var(--z-primary)] mb-3">
+              {bloque.titulo}
+            </h2>
+            <p class="text-[var(--ink-soft)] leading-relaxed text-sm sm:text-base">
+              {bloque.texto}
+            </p>
+          </div>
+        ))}
       </div>
     </Section>
 
     <Section variant="gray">
       <div class="max-w-[820px] mx-auto">
         <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6">
-          Por qué el ciclo de venta a cobro
+          Por qué existimos
         </h2>
         <div class="space-y-5 text-[var(--ink-soft)] leading-relaxed text-base sm:text-lg">
           <p>
-            Porque es donde el desorden operativo se convierte en un costo financiero medible.
-            Una empresa puede estar vendiendo bien y aun así tener la caja apretada, simplemente
-            porque entre la venta y el cobro hay veinte días de trabajo administrativo que nadie
-            contabiliza como costo.
+            Cada hora perdida en validaciones manuales, datos que no cuadran o procesos que nadie
+            entiende es tiempo que se le resta al negocio y a las personas. Esa fricción no es un
+            costo inevitable de operar: <strong class="text-[var(--z-primary)]">es un error de
+            diseño</strong>. Existimos para erradicarla.
           </p>
           <p>
-            Ese tramo casi nunca es problema de un solo sistema. Es el espacio entre sistemas:
-            el pedido que llega en un formato, el ERP que espera otro, la facturación que corre
-            por su lado, la cobranza que vive en una planilla y el banco que informa aparte.
-            Nadie es dueño del recorrido completo.
+            <strong class="text-[var(--accent)]">zalantos</strong> nace del cruce de dos recorridos: treinta años auditando procesos de negocio
+            en telecomunicaciones y la práctica de automatizar e implementar IA en una operación
+            de retail. Desde ambos lados el diagnóstico era el mismo:
+            <strong class="text-[var(--z-primary)]">pedidos que se digitan a mano, facturas que
+            esperan al cierre y cobranzas que empiezan cuando la deuda ya envejeció</strong>.
           </p>
           <p>
-            Ahí trabajamos. No vendemos un producto que resuelve una etapa: conectamos las que
-            ya existen y aplicamos inteligencia artificial en los puntos donde el proceso depende
-            de interpretar información o de anticipar un comportamiento.
+            Hoy entramos por el ciclo de venta a cobro, porque ahí la fricción se vuelve imposible
+            de ignorar. Y usualmente el problema no es un solo sistema, sino del espacio entre ellos.
+            Ahí trabajamos, conectando las etapas que ya existen y aplicando IA sólo donde el
+            proceso lo requiera.
           </p>
         </div>
       </div>
@@ -118,16 +166,21 @@ const extraSchemas = [
 
     <Section variant="white">
       <div class="max-w-[900px] mx-auto">
-        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-10">
-          Cómo trabajamos
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-4">
+          En qué creemos
         </h2>
+        <p class="text-[var(--ink-soft)] leading-relaxed text-base sm:text-lg mb-10 max-w-[720px]">
+          Seis convicciones que deciden qué aceptamos hacer y qué no.
+        </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-          {principios.map((p) => (
+          {CREENCIAS.map((creencia) => (
             <div>
               <h3 class="font-display text-lg sm:text-xl font-semibold text-[var(--z-primary)] mb-3">
-                {p.titulo}
+                {creencia.titulo}
               </h3>
-              <p class="text-[var(--ink-soft)] leading-relaxed text-sm sm:text-base">{p.detalle}</p>
+              <p class="text-[var(--ink-soft)] leading-relaxed text-sm sm:text-base">
+                {creencia.detalle}
+              </p>
             </div>
           ))}
         </div>
@@ -141,7 +194,7 @@ const extraSchemas = [
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {EQUIPO.map((persona) => (
-            <div class="rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-6">
+            <div class="flex h-full flex-col rounded-[var(--radius-lg)] border border-[var(--rule)] bg-[var(--panel)] p-6">
               <h3 class="font-display text-lg font-semibold text-[var(--z-primary)]">
                 {persona.nombre}
               </h3>
@@ -152,13 +205,47 @@ const extraSchemas = [
                   href={persona.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
+                  title={`Ver el perfil de ${persona.nombre} en LinkedIn`}
+                  class="mt-auto pt-4 inline-flex items-center gap-2 text-sm font-medium text-[var(--accent)] hover:text-[var(--z-primary)] transition-colors"
                 >
-                  LinkedIn <span aria-hidden="true">↗</span>
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+                  </svg>
+                  LinkedIn
+                  <span aria-hidden="true">&#8599;</span>
                 </a>
               )}
             </div>
           ))}
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="dark">
+      <div class="max-w-[820px] mx-auto">
+        <span class="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(255,255,255,0.25)] !text-white mb-6">
+          El aporte
+        </span>
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+          La fricción se ve con más claridad cuando sigue al dinero
+        </h2>
+        <div class="space-y-5 text-white/80 leading-relaxed text-base sm:text-lg">
+          <p>
+            Una empresa que cobra a tiempo paga a tiempo. Paga a sus proveedores —que casi siempre
+            son más chicos que ella y que financian la espera con su propio bolsillo—, paga sueldos
+            sin sobresaltos e invierte en vez de cubrir un descalce. La fricción administrativa no
+            es un problema privado de cada compañía: es una deuda que se traspasa hacia abajo por
+            toda la cadena y que terminan pagando quienes menos espalda tienen para aguantarla.
+          </p>
+          <p>
+            Lo mismo ocurre con el tiempo. Cada hora que una persona dedica a digitar, conciliar o
+            perseguir un dato es una hora que no dedica a su oficio, a su equipo o a su vida.
+          </p>
+          <p class="text-white font-medium">
+            Cada ciclo que acortamos devuelve un poco de esa espalda y un poco de ese tiempo. Ese
+            es el aporte que perseguimos, y se mide en empresas y personas que nunca vamos a
+            conocer.
+          </p>
         </div>
       </div>
     </Section>
@@ -189,8 +276,8 @@ const extraSchemas = [
             </a>
           </p>
         </address>
-        <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto">
-          Agenda tu Sprint 0
+        <LinkButton href={LINKS.contact} variant="primary" class="w-full sm:w-auto">
+          Contacto
         </LinkButton>
       </div>
     </Section>

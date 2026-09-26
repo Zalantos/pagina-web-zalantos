@@ -5,7 +5,7 @@ description: "Cómo diseñar alertas ejecutivas inteligentes que detectan desvia
 pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
-image: "/images/og/insight-alertas-ejecutivas-inteligentes-desvios-criticos.png"
+pilar: "ia"
 solucion: "visibilidad-de-caja-y-conciliacion"
 excerpt: "Muchas empresas revisan sus indicadores cuando el problema ya escaló: en el cierre semanal, en la reunión mensual o cuando un cliente reclama. Este insight muestra cómo diseñar alertas ejecutivas inteligentes para detectar desviaciones a tiempo y gestionar antes de que el impacto sea mayor."
 ---

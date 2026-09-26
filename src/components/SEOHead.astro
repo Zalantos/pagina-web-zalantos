@@ -1,4 +1,6 @@
 ---
+import { ogImagePathFromCanonical } from '../lib/og'
+
 export interface Props {
   title: string
   description: string
@@ -16,7 +18,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/og-image.png',
+  ogImage,
   type = 'website',
   pubDate,
   updatedDate,
@@ -28,9 +30,12 @@ const {
 // Nombre de página sin el sufijo del sitio (evita "| zalantos | zalantos")
 const pageTitle = title.replace(/\s*\|\s*zalantos\s*$/i, '')
 const fullTitle = noTitleSuffix ? title : `${pageTitle} | zalantos`
-const absoluteOgImage = ogImage.startsWith('http')
-  ? ogImage
-  : `https://zalantos.com${ogImage}`
+// Sin imagen explícita, cada página usa la suya: /og/<slug>.png, generada en build
+// desde su H1 y su descripción reales (scripts/og).
+const ogImageResuelta = ogImage ?? ogImagePathFromCanonical(canonical)
+const absoluteOgImage = ogImageResuelta.startsWith('http')
+  ? ogImageResuelta
+  : `https://zalantos.com${ogImageResuelta}`
 ---
 <title>{fullTitle}</title>
 <meta name="description" content={description} />

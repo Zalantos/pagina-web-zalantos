@@ -5,7 +5,7 @@ description: "El 60% de los proyectos de IA fracasará, y la causa no es la tecn
 pubDate: 2026-06-07
 author: "Tomás Rodríguez"
 category: "Insights"
-image: "/images/og/datos-ai-ready-proyecto-ia-fracaso.png"
+pilar: "ia"
 excerpt: "La razón por la que el 60% de los proyectos de IA fracasará no es la tecnología: son los datos. Exploramos por qué esta realidad es ineludible y cómo preparar tu organización antes de que sea demasiado tarde."
 ---
 <p>

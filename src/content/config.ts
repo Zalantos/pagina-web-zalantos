@@ -17,6 +17,9 @@ const blog = defineCollection({
     // Slug de /soluciones/<slug>/ con la que el artículo se relaciona. Alimenta el
     // bloque de enlace comercial al final del post (cluster temático).
     solucion: z.string().optional(),
+    // Página pilar del cluster temático al que pertenece el artículo. Alimenta el
+    // chip enlazado de la cabecera y devuelve autoridad interna a la money page.
+    pilar: z.enum(['ia']).optional(),
     featured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
   }),

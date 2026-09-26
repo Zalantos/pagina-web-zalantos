@@ -34,10 +34,16 @@ src/
     ├── privacy.astro                                         → /privacy/
     └── sitemap.xml.ts                                        → /sitemap.xml (dinámico)
 
+scripts/og/
+├── index.ts             Integración Astro que genera las imágenes Open Graph
+├── extract.ts           Lee el HTML emitido (H1 + og:description) de cada página
+├── template.ts          Tarjeta 1200x630 con satori + resvg
+└── fonts/*.ttf          Space Grotesk e Inter estáticas (satori no lee WOFF2)
+
 public/
 ├── .htaccess            Reescrituras + HTTPS + cache para Apache/cPanel
 ├── robots.txt           Sitemap + permisos para bots de IA
-├── site.webmanifest, humans.txt, icon.png, og-image.png
+├── site.webmanifest, humans.txt, icon.png
 └── images/*             Assets estáticos
 ```
 
@@ -49,6 +55,27 @@ npm run dev        # dev server http://localhost:4321
 npm run build      # genera /dist estático
 npm run preview    # previsualiza /dist
 ```
+
+## Imágenes Open Graph
+
+Se generan en cada build, no se versionan. `scripts/og` es una integración de Astro
+que corre en `astro:build:done`: recorre el HTML ya emitido, toma el **H1 real** y la
+`og:description` real de cada página y renderiza `dist/og/<slug>.png` (1200x630) con
+satori + resvg. La miniatura que muestran WhatsApp, LinkedIn o Slack no puede quedar
+desfasada del copy publicado.
+
+- La ruta la fija `src/lib/og.ts` (`/` → `/og/home.png`, `/blog/x/` → `/og/blog-x.png`)
+  y `SEOHead.astro` la declara como `og:image` por defecto.
+- Una página con `ogImage` propio se respeta y no genera nada.
+- El eyebrow verde de los artículos sale del `articleSection` del JSON-LD (la categoría
+  del frontmatter), así que tampoco se duplica el dato.
+- Si una página no tiene `<h1>` ni `og:title`, **el build falla**: es la señal de que
+  hay que arreglar la página, no la imagen.
+- `dist/og-image.png` se sigue emitiendo (copia de la tarjeta de home) para que los
+  enlaces difundidos antes de esta convención se actualicen al expirar su caché.
+
+Cambiar de URL implica que WhatsApp vuelva a leer el preview: cachea por URL, no por
+contenido. Para forzarlo antes de tiempo, compartir el enlace con `?v=2`.
 
 ## Desarrollo local
 

@@ -1,3 +1,5 @@
+import { ogImagePath } from './og'
+
 export const SITE_URL = 'https://zalantos.com'
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`
 export const WEBSITE_ID = `${SITE_URL}/#website`
@@ -147,7 +149,7 @@ export function articleSchema(post: ArticleSchemaInput) {
     datePublished: post.pubDate.toISOString(),
     dateModified: (post.updatedDate ?? post.pubDate).toISOString(),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    image: post.image ? `${SITE_URL}${post.image}` : `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}${post.image ?? ogImagePath(`/blog/${post.slug}/`)}`,
     ...(post.category ? { articleSection: post.category } : {}),
     inLanguage: 'es-CL',
     url,

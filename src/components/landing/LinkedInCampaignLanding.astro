@@ -46,9 +46,10 @@ function isExternalHref(href: string) {
         <h1 class="text-[clamp(1.9rem,2.4vw+1.1rem,3rem)] font-bold leading-[1.15] tracking-tight text-[#0B2A3C]">
           {headline}
         </h1>
-        <p class="max-w-xl text-base leading-relaxed text-[#3D5566] sm:text-[1rem]">
-          {subheadline}
-        </p>
+        <p
+          class="max-w-xl text-base leading-relaxed text-[#3D5566] sm:text-[1rem]"
+          set:html={subheadline}
+        />
 
         {bulletsToShow.length > 0 && (
           <ul class="space-y-2 text-sm text-[#3D5566]">

@@ -11,6 +11,7 @@ export type LinkedInCampaignVisualStep = {
 export type LinkedInCampaignContent = {
   eyebrow: string
   headline: string
+  /** Admite HTML inline (se renderiza con set:html): usar <strong> para destacar la marca */
   subheadline: string
   bullets: string[]
   primaryCta: LinkedInCampaignCta

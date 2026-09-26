@@ -8,7 +8,7 @@ import { breadcrumbSchema, solutionServiceSchema, faqSchema, SITE_URL } from '..
 
 const title = 'Inteligencia artificial empresarial'
 const description =
-  'Inteligencia artificial dentro de procesos de negocio reales: los cuatro patrones donde aporta, sus límites y los controles de trazabilidad.'
+  'Implementamos inteligencia artificial empresarial dentro del ciclo de venta a cobro: los cuatro patrones donde aporta, sus límites y los controles de trazabilidad.'
 const canonical = `${SITE_URL}/inteligencia-artificial-empresarial/`
 
 // Los cuatro patrones en que la IA aporta dentro de un proceso operativo.
@@ -75,7 +75,7 @@ const faq = [
   {
     pregunta: '¿Necesito tener mis datos ordenados antes de aplicar IA?',
     respuesta:
-      'Para la mayoría de los casos, sí. Es la causa más común de proyectos de IA que no llegan a producción: el modelo funciona en la demostración y falla con los datos reales. Por eso el diagnóstico parte por revisar qué tan confiable es la información que alimentaría la solución.',
+      'Para la mayoría de los casos, sí. Es la causa más común de proyectos de IA que no llegan a producción: el modelo funciona en la demostración y falla con los datos reales. Por eso el diagnóstico parte por revisar qué tan confiable es la información que alimentaría la solución. Y si los datos no están listos, también te ayudamos a ordenarlos antes de automatizar.',
   },
 ]
 
@@ -106,24 +106,32 @@ const extraSchemas = [
           IA empresarial
         </span>
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--z-primary)] tracking-tight leading-[1.1] mb-6">
-          Inteligencia artificial donde <span class="text-[var(--accent)]">cambia el resultado</span>
+          Inteligencia artificial empresarial <span class="text-[var(--accent)]">donde cambia el resultado</span>
         </h1>
         <p class="text-base sm:text-lg md:text-xl text-[var(--ink-soft)] leading-relaxed mb-6">
-          La pregunta útil no es si usar IA. Es en qué punto de tu operación la IA hace algo que
-          una automatización tradicional no puede hacer, y qué controles necesita para que puedas
-          confiar en el resultado.
+          Diseñamos e implementamos IA dentro de procesos que ya están operando —principalmente el
+          ciclo de venta a cobro—, con umbrales de confianza que define el negocio y trazabilidad
+          completa de cada decisión.
         </p>
-        <p class="text-base sm:text-lg text-[var(--ink-faint)] leading-relaxed">
-          Trabajamos la IA como una capa dentro de procesos que ya existen —principalmente el
-          ciclo de venta a cobro— y no como un proyecto separado que hay que justificar aparte.
+        <p class="text-base sm:text-lg text-[var(--ink-faint)] leading-relaxed mb-8">
+          Partimos por el proceso y los datos, no por la herramienta. Si tu problema se resuelve
+          con reglas explícitas, te lo decimos y no implementamos IA.
         </p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <LinkButton href={LINKS.schedule} variant="primary" class="w-full sm:w-auto">
+            Agenda tu Sprint 0
+          </LinkButton>
+          <LinkButton href={LINKS.solutions} variant="secondary" class="w-full sm:w-auto">
+            Ver soluciones
+          </LinkButton>
+        </div>
       </div>
     </Section>
 
     <Section variant="gray">
       <div class="max-w-[820px] mx-auto">
         <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--z-primary)] mb-6">
-          El problema de partir por la herramienta
+          El problema de comenzar por la herramienta
         </h2>
         <div class="space-y-5 text-[var(--ink-soft)] leading-relaxed text-base sm:text-lg">
           <p>
@@ -133,7 +141,7 @@ const extraSchemas = [
             en condiciones de hacerlo.
           </p>
           <p>
-            Un asistente que responde sobre procedimientos desactualizados propaga el error más
+            Un asistente IA que responde sobre procedimientos desactualizados propaga el error más
             rápido. Un modelo de priorización entrenado sobre datos de cartera incompletos
             prioriza mal con mucha convicción. La IA amplifica lo que hay debajo, en ambas
             direcciones.
@@ -141,7 +149,7 @@ const extraSchemas = [
           <p>
             Por eso el orden importa: primero el proceso y los datos, después el modelo. Y en
             varios casos la conclusión honesta del diagnóstico es que el problema se resuelve
-            con integración y reglas explícitas, sin IA. Lo decimos cuando corresponde.
+            con integración, reglas explícitas y automatización determinística, sin IA.
           </p>
         </div>
       </div>
@@ -153,7 +161,7 @@ const extraSchemas = [
           Los cuatro patrones donde la IA aporta
         </h2>
         <p class="text-[var(--ink-faint)] text-base sm:text-lg leading-relaxed mb-10 max-w-[700px]">
-          Casi todo lo que implementamos cae en uno de estos cuatro. Cada uno incluye su límite,
+          Casi todo lo que implementamos cae en uno de estos cuatro patrones. Cada uno incluye su límite,
           porque saber cuándo no aplica es parte de saber aplicarlo.
         </p>
 

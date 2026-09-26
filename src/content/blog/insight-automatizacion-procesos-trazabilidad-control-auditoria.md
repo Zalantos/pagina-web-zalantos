@@ -5,7 +5,7 @@ description: "Cómo automatizar procesos críticos sin perder control: diseño c
 pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
-image: "/images/og/insight-automatizacion-procesos-trazabilidad-control-auditoria.png"
+pilar: "ia"
 solucion: "integracion-erp-facturacion-electronica"
 excerpt: "Muchas empresas quieren automatizar tareas repetitivas, pero frenan porque temen perder visibilidad, control o capacidad de auditoría. Este insight muestra cómo diseñar automatizaciones que aceleren la operación sin sacrificar trazabilidad, validaciones ni gobierno del proceso."
 ---

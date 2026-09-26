@@ -5,7 +5,7 @@ description: "Cómo un asistente interno con IA ordena políticas, procesos y FA
 pubDate: 2026-03-10
 author: "Tomás Rodríguez"
 category: "Insights"
-image: "/images/og/insight-asistente-interno-ia-politicas-procesos-faqs.png"
+pilar: "ia"
 excerpt: "Cuando la información interna está dispersa entre PDFs, correos, chats y documentos sueltos, los equipos pierden tiempo valioso buscando respuestas que ya existen. Este insight muestra cómo un asistente interno con IA puede ordenar ese conocimiento y transformarlo en soporte útil para la operación."
 ---
 <h2>El problema: respuestas que existen, pero nadie encuentra a tiempo</h2>

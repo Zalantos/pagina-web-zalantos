@@ -9,7 +9,7 @@ export const landingContent: LinkedInCampaignContent = {
   eyebrow: 'No necesitas IA si no resuelve tu dolor',
   headline: 'No todos los problemas operativos necesitan IA',
   subheadline:
-    'Hoy muchas empresas sienten presión por "subirse a la IA" y parten por la herramienta en lugar de entender el problema operativo. En zalantos arrancamos por el diagnóstico, definimos qué fricción duele y luego proponemos la solución correcta.',
+    'Hoy muchas empresas sienten presión por "subirse a la IA" y parten por la herramienta en lugar de entender el problema operativo. En <strong class="font-semibold text-[#0B2A3C]">zalantos</strong> arrancamos por el diagnóstico, definimos qué fricción duele y luego proponemos la solución correcta.',
   bullets: [
     'Integrar sistemas que hoy no se hablan',
     'Ordenar datos dispersos para tomar decisiones claras',

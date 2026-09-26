@@ -26,6 +26,13 @@ const solucionRelacionada = post.data.solucion
   ? SOLUCIONES.find((s) => s.slug === post.data.solucion)
   : undefined
 
+// Página pilar del cluster: enlace en cabecera (posición alta) hacia la money page
+// que consolida el término principal del tema.
+const PILARES = {
+  ia: { href: LINKS.ai, label: 'IA empresarial', title: 'Ver la página de inteligencia artificial empresarial de zalantos' },
+} as const
+const pilar = post.data.pilar ? PILARES[post.data.pilar] : undefined
+
 // Artículos relacionados: misma categoría primero, luego los más recientes
 const relatedPosts = (await getCollection('blog'))
   .filter((p) => p.slug !== post.slug)
@@ -93,9 +100,23 @@ function readingTime(body: string): string {
             <span class="text-[#0B2A3C]" aria-current="page">{post.data.seoTitle ?? post.data.title}</span>
           </nav>
 
-          <span class="inline-block text-xs font-semibold tracking-widest uppercase mb-4 text-[#1F7F4A]">
-            {post.data.category}
-          </span>
+          <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mb-4">
+            <span class="inline-block text-xs font-semibold tracking-widest uppercase text-[#1F7F4A]">
+              {post.data.category}
+            </span>
+            {pilar && (
+              <>
+                <span class="text-[#6F7A83]" aria-hidden="true">·</span>
+                <a
+                  href={pilar.href}
+                  title={pilar.title}
+                  class="inline-flex items-center gap-1 text-xs font-semibold tracking-widest uppercase text-[#6F7A83] hover:text-[#1F7F4A] transition-colors underline underline-offset-4 decoration-[rgba(11,42,60,0.2)]"
+                >
+                  {pilar.label}
+                </a>
+              </>
+            )}
+          </div>
 
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 text-[#0B2A3C]">
             {post.data.title}
